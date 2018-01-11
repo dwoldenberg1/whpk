@@ -1,0 +1,10 @@
+wordpress core
+jquery-ui/grid layout
+grid layout @ http://getskeleton.com/
+foundation
+
+
+1. design front end/responsive bits
+2. work on wp integration
+3. decide how to construct db/schema
+4. integrate dynamic posts
