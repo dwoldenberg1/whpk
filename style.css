@@ -1,0 +1,118 @@
+/* Reeeeeset css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End Reset css */
+
+body {
+	font-family: monospace;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: maroon;
+	border: 1px solid #000;
+}
+
+.whpk-logo {
+	height: 200;
+	width: 200;
+	padding: 20 20 10 20;
+}
+
+.station-info {
+	padding: 0 0 20 20;
+	font-size: 22px;
+}
+
+.navbar, .footer, .topbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-around;
+	width: 100%;
+}
+
+.navbar {
+	border-top: 1px dashed #000;
+	border-bottom: 1px dashed #000;
+	padding: 0 20 0 20;
+}
+
+.nav {
+	flex-basis: 125px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	font-size: 25px;
+	padding: 10 10 10 10;
+}
+
+.nav > a {
+	padding: 5 5 5 5;
+}
+
+.main{
+	height: 500px;
+}
+
+.foot {
+	flex-direction: column;
+}
+
+.foot {
+	padding: 10px;
+}
+
+.footer > div {
+	width: 50%;
+	display: inline-block;
+}
+
+.bot-pic {
+	height: 200;
+	width: 175;
+	padding: 0 20 20 20;
+	float: right;
+}
