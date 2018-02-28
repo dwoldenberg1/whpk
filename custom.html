@@ -1,112 +1,65 @@
 <head>
-	<title>whpk - xxx </title>
+	<title>whpk - Home</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="jquery.playlist.js"></script>
+	<script type="text/javascript" src="function.js" ></script>
 	<script type="text/javascript">
 	/*notes: ask for svg version of logo*/
 	$(function(){
         $(".item img").each(function(){
           $(this).css("background", '#' + Math.round((0x1000000 + 0xffffff * Math.random())).toString(16).slice(1));
         });
+
+        $('video').playlistParser();
       });
 	</script>
 </head>
 <body>
-	<div class="topbar">
-		<img class="top whpk-logo" src="logo.png">
-		<div class="top masthead">
-			<div class="top station-info"> 88.5 fm Chicago</div>
-			<div class="top slogan-info">The Pride of the South Side</div>
-		</div>
-		<div class="top listen">listen logo</div>
+	<div class="display-cont">
+	      <video class="video-cont" autoplay muted>
+	      	<source src="whpk.mp4" type="video/mp4">
+	      </video>
 	</div>
-	<div class="navbar">
-		<div class="nav schedule">
-			<a href="#">schedule</a>
+	<div class="sticky-cont">
+		<div class="topbar">
+			<a class="main-back" href="custom.html">
+				<img class="top whpk-logo" src="logo.png">
+				<div class="top masthead">
+					<div class="top station-info">88.5 FM Chicago</div>
+					<div class="top slogan-info">The Pride of the South Side</div>
+				</div>
+			</a>
+			<div class="top listen">
+				<h1 id="listen-item">LISTEN</h1>
+				<img id="mega" src="megaphone.svg">
+				<audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay loop></audio>
+			</div>
 		</div>
-		<div class="nav events">
-			<a href="#">events</a>
-		</div>
-		<div class="nav about">
-			<a href="#">about</a>
-		</div>
-		<div class="nav contact">
-			<a href="#">contact</a>
-		</div>
-		<div class="nav donate">
-			<a href="#">donate</a>
-		</div>
-		<div class="nav merch">
-			<a href="#">merch</a>
+		<div class="navbar">
+			<div class="nav schedule">
+				<a href="#">Schedule</a>
+			</div>
+			<div class="nav events">
+				<a href="#">Events</a>
+			</div>
+			<div class="nav about">
+				<a href="about.html">About</a>
+			</div>
+			<div class="nav contact">
+				<a href="#">Contact</a>
+			</div>
+			<div class="nav donate">
+				<a href="#">Donate</a>
+			</div>
+			<div class="nav merch">
+				<a href="#">Merch</a>
+			</div>
 		</div>
 	</div>
 	<div class="main" >
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img class="test-img" alt=" ">
-          </div>
-
-          <div class="item">
-            <img class="test-img" alt=" ">
-          </div>
-
-          <div class="item">
-            <img class="test-img" alt=" ">
-          </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-      <div class="b-text">
-      	<p>
-      	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, erat ac malesuada condimentum, purus ex ultrices metus, a tincidunt arcu velit id lorem. Phasellus vulputate rhoncus sapien ut semper. Nunc elementum sem dolor, convallis tincidunt ligula accumsan non. Etiam iaculis, tortor at pretium elementum, turpis sem vulputate magna, at vestibulum mi risus eu mi. Aenean posuere egestas ex quis condimentum. Mauris at ornare ipsum, eu cursus ante. In lacinia magna orci, at mollis augue vulputate in. Nullam libero elit, pretium in tincidunt pharetra, volutpat ac nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur vel nulla eget erat tempus ultrices. Vivamus a magna neque. Nulla pretium sit amet libero vitae porta. Vivamus ut enim ornare, luctus massa sed, vulputate velit. Cras convallis ipsum vitae lectus iaculis, vitae semper leo fringilla.
-      </p>
-		<p>
-		Ut condimentum consequat mollis. Maecenas tempus tortor id venenatis auctor. Suspendisse odio nisi, volutpat ac risus convallis, pretium rutrum odio. Curabitur a porttitor augue. Morbi ac egestas velit. Ut eget malesuada velit, sed placerat est. Nunc et venenatis magna.
-		</p>
-
-		<p>
-		Nullam porta sodales ipsum quis pellentesque. Vestibulum ornare sapien nulla, eu ultrices velit iaculis vitae. Nulla non odio vitae nunc luctus feugiat id vestibulum nibh. Mauris tempor bibendum erat, nec rutrum ex vehicula at. Phasellus et consequat quam, eu bibendum lorem. Quisque laoreet odio sit amet turpis posuere aliquet. Nunc tristique efficitur diam, eu porta sapien malesuada sit amet. Aliquam velit nunc, sodales vel risus id, facilisis sagittis ex. Pellentesque nec euismod nibh. Aenean consectetur metus libero, dignissim efficitur turpis venenatis ut. Nam bibendum nec massa eget interdum. Proin ac pharetra metus, at pretium odio. Maecenas a accumsan nibh. Nam elementum finibus ante. Maecenas dignissim auctor tellus non aliquet. Sed orci diam, blandit eu magna id, mollis suscipit dolor.
-		</p>
-
-		<p>
-		Sed volutpat ex ac risus volutpat, eu facilisis libero suscipit. Donec nibh lacus, pretium sed scelerisque et, efficitur vel lectus. Vivamus sit amet dapibus arcu. Praesent finibus metus sed dapibus luctus. Sed gravida arcu vel eros consectetur rutrum. Praesent sit amet ullamcorper ipsum, ac hendrerit tortor. Suspendisse quam massa, feugiat eu nisl non, volutpat ornare erat. Quisque malesuada nec ligula et pretium. Curabitur lacinia vulputate pellentesque. In molestie, odio in venenatis tincidunt, massa purus condimentum enim, sed congue tortor neque eu dolor.
-		</p>
-
-		<p>
-		Phasellus mattis dui eu risus dignissim, ac aliquet lacus pellentesque. Nullam nulla massa, maximus non augue et, sagittis lobortis lacus. Nam tristique nibh in lectus interdum rutrum. Nullam luctus dapibus ipsum, ac vulputate dui venenatis ut. In et metus ullamcorper, mattis odio quis, suscipit velit. Morbi elementum risus at tellus aliquam, eu tempor quam fermentum. Aliquam non augue nisi. Morbi eleifend cursus magna vitae lobortis. Morbi aliquam enim odio, ut pretium est sodales eget. Phasellus viverra vel enim a aliquet. In eget tortor nulla.
-		</p>
-      </div>
     </div>
-	<div class="footer">
-		<div class="side main-list">
-			<div class="foot about">about</div>
-			<div class="foot contact">contact</div>
-			<div class="foot social">social</div>
-		</div>
-		<div class="side other-list">
-			<img class="foot bot-pic" src="guitar-dude-crop.jpg">
-			<div class="foot sttmnt">some stuff you might want to say</div>
-		</div>
-	</div>
 </body>
