@@ -200,26 +200,36 @@ p {
 }
 
 .display-cont {
-  position: absolute;
+  position: fixed;
   top: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%; 
+  left: 0;
   overflow: hidden;
+  z-index: -100;
   opacity: 0.5;
 }
 
-.video-cont video {
-  min-width: 100%; 
-  min-height: 100%;
-
-  width: auto;
-  height: auto;
-
+.video-cont{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%)
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-cont {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-cont {
+    width: 300%;
+    left: -100%;
+  }
 }
 
 #myCarousel {
