@@ -13,7 +13,7 @@
  **/
 
 ?>
-<!DOCTYPE html>vv 
+<!DOCTYPE html>
 
 <head <?php language_attributes(); ?>>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -70,4 +70,3 @@
 			</div>
 		</div>
 	</div>
-</body>

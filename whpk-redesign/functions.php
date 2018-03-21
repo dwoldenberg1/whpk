@@ -28,32 +28,22 @@ function themeslug_enqueue_style() {
 }
 
 function themeslug_enqueue_script() {
-	wp_enqueue_style('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', false);
+	wp_enqueue_script("jquery");
 	wp_enqueue_script('boostrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' false);
-	wp_enqueue_script('functions', get_template_directory_uri(). '/public/js/function.js', false);
-	
-	<script type="text/javascript" src="function.js" ></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
-	wp_enqueue_script( 'my-js', 'filename.js', false );
+	wp_enqueue_script('fontawesome', 'https://use.fontawesome.com/releases/v5.0.7/js/all.js', false);
+	wp_enqueue_script('functions', get_template_directory_uri().'/public/js/function.js', false);
 }
 
 function hook_css {
-
 }
 
 function hook_js {
 	?>
 	<script type="text/javascript">
-		$(function(){
+		jQuery(document).ready(function( $ ) {
 			//GA stuff eventually
 		});
 	</script>
 	<?php
 }
-
-function hook_headers {
-
-}
-
 ?>
