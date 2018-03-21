@@ -1,0 +1,189 @@
+@font-face{ 
+  font-family: 'MyWebFont';
+  src: url('WebFont.eot');
+  src: url('WebFont.eot?#iefix') format('embedded-opentype'),
+       url('WebFont.woff') format('woff'),
+       url('WebFont.ttf') format('truetype'),
+       url('WebFont.svg#webfont') format('svg');
+}
+
+body {
+  font-family: 'zingrustd2demo-base';
+}
+
+a {
+  text-decoration: none;
+}
+
+.sticky-icky {
+  width: 100%;
+}
+
+.sticky-cont {
+  background: #000;
+  margin-top: 0 !important;
+  padding-top: 1em !important;
+  z-index: 30 !important;
+}
+
+a:visited {
+  color: #000;
+}
+
+.nav {
+  text-align: center;
+}
+
+.nav:hover {
+  background: white;
+}
+
+.nav > a{
+  color: white;
+}
+
+.nav > a:hover {
+  color: black;
+}
+
+.whpk-logo {
+  height: 200px;
+  width: 220px;
+  padding: 0px 20px 20px 20px;
+  margin: auto auto 0 auto;
+}
+
+.whpk-logo:hover {
+  animation-name: spin;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  transform: scale(1.5);
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.masthead {
+  padding: 20px 20px 20px 20px;
+  position: absolute;
+  left: 0;
+}
+
+.station-info {
+  font-size: 32px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.slogan-info {
+  font-size: 20px;
+  color: white;
+}
+
+.listen {
+  position: absolute;
+  color: white;
+  height: 50px;
+  width: 50px;
+  top: 40px;
+  right: 40px;
+}
+
+.listen:hover {
+  animation-name: spin2;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
+
+@keyframes spin2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-45deg);
+  }
+}
+
+.navbar, .footer, .topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  width: 100%;
+}
+
+.navbar {
+  padding: 0 20 0 20;
+  border-radius: initial;
+  background: #015f95;
+  border: none;
+}
+
+.nav {
+  flex-basis: 125px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 25px;
+  padding: 10 10 10 10;
+}
+
+.nav > a {
+  padding: 5 5 5 5;
+}
+
+.b-text {
+  padding: 20px;
+}
+
+p {
+  padding-bottom: 20px;
+}
+
+.test-img {
+  height: 400px !important;
+}
+
+.left.carousel-control, .right.carousel-control {
+  background: inherit;
+}
+
+.midrule {
+  width: 100% !important;
+  padding-top: 30px;
+}
+
+.mrule {
+  padding-bottom: 30px;
+  margin: 0px auto 0px 0px;
+  border-top: 1px dashed #025f95;
+  width: 80%;
+}
+
+.foot {
+  flex-direction: column;
+}
+
+.foot {
+  padding: 10px;
+}
+
+.footer > div {
+  width: 50%;
+  display: inline-block;
+}
+
+.bot-pic {
+  height: 200px;
+  width: 175px;
+  padding: 0px 20px 20px 20px;
+  float: right;
+}
