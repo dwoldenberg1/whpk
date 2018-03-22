@@ -14,8 +14,8 @@
 ?>
 
 <div class="topbar">
-  <a class="main-back" href="<?php get_template_directory_uri().'/'?>">
-    <img class="top whpk-logo" src="logo.png">
+  <a class="main-back" href="<?php echo $path.'/wordpress';?>">
+    <img class="top whpk-logo" src="<?php echo get_template_directory_uri().'/public/img/logo.png';?>">
     <div class="top masthead">
       <div class="top station-info">88.5 FM Chicago</div>
       <div class="top slogan-info">The Pride of the South Side</div>
@@ -23,7 +23,7 @@
   </a>
   <div class="top listen">
     <h1 id="listen-item">LISTEN</h1>
-    <img id="mega" src="megaphone.svg">
+    <img id="mega" src="<?php echo get_template_directory_uri().'/public/img/megaphone.svg'; ?>">
     <audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay></audio>
   </div>
 </div>

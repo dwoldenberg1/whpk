@@ -72,8 +72,8 @@ a:visited {
 .contact-icons {
   z-index: 300;
   position: absolute;
-  bottom: 20;
-  right: 20;
+  bottom: 20px;
+  right: 20px;
   font-size: 3em;
 }
 
@@ -186,18 +186,18 @@ a:visited {
 .navbar {
 	border-top: 1px dashed #000;
 	border-bottom: 1px dashed #000;
-	padding: 0 20 0 20;
+	padding: 0px 20px 0px 20px;
 }
 
 .nav {
 	flex-basis: 125px;
 	flex: 1;
 	font-size: 25px;
-	padding: 10 10 10 10;
+	padding: 10px 10px 10px 10px;
 }
 
 .nav > a {
-	padding: 5 5 5 5;
+	padding: 5px 5px 5px 5px;
 }
 
 .main {

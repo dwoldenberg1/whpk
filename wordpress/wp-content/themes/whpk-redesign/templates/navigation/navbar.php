@@ -16,22 +16,22 @@
 
 <div class="navbar">
   <div class="nav schedule">
-    <a href="<?php get_template_directory_uri().'/schedule'?>">Schedule</a>
+    <a href="<?php echo $path.'/wordpress/schedule'; ?>">Schedule</a>
   </div>
   <div class="nav events">
-    <a href="<?php get_template_directory_uri().'/events'?>">Events</a>
+    <a href="<?php echo $path.'/wordpress/events'; ?>">Events</a>
   </div>
   <div class="nav about">
-    <a href="<?php get_template_directory_uri().'/about'?>">About</a>
+    <a href="<?php echo $path.'/wordpress/about'; ?>">About</a>
   </div>
   <div class="nav contact">
-    <a href="<?php get_template_directory_uri().'/contact'?>">Contact</a>
+    <a href="<?php echo $path.'/wordpress/contact'; ?>">Contact</a>
   </div>
   <div class="nav donate">
-    <a href="<?php get_template_directory_uri().'/dontae'?>">Donate</a>
+    <a href="<?php echo $path.'/wordpress/dontae'; ?>">Donate</a>
   </div>
   <div class="nav merch">
-    <a href="<?php get_template_directory_uri().'/merch'?>">Merch</a>
+    <a href="<?php echo $path.'wordpress/merch'; ?>">Merch</a>
   </div>
 </div>
 

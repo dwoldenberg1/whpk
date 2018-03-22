@@ -21,21 +21,14 @@
 
 	<title>whpk - Home</title>
 
-	<?php wp_head(); ?>
+	<?php 
+		wp_head();
+		wp_enqueue_scripts()
+	 ?>
 </head>
 <body>
-	<div class="contact-icons">
-      	<a href="http://www.facebook.com/whpk885/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-      	<a href="http://twitter.com/whpk_chicago?lang=en" target="_blank"><i class="fab fa-twitter-square"></i></a>
-	</div>
-	<div class="display-cont">
-	      <video class="video-cont" autoplay muted loop>
-	      	<source src="whpk.mp4" type="video/mp4">
-	      </video>
-
-	</div>
 	<div class="sticky-cont">
 		<?php 	get_template_part('templates/headers/header'); 
-				get_template_part('templatess/navigations/navbar'); 
+				get_template_part('templates/navigation/navbar'); 
 		?>
 	</div>
