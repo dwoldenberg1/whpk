@@ -16,20 +16,39 @@
 
       <div class="footer">
           <div class="side main-list">
-              <div class="foot about">
-                <a href="<?php echo $path.'/wordpress/about'; ?>">about</a>
+            <div class="first-list">
+                <div class="foot about">
+                  <a href="<?php echo $path.'/wordpress/about'; ?>">about</a>
+                </div>
+                <div class="foot contact">
+                  <a href="<?php echo $path.'/wordpress/contact'; ?>">contact</a>
+                </div>
+                <div class="foot social">
+                  <?php get_template_part('templates/navigation/social'); ?>
+                </div>
+                <div class="foot cprt">
+                  © 2018 WHPK
+                </div>
               </div>
-              <div class="foot contact">
-                <a href="<?php echo $path.'/wordpress/contact'; ?>">contact</a>
+              <div class="side other-list">
+                  <div class="foot sttmnt">
+                    <div>
+                      <a href="http://www.google.com/maps?q=5706+S+University+Ave,+Chicago,+IL+60637,+USA&ie=UTF8&z=16&iwloc=addr&om=1" target="_blank"> 
+                        Reynolds Club, 5706 S. University Ave. <br> Chicago, IL 60637
+                      </a>
+                    </div>
+                    <div>
+                      office: 773-702-8289
+                    </div>
+                    <div>
+                      studio: 773-702-8424
+                    </div>
+                  </div>
               </div>
-              <div class="foot social">
-                <?php get_template_part('templates/navigation/social'); ?>
+              <div>
+                  <img class="foot bot-pic" src="<?php echo get_template_directory_uri().'/public/img/guitar-dude-crop.jpg'; ?>">
               </div>
-          </div>
-          <div class="side other-list">
-              <img class="foot bot-pic" src="<?php echo get_template_directory_uri().'/public/img/guitar-dude-crop.jpg'; ?>">
-              <div class="foot sttmnt">some stuff you might want to say</div>
-          </div>
+          </div>     
       </div>
       <?php
   }
