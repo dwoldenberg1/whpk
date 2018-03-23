@@ -2,7 +2,7 @@
 /** whpk redesign
  * David Woldenberg 2018
  *
- * Index.php landing page
+ * index.php landing page
  *
  * @author David Woldenberg
  * @package WordPress
@@ -10,11 +10,14 @@
  * @since whpk redesign 1.0
  **/
 
+$GLOBALS["page_title"] = "home";
+
 get_header(); ?>
 
 	<div class="contact-icons">
-	  	<a href="http://www.facebook.com/whpk885/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-	  	<a href="http://twitter.com/whpk_chicago?lang=en" target="_blank"><i class="fab fa-twitter-square"></i></a>
+
+	  	<?php get_template_part('templates/navigation/social'); ?>
+
 	</div>
 	<div class="display-cont">
 	      <video class="video-cont" autoplay muted loop>

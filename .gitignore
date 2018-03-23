@@ -2,3 +2,9 @@
 *.jpg
 *.png
 *.jpeg
+*.m3u
+*.svg
+
+fontawesome-free-5.0.7/*
+wordpress/wp-config.php
+

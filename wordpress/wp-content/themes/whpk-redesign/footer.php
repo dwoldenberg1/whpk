@@ -16,12 +16,18 @@
 
       <div class="footer">
           <div class="side main-list">
-              <div class="foot about">about</div>
-              <div class="foot contact">contact</div>
-              <div class="foot social">social</div>
+              <div class="foot about">
+                <a href="<?php echo $path.'/wordpress/about'; ?>">about</a>
+              </div>
+              <div class="foot contact">
+                <a href="<?php echo $path.'/wordpress/contact'; ?>">contact</a>
+              </div>
+              <div class="foot social">
+                <?php get_template_part('templates/navigation/social'); ?>
+              </div>
           </div>
           <div class="side other-list">
-              <img class="foot bot-pic" src="guitar-dude-crop.jpg">
+              <img class="foot bot-pic" src="<?php echo get_template_directory_uri().'/public/img/guitar-dude-crop.jpg'; ?>">
               <div class="foot sttmnt">some stuff you might want to say</div>
           </div>
       </div>

@@ -13,14 +13,9 @@
 
 get_header(); ?>
 
-<div class="main" >
-	<?php
-	while ( have_posts() ) : the_post();
+<div class="main">
 
-		get_template_part( 'template-parts/page/'.$pagename);
-
-	endwhile; // End of the loop.
-	?>
+	<?php get_template_part('templates/pages/'.$pagename); ?>
 
 </div>
 

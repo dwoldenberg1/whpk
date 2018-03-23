@@ -28,7 +28,7 @@
     <a href="<?php echo $path.'/wordpress/contact'; ?>">Contact</a>
   </div>
   <div class="nav donate">
-    <a href="<?php echo $path.'/wordpress/dontae'; ?>">Donate</a>
+    <a href="<?php echo $path.'/wordpress/donate'; ?>">Donate</a>
   </div>
   <div class="nav merch">
     <a href="<?php echo $path.'wordpress/merch'; ?>">Merch</a>

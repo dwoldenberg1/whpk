@@ -12,6 +12,8 @@
  * @since whpk redesign 1.0
  **/
 
+$page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename; 
+
 ?>
 <!DOCTYPE html>
 
@@ -19,7 +21,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>whpk - Home</title>
+	<title>whpk - <?php echo $page_title ?></title>
 
 	<?php 
 		wp_head();

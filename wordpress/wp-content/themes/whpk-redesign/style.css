@@ -201,7 +201,7 @@ a:visited {
 }
 
 .main {
-  padding-top: 195px;
+  padding-top: 210px;
 }
 
 .b-text{
@@ -281,6 +281,11 @@ p {
 
 .foot {
 	padding: 10px;
+  font-size: 2em;
+}
+
+.social {
+  font-size: 3em;
 }
 
 .footer > div {
