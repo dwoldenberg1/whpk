@@ -95,8 +95,8 @@ a:visited {
 }
 
 .whpk-logo {
-	height: 125px;
- 	width: 125px;
+	height: 90px;
+ 	width: 90px;
  	padding: 20px 20px 20px 20px;
 }
 
@@ -192,8 +192,10 @@ a:visited {
 
 .navbar {
 	border-top: 1px dashed #000;
-	border-bottom: 1px dashed #000;
+	//border-bottom: 1px dashed #000;
 	padding: 0px 20px 0px 20px;
+  text-align: center;
+  background: hsla(0, 5%, 93%, 0.4);
 }
 
 .nav {
