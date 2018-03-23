@@ -44,6 +44,11 @@ function hook_js() {
 	<script type="text/javascript">
 		jQuery(document).ready(function( $ ) {
 			//GA stuff eventually
+			$(document).find("title").text();
+
+			if($(document).find("title").text().indexOf("home") == -1){
+				$('.sticky-cont').css("background", "rgba(255, 255, 255, 1)");
+			}
 		});
 	</script>
 	<?php

@@ -202,6 +202,13 @@ a:visited {
 
 .main {
   padding-top: 210px;
+  width: 80%;
+  margin: auto;
+  font-size: 1em;
+}
+
+b.whpk-main {
+  font-size: 2em;
 }
 
 .b-text{
