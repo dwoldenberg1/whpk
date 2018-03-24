@@ -244,6 +244,14 @@ a:visited {
   .top.listen {
     display: none;
   }
+
+  .station-info {
+    font-size: 25px;
+  }
+
+  .slogan-info {
+    font-size: 15px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -261,6 +269,14 @@ a:visited {
 
   .top.listen {
     display: inherit !important;
+  }
+
+  .station-info {
+    font-size: 32px;
+  }
+
+  .slogan-info {
+    font-size: 20px;
   }
 }
 
