@@ -30,7 +30,8 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 </head>
 <body>
 	<div class="sticky-cont">
+		<audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay></audio>
 		<?php 	get_template_part('templates/headers/header'); 
 				get_template_part('templates/navigation/navbar'); 
-		?>
+		?>		
 	</div>

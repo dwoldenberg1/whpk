@@ -175,6 +175,10 @@ a:visited {
   cursor: pointer;
 }
 
+.active > a {
+  color: maroon;
+}
+
 .listen:hover {
   transform: scale(1.15);
   cursor: pointer;
