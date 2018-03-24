@@ -23,7 +23,20 @@ get_header(); ?>
 
 <div class="main">
 
-<!-- do 404 thing with whpktoaddress 4 000 4  or something -->
+	<div id="fourofour-img">
+		<div class="fourfour">
+			4
+		</div>
+		<div class="fouro">
+			<img id="fourofour-pic" src="<?php echo get_template_directory_uri().'/public/img/whpktoteaddress.jpg'; ?>">
+		</div>
+		<div class="fourfour">
+			4
+		</div>
+	</div>
+	<div id="fourofour-msg">
+		Dang, it looks like that page doesn't exist... 
+	</div>
 
 </div>
 

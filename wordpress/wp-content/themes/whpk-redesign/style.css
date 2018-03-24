@@ -441,3 +441,30 @@ p {
 	float: right;
   zoom: 0.55;
 }
+
+#fourofour-img {
+  display: flex;
+  justify-content: center;
+}
+
+#fourofour-msg {
+  justify-content: center;
+  display: flex;
+  padding: 20px 20px 20px 20px;
+  font-size: 1.5em;
+}
+
+#fourofour-pic {
+  width: 100%;
+}
+
+.fourfour {
+  font-size: 30vw;
+}
+
+
+.fouro {
+  flex-shrink: 1;
+  min-width: 150px;
+  max-width: 400px;
+}
