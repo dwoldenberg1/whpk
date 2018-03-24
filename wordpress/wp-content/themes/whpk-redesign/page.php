@@ -13,6 +13,12 @@
 
 get_header(); ?>
 
+<div class="space-taker">
+		<?php 	get_template_part('templates/headers/header'); 
+				get_template_part('templates/navigation/navbar'); 
+		?>
+</div>
+
 <div class="main">
 
 	<?php get_template_part('templates/pages/'.$pagename); ?>

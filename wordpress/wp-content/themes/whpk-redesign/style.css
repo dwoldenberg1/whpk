@@ -149,12 +149,30 @@ a:visited {
   top: 15px;
 }
 
-#mega {
+#listen-item-bar {
+  position: absolute;
+  left: 45px;
+  font-size: 35px;
+}
+
+.mega {
   display: inline-block;
   position: absolute;
   height: 50px;
   width: 50px;
-  right: 0;
+}
+
+#mega-top {
+  right: 0px;
+}
+
+#mega-bar {
+  left: 175px;
+  margin-top: -10px;
+}
+
+.bar-listen:hover {
+  cursor: pointer;
 }
 
 .listen:hover {
@@ -162,7 +180,39 @@ a:visited {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 450px) {
+.mobile {
+  height: 35px;
+}
+
+/* hamburger menu for mobile*/
+
+.ham {
+    display: inline-block;
+    cursor: pointer;
+    float: right;
+}
+
+.ham1, .ham2, .ham3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .ham1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .ham2 {opacity: 0;}
+
+.change .ham3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+@media only screen and (max-width: 600px) {
   .navbar { 
     -ms-flex-direction: column;
     -webkit-box-orient: vertical;
@@ -170,8 +220,47 @@ a:visited {
     text-align: center; 
   }
 
-  body {
-        color: lavender !important;
+  .collapsed {
+    display: none;
+  }
+
+  .hamburger {
+    display: inherit;
+  }
+
+  .navbar {
+    display: inherit !important;
+    padding: 0px !important;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobile {
+    display: inherit;
+  }
+
+  .top.listen {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .collapsed {
+    display: inherit !important;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .navbar {
+    display: inline-flex;
+  }
+
+  .top.listen {
+    display: inherit !important;
   }
 }
 
@@ -210,7 +299,7 @@ a:visited {
 }
 
 .main {
-  padding-top: 210px;
+  padding-top: 15px;
   width: 80%;
   margin: auto;
   font-size: 1em;
@@ -290,11 +379,11 @@ p {
 .main-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .main-list > div {
   padding-top: 10px;
+  flex: 1;
 }
 
 .first-list {
@@ -303,20 +392,21 @@ p {
 }
 
 .foot {
-	padding: 10px;
-  font-size: 1.5em;
+	padding: 2px;
+  font-size: 1em;
 }
 
 .social {
-  font-size: 2.5em;
+  font-size: 1.7em;
 }
 
 .cprt {
-  font-size: 0.8em;
+  font-size: 0.5em;
 }
 
 .sttmnt {
-  font-size: 1em;
+  font-size: 0.8em;
+  padding-left: 12px;
 }
 
 .sttmnt > div {
@@ -329,4 +419,5 @@ p {
 	width: 175px;
 	padding: 0px 20px 20px 20px;
 	float: right;
+  zoom: 0.55;
 }
