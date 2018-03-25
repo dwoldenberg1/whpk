@@ -1,5 +1,6 @@
 <?php
-/** whpk redesign
+/** 
+ * whpk redesign
  * David Woldenberg 2018
  *
  * hedear.php

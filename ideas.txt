@@ -1,0 +1,1 @@
+add a currently playing modal thing when you hover over listen or something

@@ -1,5 +1,6 @@
 <?php
-/** whpk redesign
+/** 
+ * whpk redesign
  * David Woldenberg 2018
  *
  * index.php landing page
@@ -10,7 +11,7 @@
  * @since whpk redesign 1.0
  **/
 
-$GLOBALS["page_title"] = "home";
+$page_title = "home";
 
 get_header(); ?>
 

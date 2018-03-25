@@ -1,5 +1,6 @@
 <?php
-/** whpk_redesign
+/** 
+ * whpk_redesign
  *
  * page.php
  * Default template for all pages being called 
