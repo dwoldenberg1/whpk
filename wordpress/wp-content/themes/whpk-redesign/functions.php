@@ -388,6 +388,23 @@ function pre_submit_validation(){
     }
 }
 
+/** Function to determine Genre type **/
+
+function genre_type($post) {
+	$terms = get_terms([
+	    'taxonomy' => $taxonomy,
+	    'hide_empty' => false,
+	]);
+	if  ($terms) {
+	  foreach ($terms  as $term ) {
+	    if(has_term($term->name, "genres", $post)){
+	    	return $term->name;
+	    }
+	  }
+	}
+	return "not found";
+}
+
 
 /** Misc Functions **/
 

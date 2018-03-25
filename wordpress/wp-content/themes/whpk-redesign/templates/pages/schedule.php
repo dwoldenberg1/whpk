@@ -13,21 +13,40 @@
  * @since whpk redesign 1.0
  **/
 
-	$active_shows = array(
-	    'post_type' => 'show',
-	    'meta_query' => array(
-	        array(
-	            'key' => 'active_show',
-	            'value' => 1,
-	            'compare' => '=',
-	        )
-	     )
-	);
-	$query = new WP_Query($active_shows);
-	if ( $the_query->have_posts() ) {
-		 while ( $the_query->have_posts() ) {
-            $the_query->the_post();
+	$active_sunday = array(
+      'post_type' => 'show',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'days',
+          'field' => 'slug',
+          'terms' => 'sunday'
+        )
+       ),
+      'meta_query' => array(
+	    array(
+	      'key' => 'active_show',
+	      'value' => '1',
+	      'compare' => '='
+	    )
+  	   )
+    );
+	$show_query = new WP_Query($active_sunday);
+	if ( $show_query->have_posts() ) {
+		 while ( $show_query->have_posts() ) {
+            $show_query->the_post();
             echo get_the_title();
+            echo "<br>";
+            echo get_the_content();
+            echo "<br>";
+            echo get_the_author();
+            echo "<br>";
+            echo get_post_meta( $show_query->post->ID, 'start_time', true );
+            echo "<br>";
+            echo get_post_meta( $show_query->post->ID, 'end_time', true );
+            echo "<br>";
+            echo get_post_meta( $show_query->post->ID, 'active_show', true );
+            echo "<br>";
+            echo genre_type($show_query->post);
         }
     }
 
@@ -197,6 +216,52 @@
 
 				<li class="events-group">
 					<div class="top-info"><span>Friday</span></div>
+
+					<ul>
+						<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+							<a href="#0">
+								<em class="event-name">Rowing Workout</em>
+							</a>
+						</li>
+
+						<li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
+							<a href="#0">
+								<em class="event-name">Abs Circuit</em>
+							</a>
+						</li>
+
+						<li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+							<a href="#0">
+								<em class="event-name">Yoga Level 1</em>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="events-group">
+					<div class="top-info"><span>Saturday</span></div>
+
+					<ul>
+						<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+							<a href="#0">
+								<em class="event-name">Rowing Workout</em>
+							</a>
+						</li>
+
+						<li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
+							<a href="#0">
+								<em class="event-name">Abs Circuit</em>
+							</a>
+						</li>
+
+						<li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+							<a href="#0">
+								<em class="event-name">Yoga Level 1</em>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="events-group">
+					<div class="top-info"><span>Sunday</span></div>
 
 					<ul>
 						<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
