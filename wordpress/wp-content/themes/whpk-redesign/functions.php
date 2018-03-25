@@ -134,9 +134,9 @@ function show_post_type() {
         'description'         => __( 'Radio Shows and Descriptions', 'whpk-redesign' ),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields', ),
+        'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'revisions'),
         // You can associate this CPT with a taxonomy or custom taxonomy. 
-        'taxonomies'          => array( 'genres'),
+        'taxonomies'          => array( 'genres', 'days'),
         /* A hierarchical CPT is like Pages and can have
         * Parent and child items. A non-hierarchical CPT
         * is like Posts.
@@ -162,13 +162,12 @@ function show_post_type() {
  
 add_action( 'init', 'show_post_type', 0 );
 
-/** Custom Genre Taxonomy **/
+/** Custom Genre + Day Taxonomy **/
  
 add_action( 'init', 'create_genre_taxonomy', 0 );
+add_action( 'init', 'create_day_taxonomy', 0 );
  
 function create_genre_taxonomy() {
- 
-// Labels part for the GUI
  
   $labels = array(
     'name' => _x( 'Genres', 'taxonomy general name' ),
@@ -185,10 +184,9 @@ function create_genre_taxonomy() {
     'separate_items_with_commas' => __( 'Separate Genres with commas' ),
     'add_or_remove_items' => __( 'Add or remove Genres' ),
     'choose_from_most_used' => __( 'Choose from the most used Genres' ),
-    'menu_name' => __( 'Genres' ),
+    'menu_name' => __( 'Genre' ),
   ); 
- 
-// Now register the non-hierarchical taxonomy like tag
+
  
   register_taxonomy('genres','show',array(
     'hierarchical' => false,
@@ -198,6 +196,38 @@ function create_genre_taxonomy() {
     'update_count_callback' => '_update_post_term_count',
     'query_var' => true,
     'rewrite' => array( 'slug' => 'genre' ),
+  ));
+}
+
+function create_day_taxonomy() {
+ 
+  $labels = array(
+    'name' => _x( 'Days', 'taxonomy general name' ),
+    'singular_name' => _x( 'Day', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Days' ),
+    'popular_items' => __( 'Popular Days' ),
+    'all_items' => __( 'All Days' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Day' ), 
+    'update_item' => __( 'Update Day' ),
+    'add_new_item' => __( 'Add New Day' ),
+    'new_item_name' => __( 'New Day Name' ),
+    'separate_items_with_commas' => __( 'Separate Days with commas' ),
+    'add_or_remove_items' => __( 'Add or remove Days' ),
+    'choose_from_most_used' => __( 'Choose from the most used Days' ),
+    'menu_name' => __( 'Day' ),
+  ); 
+
+ 
+  register_taxonomy('days','show',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'day' ),
   ));
 }
 
@@ -218,32 +248,30 @@ function campaign_box() {
 function campaign_content( $post ) {
   wp_nonce_field( plugin_basename( __FILE__ ), 'campaign_nonce' );
 
-  $start_t = date('G:i', strtotime(get_post_meta($post, 'start_time', true)));
+  $start_t = date('G:i', get_post_meta($post->ID, 'start_time', true));
+  $end_t   = date('G:i', get_post_meta($post->ID, 'end_time', true));
+  $active  = get_post_meta($post->ID, 'active_show', true);
 
-  $end_t = date('G:i', strtotime(get_post_meta($post, 'end_time', true)));
   ?>
-  	<h3> Show Information </h3>
-
   	<label for="start_time">Start time (24 hours)</label>
   	<input type="text" id="start_time" name="start_time" placeholder="ex.) 3:22" value="<?php echo $start_t?>"/>
   	<br>
   	<label for="end_time">End time (24 hours)</label>
   	<input type="text" id="end_time" name="end_time" placeholder="ex.) 18:00" value="<?php echo $end_t?>"/>
+  	<br>
+  	<label for="active_show">Active (yes or no)</label>
+  	<input type="text" id="active_show" name="active_show" placeholder="yes or no" value="<?php echo (($active)?'yes':'no');?>"/>
   <?php
 }
 
 add_action( 'save_post', 'campaign_save' );
 function campaign_save( $post_id ) {
 
-	error_log("bleep", 0);
-
   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
   return;
 
   if ( !wp_verify_nonce( $_POST['campaign_nonce'], plugin_basename( __FILE__ ) ) )
   return;
-
-	error_log("bleep2", 0);
 
   if ( 'page' == $_POST['post_type'] ) {
     if ( !current_user_can( 'edit_page', $post_id ) )
@@ -253,20 +281,21 @@ function campaign_save( $post_id ) {
     return;
   }
 
-  error_log("bleep3", 0);
+  $start_t = strtotime($_POST['start_time']);
+  $end_t   = strtotime($_POST['end_time']);
 
-  $start_t = explode(":", $_POST['start_time']);
-  $start_time = mktime($start_t[0], $start_t[1], 0, 1, 1, 2000);
+  $active_valid = 0;
+  $active  = $_POST['active_show'];
+  if($active == "yes" || $active == "no"){
+  	$active_valid = 1;
+  }
 
-  $end_t   = explode(":", $_POST['end_time']);
-  $end_time = mktime($end_t[0], $end_t[1], 0, 1, 1, 2000);
-
-  if(($end_time == "" || $start_time == "")){
-  	
+  if($end_t == "" || $start_t == "" || $active_valid == 0){
   	return;
   } else {
-  	update_post_meta( $post_id, 'start_time', $start_time );
-  	update_post_meta( $post_id, 'end_time', $end_time );
+  	update_post_meta( $post_id, 'start_time', $start_t);
+  	update_post_meta( $post_id, 'end_time', $end_t);
+  	update_post_meta( $post_id, 'active_show', (($active == "yes")?1:0));
   }
 }
 
@@ -279,6 +308,13 @@ if (is_admin()){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script language="javascript" type="text/javascript">
             jQuery(document).ready(function() {
+            	function enableSub() {
+            		jQuery('#publish').removeClass('button-primary-disabled');
+            	}
+
+            	$('#start_time').change(enableSub);
+            	$('#end_time').change(enableSub);
+
                 jQuery('#post').submit(function() {
 
                     var form_data = jQuery('#post').serializeArray();
@@ -290,17 +326,13 @@ if (is_admin()){
                     };
                     jQuery.post(ajaxurl, data, function(response) {
                         if (response.indexOf('True') > -1 || response.indexOf('true') > -1) {
-                            jQuery('#ajax-loading').hide();
-                            jQuery('#publish').removeClass('button-primary-disabled');
                             return true;
                         }else{
                             alert("please correct the following errors: " + response);
-                            jQuery('#ajax-loading').hide();
-                            jQuery('#publish').removeClass('button-primary-disabled');
+                            jQuery('#publish').addClass('button-primary-disabled');
                             return false;
                         }
                     });
-                    return false;
                 });
             });
         </script>
@@ -313,35 +345,42 @@ function pre_submit_validation(){
     //simple Security check
     check_ajax_referer( 'pre_publish_validation', 'security' );
 
-    $res = print_r($_POST, true);
-    error_log($res, 0);
-
     $form_data = array();
     parse_str($_POST['form_data'], $form_data);
 
-    $res = print_r($form_data, true);
-    error_log($res, 0);
-
     if(get_post_type($form_data['post_ID']) == 'show'){
-    	$start_t = explode(":", $form_data['meta']['30']['value']);
+	  	$start_t = strtotime($form_data['start_time']);
+	  	$end_t   = strtotime($form_data['end_time']);
 
-    	error_log($start_t[0]." + ".$start_t[1], 0);
-	  	$start_time = mktime($start_t[0], $start_t[1], 0, 1, 1, 2000);
+	  	$active_valid = 0;
 
-	    $end_t   = explode(":", $form_data['meta']['31']['value']);
-	    $end_time = mktime($end_t[0], $end_t[1], 0, 1, 1, 2000);
+	  	$active  = $form_data['active_show'];
 
-    	if($start_time == ""){
+	  	if($active == "yes" || $active == "no"){
+	  		$active_valid = 1;
+	  	}
+
+    	if($start_t == ""){
     		echo 'please enter a valid start time';
-    	} else {
-    		echo 'true';
+    		die();
     	}
 
-    	if ($end_time == "") {
-			echo ' please enter a valid end time';
-    	} else {
-    		echo 'true';
+    	if ($end_t == "") {
+			echo 'please enter a valid end time';
+			die();
     	}
+
+    	if($end_t < $start_t) {
+    		echo 'end time cannot be before start time';
+    		die();
+    	}
+
+    	if($active_valid == 0){
+    		echo 'please enter yes or no in the "active show" field';
+    		die();
+    	}
+
+    	echo 'true';
     	die();
     } else {
     	echo 'true';

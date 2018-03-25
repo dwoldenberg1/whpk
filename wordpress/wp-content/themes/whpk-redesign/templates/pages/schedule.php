@@ -13,6 +13,24 @@
  * @since whpk redesign 1.0
  **/
 
+	$active_shows = array(
+	    'post_type' => 'show',
+	    'meta_query' => array(
+	        array(
+	            'key' => 'active_show',
+	            'value' => 1,
+	            'compare' => '=',
+	        )
+	     )
+	);
+	$query = new WP_Query($active_shows);
+	if ( $the_query->have_posts() ) {
+		 while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            echo get_the_title();
+        }
+    }
+
 ?>
 
 	<!-- https://codyhouse.co/gem/schedule-template/ -->
@@ -226,5 +244,7 @@
 
 <script src="<?php echo get_template_directory_uri().'/public/js/modernizr.js';?>"></script>
 <script src="<?php echo get_template_directory_uri().'/public/js/schedule.js';?>"></script>
+
+<?php wp_reset_postdata(); ?>
 
 
