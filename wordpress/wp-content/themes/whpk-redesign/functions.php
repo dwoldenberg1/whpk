@@ -32,6 +32,7 @@ function themeslug_enqueue_style() {
 
 function themeslug_enqueue_script() {
 	wp_enqueue_script("jquery");
+	wp_enqueue_script("real_jquery", "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js", false);
 	wp_enqueue_script('fontawesome', 'https://use.fontawesome.com/releases/v5.0.7/js/all.js', false);
 	wp_enqueue_script('functions', get_template_directory_uri().'/public/js/function.js', false);
 }
@@ -83,7 +84,7 @@ function custom_edit_errors( $errors, $update, $user ) {
 	}
 
 	if ( empty( $_POST['staff_position'] ) ) {
-		$errors->add('staff_position_error', __( '<strong>ERROR</strong>: Please enter your role.', 'crf'));
+		$errors->add('staff_position_error', __( '<strong>ERROR</strong>: Please enter your role.', 'whpk-redesign'));
 	}
 }
 

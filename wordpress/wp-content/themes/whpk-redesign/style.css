@@ -3,6 +3,7 @@ style.css
 
 Theme Name: whpk redesign
 Author: David Woldenberg
+Text Domain: whpk-redesign;
 */
 
 /* Reeeeeset css */
@@ -51,8 +52,15 @@ table {
 }
 /* End Reset css */
 
+@font-face {
+font-family: 'Black San';
+src: url('public/css/ostrich-sans-black.eot'); /* IE9 Compat Modes */
+src: url('public/css/ostrich-sans-black.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+url('public/css/ostrich-sans-black.woff') format('woff'), /* Modern Browsers */
+url('public/css/ostrich-sans-black.ttf') format('truetype'); /* Safari, Android, iOS */}
+
 body {
-	font-family: sans-serif;
+	font-family: 'Black San';
 }
 
 a {
@@ -145,14 +153,14 @@ a:visited {
 #listen-item {
   display: inline-block;
   position: absolute;
-  font-size: 30px;
+  font-size: 45px;
   top: 15px;
 }
 
 #listen-item-bar {
   position: absolute;
   left: 45px;
-  font-size: 35px;
+  font-size: 45px;
 }
 
 .mega {
@@ -167,7 +175,7 @@ a:visited {
 }
 
 #mega-bar {
-  left: 175px;
+  left: 150px;
   margin-top: -10px;
 }
 
@@ -248,14 +256,6 @@ a:visited {
   .top.listen {
     display: none;
   }
-
-  .station-info {
-    font-size: 25px;
-  }
-
-  .slogan-info {
-    font-size: 15px;
-  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -273,14 +273,6 @@ a:visited {
 
   .top.listen {
     display: inherit !important;
-  }
-
-  .station-info {
-    font-size: 32px;
-  }
-
-  .slogan-info {
-    font-size: 20px;
   }
 }
 
@@ -422,6 +414,7 @@ p {
 
 .cprt {
   font-size: 0.5em;
+  font-family: sans-serif;
 }
 
 .sttmnt {
@@ -459,7 +452,7 @@ p {
 }
 
 .fourfour {
-  font-size: 30vw;
+  font-size: 50vw;
 }
 
 
