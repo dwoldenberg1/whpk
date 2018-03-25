@@ -393,12 +393,13 @@ function pre_submit_validation(){
 function genre_type($post) {
 	$terms = get_terms([
 	    'taxonomy' => $taxonomy,
-	    'hide_empty' => false,
+	    'hide_empty' => true,
 	]);
+
 	if  ($terms) {
 	  foreach ($terms  as $term ) {
 	    if(has_term($term->name, "genres", $post)){
-	    	return $term->name;
+	    	return $term;
 	    }
 	  }
 	}

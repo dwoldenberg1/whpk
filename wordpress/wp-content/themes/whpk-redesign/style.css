@@ -384,10 +384,6 @@ p {
   padding: 0 0 20px 20px;	
 }
 
-.left.carousel-control, .right.carousel-control {
-  background: inherit;
-}
-
 .main-list {
   display: flex;
   flex-direction: row;
@@ -397,6 +393,8 @@ p {
   padding-top: 10px;
   flex: 1;
 }
+
+/* Footer stuff */
 
 .first-list {
   display: flex;
@@ -435,6 +433,8 @@ p {
   zoom: 0.55;
 }
 
+/* 404 Stuff */
+
 #fourofour-img {
   display: flex;
   justify-content: center;
@@ -460,4 +460,28 @@ p {
   flex-shrink: 1;
   min-width: 150px;
   max-width: 400px;
+}
+
+/* Schedule stuff */
+
+.hidden {
+  display: none;
+}
+
+.content-loaded {
+  padding: 30px 30px 30px 30px;
+  font-family: 'Black San';
+  opacity: 1 !important;
+  height: initial !important;
+}
+
+.dj-heading {
+  font-size: 4em;
+  padding: 0px 0px 0px 0px !important;
+  height: initial !important;
+}
+
+.show-about {
+  font-size: 1.5em;
+  padding: 0px 0px 0px 0px !important;
 }

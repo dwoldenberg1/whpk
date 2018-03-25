@@ -115,12 +115,6 @@ jQuery(document).ready(function($){
 		this.modalHeader.find('.event-date').text(event.find('.event-date').text());
 		this.modal.attr('data-event', event.parent().attr('data-event'));
 
-		//update event content
-		this.modalBody.find('.event-info').load(event.parent().attr('data-content')+'.html .event-info > *', function(data){
-			//once the event content has been loaded
-			self.element.addClass('content-loaded');
-		});
-
 		this.element.addClass('modal-is-open');
 
 		setTimeout(function(){
@@ -182,8 +176,15 @@ jQuery(document).ready(function($){
 				width: eventWidth+'px',
 			});
 			transformElement(self.modalHeaderBg, 'scaleY('+HeaderBgScaleY+')');
+
+			var m = this;
 			
 			self.modalHeaderBg.one(transitionEnd, function(){
+				//update event content *CUSTOM IMPLEMENTATION*
+				m.modalBody.find('.event-info').html(
+					event.parent().children()[1].innerHTML
+				).addClass('content-loaded');
+
 				//wait for the  end of the modalHeaderBg transformation and show the modal content
 				self.modalHeaderBg.off(transitionEnd);
 				self.animating = false;
@@ -210,6 +211,8 @@ jQuery(document).ready(function($){
 				event.removeClass('selected-event');
 			});
 		} else {
+			this.modalBody.find('.event-info').html("");
+
 			var eventTop = event.offset().top - $(window).scrollTop(),
 				eventLeft = event.offset().left,
 				eventHeight = event.innerHeight(),
