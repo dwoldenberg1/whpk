@@ -95,6 +95,10 @@ a:visited {
   width: 100%;
 }
 
+.space-taker {
+  visibility: hidden;
+}
+
 .nav > a {
 }
 
@@ -484,4 +488,43 @@ p {
 .show-about {
   font-size: 1.5em;
   padding: 0px 0px 0px 0px !important;
+}
+
+/* Now Playing widget */
+.playing {
+  position: fixed;
+  right: -270px;
+  background: rgba(248, 247, 247, 1);
+  padding: 10px 30px 10px 40px;
+  z-index: 102;
+}
+
+.playing-open {
+  right: 0px !important;
+}
+
+.playing-transition {
+  -webkit-transition: right 0.4s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: right 0.4s ease-out;  /* Firefox 4-15 */
+  -o-transition: right 0.4s ease-out;  /* Opera 10.50–12.00 */
+  transition: right 0.4s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+
+}
+
+.now-show {
+  font-size: 25px;
+}
+
+.now-genre {
+  font-size: 18px;
+}
+
+.now-dj {
+  font-size: 15px;
+}
+
+.toggle-arrow {
+  position: absolute;
+  left: 5px;
+  top: 10px;
 }

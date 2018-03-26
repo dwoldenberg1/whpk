@@ -15,16 +15,27 @@ $page_title = "home";
 
 get_header(); ?>
 
+	<div class="space-taker" style="background : rgba(255, 255, 255, 0.4);">
+
+		<?php 	get_template_part('templates/headers/header'); 
+				get_template_part('templates/navigation/navbar'); 
+		?>
+	</div>
+
 	<div class="contact-icons">
 
 	  	<?php get_template_part('templates/navigation/social'); ?>
 
 	</div>
 	<div class="display-cont">
-	      <video class="video-cont" autoplay muted loop>
+	    <video class="video-cont" autoplay muted loop>
 	      	<source src="<?php echo get_template_directory_uri().'/public/img/whpk.mp4'; ?>" type="video/mp4">
-	      </video>
+	    </video>
 
+	</div>
+
+	<div class="main">
+		<?php get_template_part('templates/navigation/playing'); ?>
 	</div>
 
 <?php get_footer(); ?>

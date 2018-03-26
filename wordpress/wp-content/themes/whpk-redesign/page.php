@@ -26,6 +26,8 @@ get_header(); ?>
 		jQuery('.' + "<?php echo $pagename ?>").addClass("active");
 	</script>
 
+	<?php get_template_part('templates/navigation/playing'); ?>
+
 
 	<?php get_template_part('templates/pages/'.$pagename); ?>
 
