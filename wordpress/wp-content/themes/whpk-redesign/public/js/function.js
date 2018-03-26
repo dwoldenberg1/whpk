@@ -69,11 +69,13 @@ jQuery(document).ready(function( $ ) {
 
 		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
 			p.removeClass('playing-open');
+			p.css("right", "-" + p.width() - 35 + "px");
 			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
 			setCookie("play-visible", "0", 60);
 			return;
 		} else if(forced == 2 || !p.hasClass('playing-open')) {
 			p.addClass('playing-open');
+			p.css("right", "0px");
 			p.find('svg').addClass('fa-arrow-circle-right').removeClass('fa-arrow-circle-left');
 			setCookie("play-visible", "1", 60);
 			return;

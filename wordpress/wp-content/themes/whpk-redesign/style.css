@@ -493,14 +493,13 @@ p {
 /* Now Playing widget */
 .playing {
   position: fixed;
-  right: -270px;
   background: rgba(248, 247, 247, 1);
   padding: 10px 30px 10px 40px;
   z-index: 102;
 }
 
 .playing-open {
-  right: 0px !important;
+  right: 0px;
 }
 
 .playing-transition {
