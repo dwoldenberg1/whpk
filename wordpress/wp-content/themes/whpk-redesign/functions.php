@@ -433,4 +433,10 @@ function isValidTimeStamp($timestamp)
         && ($timestamp <= PHP_INT_MAX)
         && ($timestamp >= ~PHP_INT_MAX);
 }
+
+function howdy_message($translated_text, $text, $domain) {
+	$new_message = str_replace('Howdy', 'Yo', $text);
+	return $new_message;
+}
+add_filter('gettext', 'howdy_message', 10, 3);
 ?>
