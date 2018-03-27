@@ -448,32 +448,27 @@ add_filter('gettext', 'howdy_message', 10, 3);
 add_action('init', 'import_shows', 10);
  
 function import_shows() {
-    $conn = mysqli_connect(constant("DB_HOST"), constant("DB_USER"), constant("DB_PASSWORD"), "WHPK_DB");
+    //$conn = mysqli_connect(constant("DB_HOST"), constant("DB_USER"), constant("DB_PASSWORD"), "WHPK_DB");
+    $olddb = new wpdb(constant("DB_USER"),constant("DB_PASSWORD"),"WHPK_DB",constant("DB_HOST"));
 
-    if (!$conn) {
-	    error_log("Connection failed: " . mysqli_connect_error(), 0);
-	    return;
-	} 
+	$sql = "SELECT * FROM shows";
+	//$result = mysqli_query($conn, $sql);
+	$rows = $olddb->get_results($sql);
 
-	$sql = "SELECT * FROM shows WHERE id_show=3";
-	$result = mysqli_query($conn, $sql);
+	$test = 0;
 
-	if (mysqli_num_rows($result) > 0) {
-		$test = 0;
-		error_log($result->num_rows, 0);
-		$res = print_r($result, true);
+	foreach($rows as $obj) {
+		if($test > 10){
+			return;
+		}
+		$res = var_dump($obj, true);
 		error_log($res, 0);
 
-		while($row = mysqli_fetch_assoc($result) && $test < 50) {
-			$resb = print_r("xxx ".$row, true);
-			error_log($resb, 0);
-			error_log($test." : ".$row["current_field"]);
-			$test++;
-		}
-	} else {
-		error_log("no resultls from WHPK_DB", 0);
+		error_log($test." : ".$obj->name_show);
+		$test++;
 	}
-	mysqli_close($conn);
+
+	//mysqli_close($conn);
 	return;
 }
  
