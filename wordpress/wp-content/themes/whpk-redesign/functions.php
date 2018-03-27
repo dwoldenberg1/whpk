@@ -21,8 +21,6 @@ function whpk_setup() {
 	add_action('wp_head', 'hook_css');
 	add_action('wp_head', 'hook_js');
 
-	add_action('wp_head', 'hook_headers');
-
 	$path = get_home_url();
 }
 add_action( 'after_setup_theme', 'whpk_setup' );
@@ -439,4 +437,47 @@ function howdy_message($translated_text, $text, $domain) {
 	return $new_message;
 }
 add_filter('gettext', 'howdy_message', 10, 3);
-?>
+
+/** Import Shows (only works on my local environment) **/
+
+// if ( isset($_GET['run_my_script']) && ! get_option('my_script_complete') ) {
+//     add_action('init', 'my_script_function', 10);
+//     add_action('init', 'script_finished', 20);
+// }
+
+add_action('init', 'import_shows', 10);
+ 
+function import_shows() {
+    $conn = mysqli_connect(constant("DB_HOST"), constant("DB_USER"), constant("DB_PASSWORD"), "WHPK_DB");
+
+    if (!$conn) {
+	    error_log("Connection failed: " . mysqli_connect_error(), 0);
+	    return;
+	} 
+
+	$sql = "SELECT * FROM shows WHERE id_show=3";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+		$test = 0;
+		error_log($result->num_rows, 0);
+		$res = print_r($result, true);
+		error_log($res, 0);
+
+		while($row = mysqli_fetch_assoc($result) && $test < 50) {
+			$resb = print_r("xxx ".$row, true);
+			error_log($resb, 0);
+			error_log($test." : ".$row["current_field"]);
+			$test++;
+		}
+	} else {
+		error_log("no resultls from WHPK_DB", 0);
+	}
+	mysqli_close($conn);
+	return;
+}
+ 
+function script_finished() {
+    add_option('my_script_complete', 1);
+    die("Script finished.");
+}
