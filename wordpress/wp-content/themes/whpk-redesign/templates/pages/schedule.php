@@ -21,6 +21,10 @@
 	foreach($days as $day){
 		$active_shows_perday = array(
 	      'post_type' => 'show',
+	      'nopaging' => true,
+	      'meta_key' => 'start_time',
+          'orderby' => 'meta_value_num',
+          'order' => 'ASC',
 	      'tax_query' => array(
 	        array(
 	          'taxonomy' => 'days',

@@ -68,8 +68,8 @@ jQuery(document).ready(function( $ ) {
 		var p = $('.playing');
 
 		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
+			p.css("right", -1 * (p.outerWidth(true) - 35) + "px");
 			p.removeClass('playing-open');
-			p.css("right", "-" + p.width() - 35 + "px");
 			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
 			setCookie("play-visible", "0", 60);
 			return;

@@ -491,13 +491,6 @@ function import_shows() {
 
 	foreach($rows as $obj) {
 
-			//$res = var_dump($obj, true);
-			//error_log($test." : ".$obj->name_show);
-
-			// error_log(strtotime("2007-01-01 19:00:00"), 0);
-
-			// error_log(date(DATE_RFC2822, strtotime("2007-01-01 19:00:00")), 0);
-
 			$post_id = wp_insert_post( array(
 		        'post_title'    => $obj->name_show,
 		        'post_type'     => 'show',
