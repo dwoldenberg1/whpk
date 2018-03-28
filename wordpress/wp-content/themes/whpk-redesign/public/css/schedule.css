@@ -297,7 +297,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-1"],
-.cd-schedule [data-event="event-1"] .header-bg {
+.cd-schedule [data-event="event-1"] .header-bg, .rock{
   /* this is used to set a background color for the event and the modal window */
   background: #569c4c;
 }
@@ -307,7 +307,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-2"],
-.cd-schedule [data-event="event-2"] .header-bg {
+.cd-schedule [data-event="event-2"] .header-bg, .rap {
   background: #f77372;
 }
 
@@ -316,7 +316,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-3"],
-.cd-schedule [data-event="event-3"] .header-bg {
+.cd-schedule [data-event="event-3"] .header-bg, .jazz {
   background: #408fde;
 }
 
@@ -325,7 +325,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-4"],
-.cd-schedule [data-event="event-4"] .header-bg {
+.cd-schedule [data-event="event-4"] .header-bg, .spec {
   background: #d863a8;
 }
 
@@ -334,7 +334,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-5"],
-.cd-schedule [data-event="event-5"] .header-bg {
+.cd-schedule [data-event="event-5"] .header-bg, .inter {
   background: #ff9ed7;
 }
 
@@ -343,7 +343,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-6"],
-.cd-schedule [data-event="event-6"] .header-bg {
+.cd-schedule [data-event="event-6"] .header-bg, .classical {
   background: #feb042;
 }
 
@@ -352,7 +352,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-7"],
-.cd-schedule [data-event="event-7"] .header-bg {
+.cd-schedule [data-event="event-7"] .header-bg, .folk {
   background: #414dba;
 }
 
@@ -361,7 +361,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-8"],
-.cd-schedule [data-event="event-8"] .header-bg {
+.cd-schedule [data-event="event-8"] .header-bg, .pub {
   background: #ffd551;
 }
 
@@ -644,4 +644,20 @@ Main Components
 /** My Css **/
 .event-modal {
   z-index: 101 !important;
+}
+
+.legend {
+  position: fixed;
+  top: 50%;
+  left: 0px;
+  z-index: 105;
+  background: #f8f7f7
+}
+
+.legend-box {
+  width: 75px;
+  font-size: 15px;
+  padding: 10px 5px 10px 5px;
+  text-align: center;
+  color: white !important;
 }

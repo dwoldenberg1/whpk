@@ -71,11 +71,11 @@ body {
 
 a {
 	text-decoration: none;
-	color: #000;
+	color: #000 !important;
 }
 
 a:visited {
-	color: #000;
+	color: #000 !important;
 }
 
 .main-back:hover {
@@ -109,7 +109,7 @@ a:visited {
 }
 
 .nav > a:hover {
-	color: maroon;
+	color: maroon !important;
 }
 
 .whpk-logo {
@@ -194,7 +194,7 @@ a:visited {
 }
 
 .active > a {
-  color: maroon;
+  color: maroon !important;
 }
 
 .listen:hover {
@@ -328,7 +328,7 @@ a:visited {
 }
 
 .main > p > a, .sttmnt > div > a {
-  color: maroon;
+  color: maroon !important;
 }
 
 .main > p > b {

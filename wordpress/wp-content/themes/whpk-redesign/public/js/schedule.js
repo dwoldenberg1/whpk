@@ -123,6 +123,11 @@ jQuery(document).ready(function($){
 		}, 10);
 
 		if( mq == 'mobile' ) {
+			//update event content *CUSTOM IMPLEMENTATION*
+			this.modalBody.find('.event-info').html(
+				event.parent().children()[1].innerHTML
+			).addClass('content-loaded');
+
 			self.modal.one(transitionEnd, function(){
 				self.modal.off(transitionEnd);
 				self.animating = false;
@@ -178,12 +183,14 @@ jQuery(document).ready(function($){
 			transformElement(self.modalHeaderBg, 'scaleY('+HeaderBgScaleY+')');
 
 			var m = this;
+
+			//update event content *CUSTOM IMPLEMENTATION*
+			m.modalBody.find('.event-info').html(
+					event.parent().children()[1].innerHTML
+				).addClass('content-loaded').addClass("hidden");
 			
 			self.modalHeaderBg.one(transitionEnd, function(){
-				//update event content *CUSTOM IMPLEMENTATION*
-				m.modalBody.find('.event-info').html(
-					event.parent().children()[1].innerHTML
-				).addClass('content-loaded');
+				m.modalBody.find('.event-info').removeClass("hidden");
 
 				//wait for the  end of the modalHeaderBg transformation and show the modal content
 				self.modalHeaderBg.off(transitionEnd);

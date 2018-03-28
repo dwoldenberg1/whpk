@@ -49,6 +49,33 @@
 
 	<!-- https://codyhouse.co/gem/schedule-template/ -->
 
+	<div class="legend">
+		<div class="legend-box jazz">
+			<span>Jazz</span>
+		</div>
+		<div class="legend-box rap">
+			<span>Rap</span>
+		</div>
+		<div class="legend-box rock">
+			<span>Rock</span>
+		</div>
+		<div class="legend-box classical">
+			<span>Classical</span>
+		</div>
+		<div class="legend-box folk">
+			<span>Folk</span>
+		</div>
+		<div class="legend-box inter">
+			<span>Inter-national</span>
+		</div>
+		<div class="legend-box pub">
+			<span>Public Affairs</span>
+		</div>
+		<div class="legend-box spec">
+			<span>Specialty</span>
+		</div>
+	</div>
+
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri().'/public/css/schedule.css';?>">
 
