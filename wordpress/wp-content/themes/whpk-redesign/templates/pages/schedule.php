@@ -13,17 +13,6 @@
  * @since whpk redesign 1.0
  **/
 
-	$active_shows_perday = array(
-      'post_id' => '5963'
-    );
-
-    $toast = new WP_Query($active_shows_perday);
-    $toast->the_post();
-
-	error_log(get_the_title(), 0);
-
-
-
 	$days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 	//$days = ["1", "2", "3", "4", "5", "6", "7"];
 	$day_count = 0;
