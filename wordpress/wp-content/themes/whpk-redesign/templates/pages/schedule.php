@@ -13,7 +13,19 @@
  * @since whpk redesign 1.0
  **/
 
+	$active_shows_perday = array(
+      'post_id' => '5963'
+    );
+
+    $toast = new WP_Query($active_shows_perday);
+    $toast->the_post();
+
+	error_log(get_the_title(), 0);
+
+
+
 	$days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+	//$days = ["1", "2", "3", "4", "5", "6", "7"];
 	$day_count = 0;
 	$active_shows = array();
 
@@ -101,12 +113,14 @@
 						$day_query->the_post();
 						$start_time = date('G:i', get_post_meta( $day_query->post->ID, 'start_time', true ));
 						$end_time = date('G:i', get_post_meta( $day_query->post->ID, 'end_time', true ));
+						$end_time = (($end_time == "0:00")?"24:00":$end_time); //correct for 24:00 = 0:00
+
 						$term = genre_type($day_query->post);
 						$show_title = get_the_title();
 
 						?>
 						<li class="single-event" data-start="<?php echo $start_time?>" data-end="<?php echo $end_time?>" 
-						data-content="event-<?php echo $show_title ?>" data-event="event-<?php echo $term->slug ?>">
+						data-content="event-<?php echo $show_title ?>" data-event="event-<?php echo get_genre_val($term->slug); ?>">
 							<a href="#0">
 								<em class="event-name"><?php echo $show_title ?></em>
 							</a>

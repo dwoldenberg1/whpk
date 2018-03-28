@@ -248,6 +248,8 @@ function campaign_content( $post ) {
 
   $start_t = date('G:i', get_post_meta($post->ID, 'start_time', true));
   $end_t   = date('G:i', get_post_meta($post->ID, 'end_time', true));
+  $end_t = ($end_t == "0:00" && $start_t != "0:00")?"24:00":$end_t;
+
   $active  = get_post_meta($post->ID, 'active_show', true);
 
   ?>
@@ -404,6 +406,40 @@ function genre_type($post) {
 	return "not found";
 }
 
+function get_genre_val($num) {
+	switch($num) {
+		case "rock":
+			return 1;
+			break;
+		case "rap":
+			return 2;
+			break;
+		case "jazz":
+			return 3;
+			break;
+		case "specialty":
+			return 4;
+			break;
+		case "international":
+			return 5;
+			break;
+		case "classical":
+			return 6;
+			break;
+		case "folk":
+			return 7;
+			break;
+		case "public-affairs":
+			return 8;
+			break;
+		case "dance-rpm":
+			return 9;
+			break;
+		default:
+			return 42;
+	}
+}
+
 
 /** Misc Functions **/
 
@@ -440,39 +476,113 @@ add_filter('gettext', 'howdy_message', 10, 3);
 
 /** Import Shows (only works on my local environment) **/
 
-// if ( isset($_GET['run_my_script']) && ! get_option('my_script_complete') ) {
-//     add_action('init', 'my_script_function', 10);
-//     add_action('init', 'script_finished', 20);
-// }
-
-add_action('init', 'import_shows', 10);
+if ( isset($_GET['run_my_script']) && ! get_option('my_script_completev5') ) {
+    add_action('init', 'import_shows', 10);
+    add_action('init', 'import_shows_done', 20);
+}
  
 function import_shows() {
-    //$conn = mysqli_connect(constant("DB_HOST"), constant("DB_USER"), constant("DB_PASSWORD"), "WHPK_DB");
     $olddb = new wpdb(constant("DB_USER"),constant("DB_PASSWORD"),"WHPK_DB",constant("DB_HOST"));
 
 	$sql = "SELECT * FROM shows";
-	//$result = mysqli_query($conn, $sql);
 	$rows = $olddb->get_results($sql);
 
 	$test = 0;
 
 	foreach($rows as $obj) {
-		if($test > 10){
-			return;
-		}
-		$res = var_dump($obj, true);
-		error_log($res, 0);
 
-		error_log($test." : ".$obj->name_show);
-		$test++;
+			//$res = var_dump($obj, true);
+			//error_log($test." : ".$obj->name_show);
+
+			// error_log(strtotime("2007-01-01 19:00:00"), 0);
+
+			// error_log(date(DATE_RFC2822, strtotime("2007-01-01 19:00:00")), 0);
+
+			$post_id = wp_insert_post( array(
+		        'post_title'    => $obj->name_show,
+		        'post_type'     => 'show',
+		        'post_content'  => (isset($obj->description_show)?$obj->description_show:""),
+		        'post_author'   => '1',
+		        'post_parent'   => '0',
+		        'post_status'   => 'publish'
+		    ) );
+
+		    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
+		    update_post_meta( $post_id, 'end_time', strtotime($obj->time_end));
+		    update_post_meta( $post_id, 'active_show', (($obj->active_show == "y")?1:0));
+
+		    wp_set_object_terms( $post_id, get_old_day($obj->day), 'days' );
+		    wp_set_object_terms( $post_id, get_old_genre($obj->genre), 'genres' );
+		
 	}
 
-	//mysqli_close($conn);
+	error_log("done with script", 0);
 	return;
 }
+
+function get_old_genre($num) {
+	switch($num) {
+		case 1:
+			return "rock";
+			break;
+		case 2:
+			return "rap";
+			break;
+		case 3:
+			return "jazz";
+			break;
+		case 4:
+			return "specialty";
+			break;
+		case 5:
+			return "international";
+			break;
+		case 6:
+			return "classical";
+			break;
+		case 7:
+			return "folk";
+			break;
+		case 8:
+			return "public-affairs	";
+			break;
+		case 10:
+			return "dance-rpm";
+			break;
+		default:
+			return 42;
+	}
+}
+
+function get_old_day($num) {
+	switch($num) {
+		case 1:
+			return "monday";
+			break;
+		case 2:
+			return "tuesday";
+			break;
+		case 3:
+			return "wednesday";
+			break;
+		case 4:
+			return "thursday";
+			break;
+		case 5:
+			return "friday";
+			break;
+		case 6:
+			return "saturday";
+			break;
+		case 7:
+			return "sunday";
+			break;
+		default:
+			return "unkown";
+	}
+}
  
-function script_finished() {
-    add_option('my_script_complete', 1);
+function import_shows_done() {
+    add_option('my_script_completev5', 1);
     die("Script finished.");
 }

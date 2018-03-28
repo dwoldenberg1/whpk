@@ -409,6 +409,7 @@ p {
 .first-list {
   display: flex;
 	flex-direction: column;
+  font-size: 15px;
 }
 
 .foot {
@@ -426,7 +427,7 @@ p {
 }
 
 .sttmnt {
-  font-size: 0.8em;
+  font-size: 11px;
   padding-left: 12px;
 }
 
