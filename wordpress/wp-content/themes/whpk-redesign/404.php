@@ -36,7 +36,7 @@ get_header(); ?>
 		</div>
 	</div>
 	<div id="fourofour-msg">
-		Dang, it looks like that page doesn't exist... 
+		Dang, that page doesn't exist... 
 	</div>
 
 </div>

@@ -474,11 +474,35 @@ function howdy_message($translated_text, $text, $domain) {
 }
 add_filter('gettext', 'howdy_message', 10, 3);
 
-/** Import Shows (only works on my local environment) **/
+/** Import Shows + DJs (only works on my local environment) **/
 
 if ( isset($_GET['run_my_script']) && ! get_option('my_script_completev5') ) {
+	add_action('init', 'import_djs', 9);
     add_action('init', 'import_shows', 10);
     add_action('init', 'import_shows_done', 20);
+}
+
+function import_djs() {
+	$olddb = new wpdb(constant("DB_USER"),constant("DB_PASSWORD"),"WHPK_DB",constant("DB_HOST"));
+
+	$sql = "SELECT * FROM djs";
+	$rows = $olddb->get_results($sql);
+
+	foreach($rows as $obj) {
+
+		$user_id = wp_insert_user ( array(
+			'nickname'     => esc_attr(isset($obj->name_dj)?$obj->name_dj:"nemo"),
+			'description'  => esc_attr(isset($obj->description_dj)?$obj->description_dj:""),
+			'user_email'   => esc_attr("unimportant@dwold.com"),
+			'role'		   => esc_attr("subscriber")
+		) );
+
+		update_user_meta( $user_id, 'dj_id', $obj->id_dj );
+		update_user_meta( $user_id, 'staff_position', "dj" );
+	}
+
+	error_log("done with dj script", 0);
+	return;
 }
  
 function import_shows() {
@@ -487,9 +511,18 @@ function import_shows() {
 	$sql = "SELECT * FROM shows";
 	$rows = $olddb->get_results($sql);
 
-	$test = 0;
-
 	foreach($rows as $obj) {
+
+			$nums = ['1', '2', '3', '4', '5'];
+			$djs = array();
+			foreach ($nums as $num) {
+				$temp = $obj->(dj.$snum);
+
+				if(isset($temp)){
+					array_push($djs, $temp);
+				}
+			}
+			$dj_id = $djs[0];
 
 			$post_id = wp_insert_post( array(
 		        'post_title'    => $obj->name_show,
@@ -503,13 +536,14 @@ function import_shows() {
 		    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
 		    update_post_meta( $post_id, 'end_time', strtotime($obj->time_end));
 		    update_post_meta( $post_id, 'active_show', (($obj->active_show == "y")?1:0));
+		    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
+		    update_post_meta( $post_id, 'djs', serialize($djs);
 
 		    wp_set_object_terms( $post_id, get_old_day($obj->day), 'days' );
 		    wp_set_object_terms( $post_id, get_old_genre($obj->genre), 'genres' );
-		
 	}
 
-	error_log("done with script", 0);
+	error_log("done with show script", 0);
 	return;
 }
 

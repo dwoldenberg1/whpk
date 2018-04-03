@@ -19,6 +19,7 @@
 
 	$active_shows_today = array(
       'post_type' => 'show',
+      'nopaging' => true,
       'tax_query' => array(
         array(
           'taxonomy' => 'days',

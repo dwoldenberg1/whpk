@@ -157,7 +157,6 @@ Main Components
   height: 150px;
   width: 70%;
   max-width: 300px;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
   margin-right: 20px;
   -webkit-transition: opacity .2s, background .2s;
   transition: opacity .2s, background .2s;
@@ -234,7 +233,6 @@ Main Components
     /* top position and height will be set using js */
     width: calc(100% + 2px);
     left: -1px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -3px 0 rgba(0, 0, 0, 0.2);
     /* reset style */
     -ms-flex-negative: 1;
         flex-shrink: 1;
@@ -659,4 +657,8 @@ Main Components
   padding: 10px 5px 10px 5px;
   text-align: center;
   color: white !important;
+}
+
+.single-event {
+  border: 1px solid white; 
 }
