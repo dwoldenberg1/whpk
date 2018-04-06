@@ -248,7 +248,8 @@ function campaign_content( $post ) {
 
   $start_t = date('G:i', get_post_meta($post->ID, 'start_time', true));
   $end_t   = date('G:i', get_post_meta($post->ID, 'end_time', true));
-  $end_t = ($end_t == "0:00" && $start_t != "0:00")?"24:00":$end_t;
+  $end_t   = ($end_t == "0:00" && $start_t != "0:00")?"24:00":$end_t;
+  $dj_list = unserialize(get_post_meta($post->ID, 'djs', true));
 
   $active  = get_post_meta($post->ID, 'active_show', true);
 
@@ -261,6 +262,9 @@ function campaign_content( $post ) {
   	<br>
   	<label for="active_show">Active (yes or no)</label>
   	<input type="text" id="active_show" name="active_show" placeholder="yes or no" value="<?php echo (($active)?'yes':'no');?>"/>
+  	<br>
+  	<label for="dj_list">DJs (comma-seperated)</label>
+  	<input type="text" id="dj_list" name="dj_list" placeholder="ex.) MF Doom, J5" value="<?php echo implode(",", $dj_list);?>"/>
   <?php
 }
 
@@ -290,12 +294,16 @@ function campaign_save( $post_id ) {
   	$active_valid = 1;
   }
 
+  $djs_raw = $_POST['dj_list'];
+  $djs = explode(",", $djs_raw);
+
   if($end_t == "" || $start_t == "" || $active_valid == 0){
   	return;
   } else {
   	update_post_meta( $post_id, 'start_time', $start_t);
   	update_post_meta( $post_id, 'end_time', $end_t);
   	update_post_meta( $post_id, 'active_show', (($active == "yes")?1:0));
+  	update_post_meta( $post_id, 'djs', serialize($djs));
   }
 }
 
@@ -356,6 +364,9 @@ function pre_submit_validation(){
 
 	  	$active  = $form_data['active_show'];
 
+	  	$djs_raw = $form_data['dj_list'];
+  		$djs = explode(",", $djs_raw);
+
 	  	if($active == "yes" || $active == "no"){
 	  		$active_valid = 1;
 	  	}
@@ -378,6 +389,24 @@ function pre_submit_validation(){
     	if($active_valid == 0){
     		echo 'please enter yes or no in the "active show" field';
     		die();
+    	}
+
+    	foreach ($djs as $dj) {
+    		$user = reset(
+			 get_users(
+			  array(
+			   'meta_key' => 'nickname',
+			   'meta_value' => $dj,
+			   'number' => 1,
+			   'count_total' => false
+			  )
+			 )
+			);
+
+    		if(!$user){
+    			echo 'please only enter valid djs, "'.$dj.'" was not valid';
+    			die();
+    		} 
     	}
 
     	echo 'true';

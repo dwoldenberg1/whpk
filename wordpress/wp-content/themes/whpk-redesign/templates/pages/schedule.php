@@ -134,6 +134,7 @@
 						$start_time = date('G:i', get_post_meta( $day_query->post->ID, 'start_time', true ));
 						$end_time = date('G:i', get_post_meta( $day_query->post->ID, 'end_time', true ));
 						$end_time = (($end_time == "0:00")?"24:00":$end_time); //correct for 24:00 = 0:00
+						$djs = unserialize(get_post_meta($post->ID, 'djs', true));
 
 						$term = genre_type($day_query->post);
 						$show_title = get_the_title();
@@ -145,7 +146,11 @@
 								<em class="event-name"><?php echo $show_title ?></em>
 							</a>
 							<div class="hidden" data-target="event-<?php echo get_the_ID() ?>" >
-								<div class="dj-heading">DJ: <?php echo get_the_author(); ?></div>
+								<div class="dj-heading"><?php
+									$djs_string = implode(",", $djs); 
+									echo ((sizeof($djs) > 1)?"DJs : ":"DJ : ");
+									echo implode(", ", $djs); 
+								?></div>
 								<div class="show-about"><?php echo get_the_content(); ?></div>
 							</div>
 						</li>
