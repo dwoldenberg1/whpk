@@ -476,8 +476,8 @@ add_filter('gettext', 'howdy_message', 10, 3);
 
 /** Import Shows + DJs (only works on my local environment) **/
 
-if ( isset($_GET['run_my_script']) && ! get_option('my_script_completev5') ) {
-	add_action('init', 'import_djs', 9);
+if ( isset($_GET['run_my_script']) && ! get_option('my_script_completev17') ) {
+	//add_action('init', 'import_djs', 9);
     add_action('init', 'import_shows', 10);
     add_action('init', 'import_shows_done', 20);
 }
@@ -491,19 +491,17 @@ function import_djs() {
 	$test = 0;
 
 	foreach($rows as $obj) {
+		$user_id = wp_insert_user ( array(
+			'user_login'   => esc_attr(isset($obj->name_dj)?$obj->name_dj:"nemo"),
+			'nickname'     => esc_attr(isset($obj->name_dj)?$obj->name_dj:"nemo"),
+			'description'  => esc_attr(isset($obj->description_dj)?$obj->description_dj:""),
+			'user_email'   => esc_attr($test."@dwold.com"),
+			'role'		   => esc_attr(($obj->active_dj == "y")?"author":"subscriber")
+		) );
 
-		if($test == 20){
+		update_user_meta( $user_id, 'dj_id', $obj->id_dj );
+		update_user_meta( $user_id, 'staff_position', "dj" );
 
-			$user_id = wp_insert_user ( array(
-				'nickname'     => esc_attr(isset($obj->name_dj)?$obj->name_dj:"nemo"),
-				'description'  => esc_attr(isset($obj->description_dj)?$obj->description_dj:""),
-				'user_email'   => esc_attr("unimportant@dwold.com"),
-				'role'		   => esc_attr("subscriber")
-			) );
-
-			update_user_meta( $user_id, 'dj_id', $obj->id_dj );
-			update_user_meta( $user_id, 'staff_position', "dj" );
-		}
 		$test++;
 	}
 
@@ -517,51 +515,63 @@ function import_shows() {
 	$sql = "SELECT * FROM shows";
 	$rows = $olddb->get_results($sql);
 
-	$test = 0
+	$test = 0;
 
 	foreach($rows as $obj) {
+		$djs = array();
+		$djss = "";
 
-			if($test == 50){
+		/* Manual, it's shit but it was the easier method */
+		array_push($djs, isset($obj->dj1)?$obj->dj1:"");
+		array_push($djs, isset($obj->dj2)?$obj->dj2:"");
+		array_push($djs, isset($obj->dj3)?$obj->dj3:"");
+		array_push($djs, isset($obj->dj4)?$obj->dj4:"");
+		array_push($djs, isset($obj->dj5)?$obj->dj5:"");
 
-				$nums = ['1', '2', '3', '4', '5'];
-				$djs = array();
-				foreach ($nums as $num) {
-					$temp = $obj->dj.$num;
+		foreach ($djs as $sing) {
+			$djss .= (($sing != "")?",".$sing:"");
+		}
 
-					error_log($temp ,0);
+		$sql = "SELECT name_dj FROM djs WHERE id_dj IN (0".$djss.");";
 
-					if(isset($temp)){
-						array_push($djs, $temp);
-					}
-				}
+		$rowd = $olddb->get_results($sql);
 
-				$sql = "SELECT djs.name_dj FROM djs INNER JOIN shows ON djs.id_dj 
-				IN (".$djs.");"
+		$djarr = array();
+		foreach ($rowd as $djname) {
+			array_push($djarr, $djname->name_dj);
+		}
 
-				$row_djs = $olddb->get_results($sql, $arr = array());
+		$user = reset(
+		 get_users(
+		  array(
+		   'meta_key' => 'dj_id',
+		   'meta_value' => $djs[0],
+		   'fields' => 'ids',
+		   'number' => 1,
+		   'count_total' => false
+		  )
+		 )
+		);
 
-				$rows = $olddb->get_results($sql);
-				$dj_id = $djs[0];
+		$dj_id = $djs[0];
 
-				$post_id = wp_insert_post( array(
-			        'post_title'    => $obj->name_show,
-			        'post_type'     => 'show',
-			        'post_content'  => (isset($obj->description_show)?$obj->description_show:""),
-			        'post_author'   => '1',
-			        'post_parent'   => '0',
-			        'post_status'   => 'publish'
-			    ) );
+		$post_id = wp_insert_post( array(
+	        'post_title'    => $obj->name_show,
+	        'post_type'     => 'show',
+	        'post_content'  => (isset($obj->description_show)?$obj->description_show:""),
+	        'post_author'   => ((isset($user) && is_numeric($user))?$user:"1"),
+	        'post_parent'   => '0',
+	        'post_status'   => 'publish'
+	    ) );
 
-			    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
-			    update_post_meta( $post_id, 'end_time', strtotime($obj->time_end));
-			    update_post_meta( $post_id, 'active_show', (($obj->active_show == "y")?1:0));
-			    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
-			    update_post_meta( $post_id, 'djs', serialize($djs));
+	    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
+	    update_post_meta( $post_id, 'end_time', strtotime($obj->time_end));
+	    update_post_meta( $post_id, 'active_show', (($obj->active_show == "y")?1:0));
+	    update_post_meta( $post_id, 'start_time', strtotime($obj->time_start));
+	    update_post_meta( $post_id, 'djs', serialize($djarr));
 
-			    wp_set_object_terms( $post_id, get_old_day($obj->day), 'days' );
-			    wp_set_object_terms( $post_id, get_old_genre($obj->genre), 'genres' );
-			}
-			$test++;
+	    wp_set_object_terms( $post_id, get_old_day($obj->day), 'days' );
+	    wp_set_object_terms( $post_id, get_old_genre($obj->genre), 'genres' );
 	}
 
 	error_log("done with show script", 0);
@@ -631,6 +641,6 @@ function get_old_day($num) {
 }
  
 function import_shows_done() {
-    add_option('my_script_completev5', 1);
+    add_option('my_script_completev17', 1);
     die("Script finished.");
 }
