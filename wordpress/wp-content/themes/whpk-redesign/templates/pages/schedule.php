@@ -135,23 +135,50 @@
 						$end_time = date('G:i', get_post_meta( $day_query->post->ID, 'end_time', true ));
 						$end_time = (($end_time == "0:00")?"24:00":$end_time); //correct for 24:00 = 0:00
 						$djs = unserialize(get_post_meta($post->ID, 'djs', true));
+						$post_hasalter = get_post_meta($post->ID, 'alter_show', true);
 
 						$term = genre_type($day_query->post);
 						$show_title = get_the_title();
+						$content = get_the_content();
+
+						$alter = 0;
+
+						if(isset($post_hasalter) && $post_hasalter == 1){
+							$alter = 1;
+
+							if($day_query->have_posts()){
+								$day_query->the_post();
+
+								$djs2 = unserialize(get_post_meta($post->ID, 'djs', true));
+								$term2 = genre_type($day_query->post);
+								$show_title2 = get_the_title();
+
+								$content2 = get_the_content();
+							} else {
+								$alter = 0;
+								break;
+							}
+						}
 
 						?>
 						<li class="single-event" data-start="<?php echo $start_time?>" data-end="<?php echo $end_time?>" 
 						data-content="event-<?php echo $show_title ?>" data-event="event-<?php echo get_genre_val($term->slug); ?>">
 							<a href="#0">
-								<em class="event-name"><?php echo $show_title ?></em>
+								<em class="event-name"><?php 
+									echo ($alter)?($show_title."<br><span class='alter'>alternating with</span><br>".$show_title2):$show_title;
+								?></em>
 							</a>
 							<div class="hidden" data-target="event-<?php echo get_the_ID() ?>" >
 								<div class="dj-heading"><?php
 									$djs_string = implode(",", $djs); 
-									echo ((sizeof($djs) > 1)?"DJs : ":"DJ : ");
-									echo implode(", ", $djs); 
+									echo ((sizeof($djs) > 1 || $alter)?"DJs: ":"DJ: ");
+									echo ($alter)?(implode(", ", $djs)."<span class='alter'> or </span>".implode(", ", $djs2)):implode(", ", $djs); 
 								?></div>
-								<div class="show-about"><?php echo get_the_content(); ?></div>
+								<div class="show-about"><?php 
+									$content = ($content == ""?"No Description":$content);
+									$content2 = ($content2 == ""?"No Description":$content2);
+									echo ($alter)?($content."<br><span class='alter'>alternating with</span><br>".$content2):$content;
+								?></div>
 							</div>
 						</li>
 

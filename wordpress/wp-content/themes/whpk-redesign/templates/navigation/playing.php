@@ -58,11 +58,11 @@
 	    	if($now >= $start && $now <= $end){
 	    		$term = genre_type($day_query->post);
 
-	    		$show  = "Now Playing: ".$title;
-	    		$genre    = "Genre: ".$term->name;
+	    		$show     = "Now Playing: ".$title;
+	    		$genre    = "Genre: ".esc_attr($term->name);
 
 	    		$djs_string = implode(",", $djs); 
-				$dj = ((sizeof($djs) > 1)?"DJs : ":"DJ : ").implode(", ", $djs);
+				$dj = ((sizeof($djs) > 1)?"DJs: ":"DJ: ").implode(", ", $djs);
 
 	    		break;
 	    	}

@@ -262,10 +262,18 @@ function campaign_content( $post ) {
   	<input type="text" id="end_time" name="end_time" placeholder="ex.) 18:00" value="<?php echo $end_t?>"/>
   	<br>
   	<label for="active_show">Active (yes or no)</label>
-  	<input type="text" id="active_show" name="active_show" placeholder="yes or no" value="<?php echo (($active)?'yes':'no');?>"/>
   	<br>
-  	<label for="alter_show">Alternating (yes or no)</label>
-  	<input type="text" id="alter_show" name="alter_show" placeholder="yes or no" value="<?php echo (($alter)?'yes':'no');?>"/>
+  	<select id="active_show" name="active_show"/>
+  		<option value="yes" <?php echo (($active == 1)?'selected':''); ?>>yes</option>
+  		<option value="no" <?php echo (($active == 0)?'selected':''); ?>>no</option>
+    </select>
+  	<br>
+  	<label for="altershow">Alternating (yes or no)</label>
+  	<br>
+  	<select id="alter_show" name="alter_show"/>
+  		<option value="yes" <?php echo (($alter == 1)?'selected':''); ?>>yes</option>
+  		<option value="no" <?php echo (($alter  == 0)?'selected':''); ?>>no</option>
+    </select>
   	<br>
   	<label for="dj_list">DJs (comma-seperated)</label>
   	<input type="text" id="dj_list" name="dj_list" placeholder="ex.) MF Doom, J5" value="<?php echo implode(",", $dj_list);?>"/>

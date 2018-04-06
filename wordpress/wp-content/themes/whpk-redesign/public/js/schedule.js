@@ -102,6 +102,9 @@ jQuery(document).ready(function($){
 			});
 		});
 
+		var playing = "event-" + $('.playing').attr("data-content");
+		$('[data-content="'+ playing + '"]').css("border", "2px red solid").css("z-index", "101");
+
 		this.element.removeClass('loading');
 	};
 
@@ -111,7 +114,7 @@ jQuery(document).ready(function($){
 		this.animating = true;
 
 		//update event name and time
-		this.modalHeader.find('.event-name').text(event.find('.event-name').text());
+		this.modalHeader.find('.event-name').html(event.find('.event-name').html());
 		this.modalHeader.find('.event-date').text(event.find('.event-date').text());
 		this.modal.attr('data-event', event.parent().attr('data-event'));
 

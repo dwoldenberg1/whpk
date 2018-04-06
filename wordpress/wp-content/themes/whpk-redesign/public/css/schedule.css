@@ -418,12 +418,11 @@ Main Components
   z-index: 2;
   line-height: 1.4;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .cd-schedule .event-modal .event-info > div {
   overflow: auto;
-  height: 100%;
   padding: 1.4em 5%;
 }
 
@@ -648,6 +647,7 @@ Main Components
   position: fixed;
   left: 0px;
   z-index: 105;
+  font-family: 'Black San';
   background: #f8f7f7
 }
 
@@ -660,5 +660,11 @@ Main Components
 }
 
 .single-event {
-  border: 1px solid white; 
+  border: 1px solid white;
+  overflow: hidden;
+}
+
+.alter {
+  color: #c1c1c1;
+  font-style: italic;
 }
