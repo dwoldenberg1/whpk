@@ -52,13 +52,17 @@
 
 	    	$start = (intval(date('G', $start_t)) * 60) + intval(date('i', $start_t));
 	    	$end   = (intval(date('G', $end_t)) * 60) + intval(date('i', $end_t));
+	    	$title = get_the_title();
+	    	$djs = unserialize(get_post_meta($active_shows->post->ID, 'djs', true));
 
 	    	if($now >= $start && $now <= $end){
 	    		$term = genre_type($day_query->post);
 
-	    		$show  = "Now Playing: ".get_the_title();
-	    		$genre    = "Genre: ".get_the_author();
-	    		$dj = "DJ: ".$term->name;
+	    		$show  = "Now Playing: ".$title;
+	    		$genre    = "Genre: ".$term->name;
+
+	    		$djs_string = implode(",", $djs); 
+				$dj = ((sizeof($djs) > 1)?"DJs : ":"DJ : ").implode(", ", $djs);
 
 	    		break;
 	    	}
@@ -67,7 +71,7 @@
 
 ?>
 
-<div class="playing playing-open playing-transition">
+<div class="playing playing-open playing-transition" data-content="<?php echo $title; ?>">
 	<div class="toggle-arrow">
 		<i class="fa fa-arrow-circle-right" style="font-size:24px"></i>
 	</div>
