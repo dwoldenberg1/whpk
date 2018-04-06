@@ -252,6 +252,7 @@ function campaign_content( $post ) {
   $dj_list = unserialize(get_post_meta($post->ID, 'djs', true));
 
   $active  = get_post_meta($post->ID, 'active_show', true);
+  $alter   = get_post_meta($post->ID, 'alter_show', true);
 
   ?>
   	<label for="start_time">Start time (24 hours)</label>
@@ -262,6 +263,9 @@ function campaign_content( $post ) {
   	<br>
   	<label for="active_show">Active (yes or no)</label>
   	<input type="text" id="active_show" name="active_show" placeholder="yes or no" value="<?php echo (($active)?'yes':'no');?>"/>
+  	<br>
+  	<label for="alter_show">Alternating (yes or no)</label>
+  	<input type="text" id="alter_show" name="alter_show" placeholder="yes or no" value="<?php echo (($alter)?'yes':'no');?>"/>
   	<br>
   	<label for="dj_list">DJs (comma-seperated)</label>
   	<input type="text" id="dj_list" name="dj_list" placeholder="ex.) MF Doom, J5" value="<?php echo implode(",", $dj_list);?>"/>
@@ -294,15 +298,22 @@ function campaign_save( $post_id ) {
   	$active_valid = 1;
   }
 
+  $alter_valid = 0;
+  $alter  = $_POST['alter_show'];
+  if($alter == "yes" || $alter == "no"){
+  	$alter_valid = 1;
+  }
+
   $djs_raw = $_POST['dj_list'];
   $djs = explode(",", $djs_raw);
 
-  if($end_t == "" || $start_t == "" || $active_valid == 0){
+  if($end_t == "" || $start_t == "" || $active_valid == 0 || $alter_valid == 0){
   	return;
   } else {
   	update_post_meta( $post_id, 'start_time', $start_t);
   	update_post_meta( $post_id, 'end_time', $end_t);
   	update_post_meta( $post_id, 'active_show', (($active == "yes")?1:0));
+  	update_post_meta( $post_id, 'alter_show', (($alter == "yes")?1:0));
   	update_post_meta( $post_id, 'djs', serialize($djs));
   }
 }
@@ -361,14 +372,20 @@ function pre_submit_validation(){
 	  	$end_t   = strtotime($form_data['end_time']);
 
 	  	$active_valid = 0;
+	  	$alter_valid  = 0;
 
 	  	$active  = $form_data['active_show'];
+	  	$alter   = $form_data['alter_show'];
 
 	  	$djs_raw = $form_data['dj_list'];
   		$djs = explode(",", $djs_raw);
 
 	  	if($active == "yes" || $active == "no"){
 	  		$active_valid = 1;
+	  	}
+
+	  	if($alter == "yes" || $alter == "no"){
+	  		$alter_valid = 1;
 	  	}
 
     	if($start_t == ""){
@@ -387,7 +404,12 @@ function pre_submit_validation(){
     	}
 
     	if($active_valid == 0){
-    		echo 'please enter yes or no in the "active show" field';
+    		echo 'please enter yes or no in the "Active" field';
+    		die();
+    	}
+
+    	if($alter_valid == 0){
+    		echo 'please enter yes or no in the "Alternating" field';
     		die();
     	}
 
