@@ -650,6 +650,11 @@ ol {
   font-size: 15px;
 }
 
+.alter {
+  color: #c1c1c1;
+  font-style: italic;
+}
+
 .toggle-arrow {
   position: absolute;
   left: 5px;
