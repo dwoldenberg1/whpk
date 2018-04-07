@@ -68,7 +68,12 @@ jQuery(document).ready(function( $ ) {
 		var p = $('.playing');
 
 		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
-			p.css("right", -1 * (p.outerWidth(true) - 35) + "px");
+			var w = (document.title == "whpk - schedule")?p.width():p.outerWidth(true) ;
+
+			p.css("right", -1 * (w - 35) + "px");
+			setTimeout(function(){
+				p.css("right", -1 * (w - 35) + "px");
+			}, 200); // needed for mobile text-wrapping
 			p.removeClass('playing-open');
 			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
 			setCookie("play-visible", "0", 60);

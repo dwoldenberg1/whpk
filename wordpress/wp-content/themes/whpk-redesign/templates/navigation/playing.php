@@ -22,7 +22,7 @@
       'nopaging' => true,
       'meta_key' => 'start_time',
       'orderby' => 'meta_value_num',
-      'order' => 'DESC',
+      'order' => 'ASC',
       'tax_query' => array(
         array(
           'taxonomy' => 'days',
@@ -45,7 +45,7 @@
 
     $active_shows = new WP_Query($active_shows_today);
     if($active_shows->have_posts()){
-    	$show = "no shows left today";
+    	$show = "no show right now";
     	$done = 0;
 
 	    while ( $active_shows->have_posts() ) {
@@ -55,7 +55,9 @@
 	    	$end_t   = get_post_meta( $active_shows->post->ID, 'end_time', true );
 
 	    	$start = (intval(date('G', $start_t)) * 60) + intval(date('i', $start_t));
-	    	$end   = (intval(date('G', $end_t)) * 60) + intval(date('i', $end_t));
+	    	$end_hour = intval((date('G', $end_t) == "0")?strtotime("2007-01-01 24:00"):date('G', $end_t));
+	    	$end   = ($end_hour * 60) + intval(date('i', $end_t));
+
 	    	$title = get_the_title();
 	    	$djs = unserialize(get_post_meta($active_shows->post->ID, 'djs', true));
 
@@ -96,6 +98,10 @@
 
 			if($done)
 				break;
+	    }
+
+	    if(!$active_shows->have_posts()){
+	    	$show = "no shows left today";
 	    }
 	}
 

@@ -20,6 +20,7 @@
     <div class="top masthead">
       <div class="top station-info">88.5 FM Chicago</div>
       <div class="top slogan-info">The Pride of the South Side</div>
+      <div class="top slogan-info">773-702-8424</div>
     </div>
   </a>
   <div class="top listen">

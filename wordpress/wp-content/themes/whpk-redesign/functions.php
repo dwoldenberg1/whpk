@@ -297,8 +297,11 @@ function campaign_save( $post_id ) {
     return;
   }
 
-  $start_t = strtotime($_POST['start_time']);
-  $end_t   = strtotime($_POST['end_time']);
+  /* "2007-01-01" is an aribitrary time that was used in the 
+   * legacy db needed to proper migration 
+   */
+  $start_t = strtotime("2007-01-01".$_POST['start_time']);
+  $end_t   = strtotime("2007-01-01".$_POST['end_time']);
 
   $active_valid = 0;
   $active  = $_POST['active_show'];

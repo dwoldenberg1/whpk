@@ -14,8 +14,11 @@
 
 ?>
 
+	<div class="big-announcement">
+		<span>Coming Soon...</span>
+	</div>
+
 <?php 
-	echo "placeholder";
 
 	while ( have_posts() ) : the_post();
 		
