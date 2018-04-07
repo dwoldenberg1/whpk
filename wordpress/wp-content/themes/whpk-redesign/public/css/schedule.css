@@ -71,7 +71,7 @@ Main Components
   }
   .cd-schedule .timeline li {
     position: relative;
-    height: 51px;
+    height: 50px;
   }
   .cd-schedule .timeline li::after {
     /* this is used to create the table horizontal lines */
@@ -212,7 +212,7 @@ Main Components
     margin-bottom: 0;
   }
   .cd-schedule .events .events-group > ul {
-    height: 1733px;
+    height: 1700px;
     /* new precise measurement */
     /* reset style */
     display: block;

@@ -12,6 +12,8 @@
  * @since whpk redesign 1.0
  **/
 
+  $path = get_site_url();
+  
   if ( !is_home() ) {
       ?>
 
