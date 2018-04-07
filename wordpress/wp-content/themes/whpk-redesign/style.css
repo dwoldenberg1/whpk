@@ -592,6 +592,31 @@ p {
   padding: 50px
 }
 
+/* Donate Stuff */
+
+h3 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h2, h3, ol {
+  padding-bottom: 20px;
+}
+
+blockquote {
+  padding-left: 30px;
+}
+
+ol {
+  list-style: decimal;
+  padding-left: 30px;
+}
+
+
+
 /* Now Playing widget */
 .playing {
   position: fixed;

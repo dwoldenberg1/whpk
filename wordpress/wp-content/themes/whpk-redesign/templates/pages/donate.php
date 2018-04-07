@@ -15,8 +15,6 @@
 ?>
 
 <?php 
-	echo "placeholder";
-
 	while ( have_posts() ) : the_post();
 		
 		echo the_content(); 
