@@ -68,11 +68,9 @@ jQuery(document).ready(function( $ ) {
 		var p = $('.playing');
 
 		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
-			var w = p.outerWidth(true);
-
-			p.css("right", -1 * (w - 35) + "px");
+			p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
 			setTimeout(function(){
-				p.css("right", -1 * (w - 35) + "px");
+				p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
 			}, 200); // needed for mobile text-wrapping
 			p.removeClass('playing-open');
 			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
