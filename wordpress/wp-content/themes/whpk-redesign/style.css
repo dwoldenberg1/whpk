@@ -369,7 +369,7 @@ a:visited {
   font-family: 'Regular San';
 }
 
-.main > p > a, .sttmnt > div > a {
+.main > p > a, .sttmnt > div > a, .main > ol > li > a {
   color: maroon !important;
   font-size: 1.3em;
 }
