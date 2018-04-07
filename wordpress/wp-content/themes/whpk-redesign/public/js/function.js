@@ -68,7 +68,7 @@ jQuery(document).ready(function( $ ) {
 		var p = $('.playing');
 
 		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
-			var w = (document.title == "whpk - schedule")?p.width():p.outerWidth(true) ;
+			var w = p.outerWidth(true);
 
 			p.css("right", -1 * (w - 35) + "px");
 			setTimeout(function(){

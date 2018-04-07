@@ -119,8 +119,10 @@ a:visited {
   visibility: hidden;
 }
 
-.nav > a {
+.nav > a, .topbar > a {
+  color: black;
 }
+
 
 .nav > a:hover {
 	color: maroon !important;
@@ -458,6 +460,10 @@ p {
   font-size: 1em;
 }
 
+.foot > a {
+  color: black;
+}
+
 .social {
   font-size: 1.7em;
 }
@@ -478,11 +484,10 @@ p {
 }
 
 .bot-pic {
- 	height: 200px;
-	width: 175px;
+ 	height: 110px;
+	width: 96px;
 	padding: 0px 20px 20px 20px;
 	float: right;
-  zoom: 0.55;
 }
 
 /* 404 Stuff */
@@ -558,6 +563,10 @@ p {
   font-size: 2em;
 }
 
+.contact-address > a, .contact-email > a{
+  color: maroon;
+}
+
 .wpforms-container {
   border-top: 1px dashed black !important;
   padding-top: 20px !important;
@@ -569,6 +578,10 @@ p {
 
 .wpforms-description {
   font-size: 1.5em !important;
+}
+
+.wpforms-submit {
+  font-family: 'Black San' !important;
 }
 
 /* Merch Stuff */
