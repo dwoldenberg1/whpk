@@ -24,7 +24,7 @@
 	      'nopaging' => true,
 	      'meta_key' => 'start_time',
           'orderby' => 'meta_value_num',
-          'order' => 'ASC',
+          'order' => 'DESC',
 	      'tax_query' => array(
 	        array(
 	          'taxonomy' => 'days',

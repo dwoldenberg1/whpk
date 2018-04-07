@@ -20,6 +20,9 @@
 	$active_shows_today = array(
       'post_type' => 'show',
       'nopaging' => true,
+      'meta_key' => 'start_time',
+      'orderby' => 'meta_value_num',
+      'order' => 'DESC',
       'tax_query' => array(
         array(
           'taxonomy' => 'days',
@@ -43,6 +46,7 @@
     $active_shows = new WP_Query($active_shows_today);
     if($active_shows->have_posts()){
     	$show = "no shows left today";
+    	$done = 0;
 
 	    while ( $active_shows->have_posts() ) {
 	    	$active_shows->the_post();
@@ -55,6 +59,8 @@
 	    	$title = get_the_title();
 	    	$djs = unserialize(get_post_meta($active_shows->post->ID, 'djs', true));
 
+	    	$post_hasalter = get_post_meta($active_shows->post->ID, 'alter_show', true);
+
 	    	if($now >= $start && $now <= $end){
 	    		$term = genre_type($day_query->post);
 
@@ -62,10 +68,34 @@
 	    		$genre    = "Genre: ".esc_attr($term->name);
 
 	    		$djs_string = implode(",", $djs); 
-				$dj = ((sizeof($djs) > 1)?"DJs: ":"DJ: ").implode(", ", $djs);
+				$dj = ((sizeof($djs) > 1 || $post_hasalter == 1)?"DJs: ":"DJ: ").implode(", ", $djs);
 
-	    		break;
+				$done = 1;
 	    	}
+
+	    	$alter = 0;
+
+			if(isset($post_hasalter) && $post_hasalter == 1 && $done == 1){
+				$alter = 1;
+
+				if($active_shows->have_posts()){
+					$active_shows->the_post();
+
+					$djs2 = unserialize(get_post_meta($post->ID, 'djs', true));
+					$term2 = genre_type($active_shows->post);
+					$show_title2 = get_the_title();
+
+					$content2 = get_the_content();
+
+					$show .="<span class='alter'> alternating with </span>".$show_title2;
+					$dj .="<span class='alter'> or </span>".implode(", ", $djs2);
+				} else {
+					$alter = 0;
+				}
+			}
+
+			if($done)
+				break;
 	    }
 	}
 
