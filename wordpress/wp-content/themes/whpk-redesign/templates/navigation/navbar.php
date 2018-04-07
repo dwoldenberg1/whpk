@@ -13,6 +13,7 @@
  * @since whpk redesign 1.0
  **/
 
+  $path = get_site_url();
 ?>
 
 <div class="navbar">
@@ -28,22 +29,22 @@
     </div>
   </div>
   <div class="nav collapsed schedule">
-    <a class="nav-item" href="<?php echo $path.'/wordpress/schedule'; ?>">Schedule</a>
+    <a class="nav-item" href="<?php echo $path.'/schedule'; ?>">Schedule</a>
   </div>
   <div class="nav collapsed events">
-    <a class="nav-item" href="<?php echo $path.'/wordpress/events'; ?>">Events</a>
+    <a class="nav-item" href="<?php echo $path.'/events'; ?>">Events</a>
   </div>
   <div class="nav collapsed about">
-    <a class="nav-item" href="<?php echo $path.'/wordpress/about'; ?>">About</a>
+    <a class="nav-item" href="<?php echo $path.'/about'; ?>">About</a>
   </div>
   <div class="nav collapsed contact">
-    <a class="nav-item" href="<?php echo $path.'/wordpress/contact'; ?>">Contact</a>
+    <a class="nav-item" href="<?php echo $path.'/contact'; ?>">Contact</a>
   </div>
   <div class="nav collapsed donate">
-    <a class="nav-item" href="<?php echo $path.'/wordpress/donate'; ?>">Donate</a>
+    <a class="nav-item" href="<?php echo $path.'/donate'; ?>">Donate</a>
   </div>
   <div class="nav collapsed merch">
-    <a class="nav-item" href="<?php echo $path.'wordpress/merch'; ?>">Merch</a>
+    <a class="nav-item" href="<?php echo $path.'/merch'; ?>">Merch</a>
   </div>
 </div>
 
