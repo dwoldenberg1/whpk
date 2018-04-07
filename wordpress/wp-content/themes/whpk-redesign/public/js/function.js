@@ -71,7 +71,7 @@ jQuery(document).ready(function( $ ) {
 			p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
 			setTimeout(function(){
 				p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
-			}, 200); // needed for mobile text-wrapping
+			}, 400); // needed for mobile text-wrapping
 			p.removeClass('playing-open');
 			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
 			setCookie("play-visible", "0", 60);
