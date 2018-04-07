@@ -13,6 +13,9 @@
  * @since whpk redesign 1.0
  **/
 
+
+  $path = get_site_url();
+  error_log("path: ".$path, 0);
 ?>
 
 <div class="navbar">

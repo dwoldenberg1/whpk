@@ -21,7 +21,7 @@ function whpk_setup() {
 	add_action('wp_head', 'hook_css');
 	add_action('wp_head', 'hook_js');
 
-	$path = get_home_url();
+	$path = $path = get_site_url();
 }
 add_action( 'after_setup_theme', 'whpk_setup' );
 
