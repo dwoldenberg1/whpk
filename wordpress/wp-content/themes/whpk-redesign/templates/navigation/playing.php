@@ -42,11 +42,13 @@
     $show = "no shows today";
     $dj = "";
     $genre = "";
+    $iterated = 0;
 
     $active_shows = new WP_Query($active_shows_today);
     if($active_shows->have_posts()){
     	$show = "no show right now";
     	$done = 0;
+    	$iterated = 1;
 
 	    while ( $active_shows->have_posts() ) {
 	    	$active_shows->the_post();
@@ -100,7 +102,7 @@
 				break;
 	    }
 
-	    if(!$active_shows->have_posts()){
+	    if(!$active_shows->have_posts() && !$iterated){
 	    	$show = "no shows left today";
 	    }
 	}
