@@ -4,6 +4,7 @@
 *.jpeg
 *.m3u
 *.svg
+*.pdf
 
 fontawesome-free-5.0.7/*
 wordpress/wp-config.php

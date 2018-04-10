@@ -13,7 +13,7 @@ html {
 
 .cd-schedule {
   font-size: 1.6rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #222222;
   background-color: white;
 }
@@ -662,4 +662,8 @@ Main Components
 
 .single-event {
   border: 1px solid white;
+}
+
+.event-name {
+  font-family: 'Montserrat', sans-serif;
 }

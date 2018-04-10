@@ -15,7 +15,7 @@
 ?>
 
 	<div class="big-announcement">
-		<span>Coming Soon...</span>
+		<span>Online Store Coming Soon...</span>
 	</div>
 
 <?php 

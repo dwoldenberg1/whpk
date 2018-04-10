@@ -102,10 +102,21 @@ a:visited {
   bottom: 20px;
   right: 20px;
   font-size: 3em;
+  display: flex;
+}
+
+.contact-icons > a, .contact-icons > div {
+  padding-right: 10px;
+}
+
+.main-num {
+  padding-top: 5px;
+  color: white;
+  user-select: none;
 }
 
 .fa-facebook-square:hover, .fa-twitter-square:hover {
-    color: maroon;
+    color: #f54848;
 }
 
 .sticky-cont {
@@ -125,7 +136,7 @@ a:visited {
 
 
 .nav > a:hover {
-	color: maroon !important;
+	color: #f54848 !important;
 }
 
 .whpk-logo {
@@ -138,12 +149,12 @@ a:visited {
  	padding: 20px 20px 20px 20px;
   margin: auto 0 auto 0;
   position: absolute;
-  top: 4px;
+  top: 8px;
   left: 105px;
 }
 
 .station-info {
-  	font-size: 32px;
+  	font-size: 48px;
   	padding-bottom: 10px;
 }
 
@@ -210,7 +221,7 @@ a:visited {
 }
 
 .active > a {
-  color: maroon !important;
+  color: #f54848 !important;
 }
 
 .listen:hover {
@@ -366,20 +377,21 @@ a:visited {
   width: 80%;
   margin: auto;
   font-size: 1.2em;
-  font-family: 'Regular San';
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .main > p > a, .sttmnt > div > a, .main > ol > li > a {
-  color: maroon !important;
-  font-size: 1.3em;
+  color: #f54848 !important;
 }
 
 .main > p > b {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 b.whpk-main {
   font-size: 2em !important;
+  font-family: 'Black San';
 }
 
 .b-text{
@@ -457,7 +469,7 @@ p {
 
 .foot {
 	padding: 2px;
-  font-size: 1em;
+  font-size: 2em;
 }
 
 .foot > a {
@@ -465,16 +477,16 @@ p {
 }
 
 .social {
-  font-size: 1.7em;
+  font-size: 2.7em;
 }
 
 .cprt {
-  font-size: 0.5em;
+  font-size: 0.8em;
   font-family: sans-serif;
 }
 
 .sttmnt {
-  font-size: 11px;
+  font-size: 1.3em;
   padding-left: 12px;
 }
 
@@ -527,7 +539,8 @@ p {
 
 .content-loaded {
   padding: 30px 30px 30px 30px;
-  font-family: 'Black San';
+  font-family: 'Montserrat', sans-serif;
+
   opacity: 1 !important;
 }
 
@@ -538,7 +551,8 @@ p {
 
 .show-about {
   font-size: 2em;
-  font-family: 'Regular San';
+  font-family: 'Montserrat', sans-serif;
+
   padding: 0px 0px 0px 0px !important;
 }
 
@@ -564,7 +578,7 @@ p {
 }
 
 .contact-address > a, .contact-email > a{
-  color: maroon;
+  color: #f54848;
 }
 
 .wpforms-container {
@@ -573,7 +587,8 @@ p {
 }
 
 .wpforms-title {
-  font-size: 2em !important;
+  font-size: 3em !important;
+  font-family: 'Regular San';
 }
 
 .wpforms-description {
@@ -581,7 +596,8 @@ p {
 }
 
 .wpforms-submit {
-  font-family: 'Black San' !important;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 /* Merch Stuff */
@@ -589,7 +605,8 @@ p {
 .big-announcement {
   text-align: center;
   font-size: 5em;
-  padding: 50px
+  padding: 50px;
+  font-family: 'Regular San';
 }
 
 /* Donate Stuff */
@@ -600,6 +617,10 @@ h3 {
 
 h2 {
   font-size: 3em;
+}
+
+h2, h3 {
+  font-family: 'Regular San';
 }
 
 h2, h3, ol {
