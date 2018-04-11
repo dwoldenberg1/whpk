@@ -158,7 +158,7 @@ jQuery(document).ready(function($){
 				top: eventTop + 150 +'px',
 				left: eventLeft+'px',
 				height: modalHeight+'px',
-				width: modalWidth+ 50 + 'px',
+				width: modalWidth + 'px',
 			});
 			transformElement(self.modal, 'translateY('+modalTranslateY+'px) translateX('+modalTranslateX+'px)');
 
