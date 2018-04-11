@@ -469,7 +469,7 @@ p {
 
 .foot {
 	padding: 2px;
-  font-size: 2em;
+  font-size: 20px;
 }
 
 .foot > a {
@@ -486,7 +486,7 @@ p {
 }
 
 .sttmnt {
-  font-size: 1.3em;
+  font-size: 16px;
   padding-left: 12px;
 }
 
@@ -498,6 +498,7 @@ p {
 .bot-pic {
  	height: 110px;
 	width: 96px;
+  box-sizing: initial !important;
 	padding: 0px 20px 20px 20px;
 	float: right;
 }
