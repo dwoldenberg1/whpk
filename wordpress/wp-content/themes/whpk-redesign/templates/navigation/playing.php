@@ -109,7 +109,7 @@
 
 ?>
 
-<div class="playing playing-open playing-transition" data-content="<?php echo $title; ?>">
+<div class="playing playing-open playing-transition" data-content="<?php echo (($done == 1)?$title:""); ?>">
 	<div class="toggle-arrow">
 		<i class="fa fa-arrow-circle-right" style="font-size:24px"></i>
 	</div>
