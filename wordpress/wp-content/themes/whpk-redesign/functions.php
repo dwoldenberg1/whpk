@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'whpk_setup' );
 
 function themeslug_enqueue_style() {
 	wp_enqueue_style('core-style', get_stylesheet_uri());
-  wp_enqueue_style('montserrat-font', "https://fonts.googleapis.com/css?family=Montserrat:400,400i");
+  wp_enqueue_style('montserrat-font', "https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i");
 }
 
 function themeslug_enqueue_script() {
