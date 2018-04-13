@@ -41,10 +41,10 @@
                       </a>
                     </div>
                     <div>
-                      office: 773-702-8289
+                      studio: 773-702-8424
                     </div>
                     <div>
-                      studio: 773-702-8424
+                      phone line: 712 432 7726
                     </div>
                   </div>
               </div>

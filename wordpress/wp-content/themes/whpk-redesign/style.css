@@ -531,11 +531,11 @@ p {
 }
 
 #fourofour-pic {
-  width: 100%;
+  width: 250px;
 }
 
 .fourfour {
-  font-size: 50vw;
+  font-size: 250px;
 }
 
 
@@ -583,12 +583,14 @@ p {
 
 .contact-item {
   padding: 0px 10px 0px 10px;
-  margin: auto;
   flex-basis: 25%;
+  line-height: 25px;
+  text-align: center;
 }
 
 .contact-whpk{
   font-size: 2em;
+  line-height: initial !important;
 }
 
 .contact-address > a, .contact-email > a{
@@ -612,6 +614,30 @@ p {
 .wpforms-submit {
   font-family: 'Montserrat', sans-serif;
 
+}
+
+.contact-main > h1 {
+  font-size: 2em;
+  font-family: 'Black San';
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.contact-title {
+  color: maroon;
+  font-size: 1.2em;
+}
+
+.genre-contact, .contact-desc {
+  padding-left: 20px;
+}
+
+.contact-desc {
+  line-height: 30px;
+}
+
+.ul1 > li {
+  padding-bottom: 20px;
 }
 
 /* Merch Stuff */

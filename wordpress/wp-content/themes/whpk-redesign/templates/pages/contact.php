@@ -30,25 +30,23 @@
 		<div class="contact-numbers contact-item">
 			<span>studio: 773-702-8424</span>
 			<br> 
-			<span>office: 773-702-8289</span>
+			<span>Phone Line: 712 432 7726</span>
 			<br>
-			<span>fax: 773-702-7718</span>
-		</div>
-		<div class="contact-email contact-item">
 			<a href="mailto:contact@whpk.org">
 				<span>contact@whpk.org</span>
 			</a>
 		</div>
-
-
 	</div>
 
-<?php
+	<div class="contact-main">
+		<h1> - Our Staff - </h1>
+	<?php
 
-	while ( have_posts() ) : the_post();
-		
-		echo the_content(); 
+		while ( have_posts() ) : the_post();
+			
+			echo the_content(); 
 
-	endwhile;
+		endwhile;
 
-?>
+	?>
+	</div>
