@@ -676,6 +676,17 @@ ol {
   padding-left: 30px;
 }
 
+/* Events stuff */
+
+.events-main {
+  width: 90%;
+  margin: auto;
+}
+
+.past-events {
+  border-top: 1px dashed black !important;
+  padding-top: 20px !important;
+}
 
 
 /* Now Playing widget */
