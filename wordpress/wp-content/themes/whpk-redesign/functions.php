@@ -288,19 +288,20 @@ function create_day_taxonomy() {
 
 /** Creating meta Boxs for show campaigns **/
 
-add_action( 'add_meta_boxes', 'campaign_box' );
-function campaign_box() {
+add_action( 'add_meta_boxes', 'campaign_box_show' );
+
+function campaign_box_show() {
     add_meta_box( 
-        'campaign_box',
+        'campaign_box_show',
         __( 'Show Information', 'whpk-redesign' ),
-        'campaign_content',
+        'campaign_content_show',
         'show',
         'side',
         'high'
     );
 }
 
-function campaign_content( $post ) {
+function campaign_content_show( $post ) {
   wp_nonce_field( plugin_basename( __FILE__ ), 'campaign_nonce' );
 
   $start_t = date('G:i', get_post_meta($post->ID, 'start_time', true));
@@ -337,8 +338,8 @@ function campaign_content( $post ) {
   <?php
 }
 
-add_action( 'save_post', 'campaign_save' );
-function campaign_save( $post_id ) {
+add_action( 'save_post', 'campaign_save_show' );
+function campaign_save_show( $post_id ) {
 
   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
   return;
@@ -346,11 +347,10 @@ function campaign_save( $post_id ) {
   if ( !wp_verify_nonce( $_POST['campaign_nonce'], plugin_basename( __FILE__ ) ) )
   return;
 
-  if ( 'page' == $_POST['post_type'] ) {
+  if ( 'show' == $_POST['post_type'] ) {
     if ( !current_user_can( 'edit_page', $post_id ) )
     return;
   } else {
-    if ( !current_user_can( 'edit_post', $post_id ) )
     return;
   }
 
@@ -386,7 +386,7 @@ function campaign_save( $post_id ) {
   }
 }
 
-/* validate the times */
+/* validate show/event data */
 add_action('wp_print_scripts','my_publish_admin_hook');
 
 function my_publish_admin_hook(){
@@ -462,8 +462,8 @@ function pre_submit_validation(){
     	}
 
     	if ($end_t == "") {
-			echo 'please enter a valid end time';
-			die();
+			 echo 'please enter a valid end time';
+			 die();
     	}
 
     	if($end_t < $start_t) {
@@ -483,15 +483,15 @@ function pre_submit_validation(){
 
     	foreach ($djs as $dj) {
     		$user = reset(
-			 get_users(
-			  array(
-			   'meta_key' => 'nickname',
-			   'meta_value' => $dj,
-			   'number' => 1,
-			   'count_total' => false
-			  )
-			 )
-			);
+  			 get_users(
+  			  array(
+  			   'meta_key' => 'nickname',
+  			   'meta_value' => $dj,
+  			   'number' => 1,
+  			   'count_total' => false
+  			  )
+  			 )
+  			);
 
     		if(!$user){
     			echo 'please only enter valid djs, "'.$dj.'" was not valid';
@@ -501,10 +501,106 @@ function pre_submit_validation(){
 
     	echo 'true';
     	die();
+    } else if (get_post_type($form_data['post_ID']) == 'event') {
+      $start_t = strtotime($form_data['start_time']);
+      $end_t   = strtotime($form_data['end_time']);
+
+      $location = $form_data['event_location'];
+
+      if($start_t == ""){
+        echo 'please enter a valid start time';
+        die();
+      }
+
+      if ($end_t == "") {
+       echo 'please enter a valid end time';
+       die();
+      }
+
+      if($end_t < $start_t) {
+        echo 'end time cannot be before start time';
+        die();
+      }
+
+      if($location == "") {
+        echo 'Please enter a location';
+        die();
+      }
+
+      echo 'true';
+      die();
     } else {
     	echo 'true';
     	die();
     }
+}
+
+/** Creating meta Boxs for events **/
+
+add_action( 'add_meta_boxes', 'campaign_box_event' );
+
+function campaign_box_event() {
+    add_meta_box( 
+        'campaign_box_event',
+        __( 'Event Information', 'whpk-redesign' ),
+        'campaign_content_event',
+        'event',
+        'side',
+        'high'
+    );
+}
+
+function campaign_content_event( $post ) {
+  wp_nonce_field( plugin_basename( __FILE__ ), 'campaign_nonce' );
+
+  $start_t = date('Y-n-j G:i', get_post_meta($post->ID, 'start_time', true));
+  $end_t   = date('Y-n-j G:i', get_post_meta($post->ID, 'end_time', true));
+  $location = get_post_meta($post->ID, 'event_location', true);
+
+  ?>
+    <label for="start_time">Start time (Y-M-D H:M)</label>
+    <input type="text" id="start_time" name="start_time" placeholder="ex.) 2018-4-20 4:20" value="<?php echo $start_t?>"/>
+    <br>
+    <label for="end_time">End time (Y-M-D H:M)</label>
+    <input type="text" id="end_time" name="end_time" placeholder="ex.) 2018-5-25 6:30" value="<?php echo $end_t?>"/>
+    <br>
+    <label for="event_location">Location</label>
+    <br>
+    <input type="text" id="event_location" name="event_location" placeholder="ex.) Reynold's club" value="<?php echo $location?>"/>
+    <br>
+  <?php
+}
+
+add_action( 'save_post', 'campaign_save_event' );
+function campaign_save_event( $post_id ) {
+
+  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+  return;
+
+  if ( !wp_verify_nonce( $_POST['campaign_nonce'], plugin_basename( __FILE__ ) ) )
+  return;
+
+  if ( 'event' == $_POST['post_type'] ) {
+    if ( !current_user_can( 'edit_page', $post_id ) )
+    return;
+  } else {
+    return;
+  }
+
+  /* "2007-01-01" is an aribitrary time that was used in the 
+   * legacy db needed to proper migration 
+   */
+  $start_t = strtotime($_POST['start_time']);
+  $end_t   = strtotime($_POST['end_time']);
+  $location = esc_attr($_POST['event_location']);
+
+  if($end_t == "" || $start_t == ""){
+    return;
+  } else {
+    update_post_meta( $post_id, 'start_time', $start_t);
+    update_post_meta( $post_id, 'end_time', $end_t);
+    update_post_meta( $post_id, 'event_location', $location);
+  }
 }
 
 /** Function to determine Genre type **/
