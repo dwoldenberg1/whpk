@@ -559,7 +559,7 @@ function campaign_content_event( $post ) {
 
   ?>
     <label for="start_time">Start time (Y-M-D H:M)</label>
-    <input type="text" id="start_time" name="start_time" placeholder="ex.) 2018-4-20 4:20" value="<?php echo $start_t?>"/>
+    <input type="text" id="start_time" name="start_time" placeholder="ex.) 2018-4-20 6:00" value="<?php echo $start_t?>"/>
     <br>
     <label for="end_time">End time (Y-M-D H:M)</label>
     <input type="text" id="end_time" name="end_time" placeholder="ex.) 2018-5-25 6:30" value="<?php echo $end_t?>"/>
@@ -858,4 +858,70 @@ function get_old_day($num) {
 function import_shows_done() {
     add_option('my_script_completev17', 1);
     die("Script finished.");
+}
+
+/* Numeric Pagination */
+
+function numeric_posts_nav($query) {
+ 
+  /** Stop execution if there's only 1 page */
+  if( $query->max_num_pages <= 1 )
+      return;
+
+  $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+  $max   = intval( $query->max_num_pages );
+
+  /** Add current page to the array */
+  if ( $paged >= 1 )
+      $links[] = $paged;
+
+  /** Add the pages around the current page to the array */
+  if ( $paged >= 3 ) {
+      $links[] = $paged - 1;
+      $links[] = $paged - 2;
+  }
+
+  if ( ( $paged + 2 ) <= $max ) {
+      $links[] = $paged + 2;
+      $links[] = $paged + 1;
+  }
+
+  echo '<div class="navigation"><ul>' . "\n";
+
+  /** Previous Post Link */
+  if ( get_previous_posts_link() )
+      printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+
+  /** Link to first page, plus ellipses if necessary */
+  if ( ! in_array( 1, $links ) ) {
+      $class = 1 == $paged ? ' class="active"' : '';
+
+      printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+
+      if ( ! in_array( 2, $links ) )
+          echo '<li>…</li>';
+  }
+
+  /** Link to current page, plus 2 pages in either direction if necessary */
+  sort( $links );
+  foreach ( (array) $links as $link ) {
+      $class = $paged == $link ? ' class="active"' : '';
+      printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+  }
+
+  /** Link to last page, plus ellipses if necessary */
+  if ( ! in_array( $max, $links ) ) {
+      if ( ! in_array( $max - 1, $links ) )
+          echo '<li>…</li>' . "\n";
+
+      $class = $paged == $max ? ' class="active"' : '';
+      printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+  }
+
+  /** Next Post Link */
+  if ( get_next_posts_link() )
+      printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+
+  echo '</ul></div>' . "\n";
+ 
 }

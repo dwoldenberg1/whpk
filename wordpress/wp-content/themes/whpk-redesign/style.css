@@ -221,7 +221,7 @@ a:visited {
 }
 
 .active > a {
-  color: #f54848 !important;
+  color: #f54848;
 }
 
 .listen:hover {
@@ -683,11 +683,87 @@ ol {
   margin: auto;
 }
 
+.upcoming-events {
+  border-bottom: 1px dashed black !important;
+}
+
 .past-events {
-  border-top: 1px dashed black !important;
   padding-top: 20px !important;
 }
 
+.u-event {
+  display: flex;
+  flex-direction: row;
+}
+
+.event-d {
+  border: 2px solid black;
+  margin: 20px;
+  padding: 10px;
+  min-width: 115px;
+  max-width: 115px;
+  min-height: 130px;
+  max-height: 130px;
+}
+
+.event-day {
+  font-size: 80px;
+}
+
+.event-month {
+  font-size: 30px;
+}
+
+.event-day, .event-month, .event-weekday, .event-loc, .event-times {
+  text-align: center;
+}
+
+.event-data-info, .event-main-cont {
+  padding: 50px 20px 20px 20px;
+}
+
+.event-title, .event-loc {
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+.event-title > b {
+  font-weight: 700;
+}
+
+/* Numeric Pagination */
+
+.nav-cont {
+  padding: 30px 30px 30px 20px;
+}
+
+.navigation li a,
+.navigation li a:hover,
+.navigation li.active a,
+.navigation li.disabled {
+    color: #fff;
+    text-decoration:none;
+}
+ 
+.navigation li {
+    display: inline;
+}
+ 
+.navigation li a,
+.navigation li a:hover,
+.navigation li.active a,
+.navigation li.disabled {
+    background-color: #f7a6a7;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 12px;
+    padding: 0.75rem;
+}
+ 
+.navigation li a:hover,
+.navigation li.active a {
+    background-color: #f64848;
+}
 
 /* Now Playing widget */
 .playing {
