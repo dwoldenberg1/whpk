@@ -330,6 +330,15 @@ a:visited {
   .contact-item{
     padding-bottom: 20px !important;
   }
+
+  .u-event {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .event-d {
+    margin: auto !important;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -694,6 +703,9 @@ ol {
 .u-event {
   display: flex;
   flex-direction: row;
+  border: 1px dashed lightgray;
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
 .event-d {
@@ -704,6 +716,11 @@ ol {
   max-width: 115px;
   min-height: 130px;
   max-height: 130px;
+  background: #fff;
+}
+
+.event-day, .event-times {
+  color: #f64848;
 }
 
 .event-day {
