@@ -81,6 +81,29 @@
 				?>
 
 				<div class="u-event">
+					<?php if( has_post_thumbnail($upcoming->post) ) : ?>
+					<div class="thumb-vert">
+						<div class="event-d-vert">
+						<div class="event-day">
+								<?php echo date('j', $start_t); ?>
+							</div>
+							<div class="event-month">
+								<?php echo date('M', $start_t); ?>
+							</div>
+							<div class="event-weekday">
+								<?php echo date('l', $start_t); ?>
+							</div>
+						</div>
+						<div class="event-data-info-vert">
+							<div class="event-loc">
+								<span>Location: <?php echo $loc; ?></span>
+							</div>
+							<div class="event-times">
+								<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
+							</div>
+						</div>
+					</div>
+					<?php else : ?>
 					<div class="event-d">
 						<div class="event-day">
 							<?php echo date('j', $start_t); ?>
@@ -97,13 +120,15 @@
 							<span>Location: <?php echo $loc; ?></span>
 						</div>
 						<div class="event-times">
-							<?php echo date('n/j g:i a', $start_t). " - " .date('n/j g:i a', $end_t); ?>
+							<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
 						</div>
 					</div>
+					<?php endif;?>
 					<div class="event-main-cont">
 						<div class="event-title">
 							<b><?php echo $title; ?></b>
 						</div>
+						<?php the_post_thumbnail(); ?>
 						<div class="event-desc">
 							<?php echo $desc; ?>
 						</div>
@@ -139,6 +164,29 @@
 				?>
 
 				<div class="u-event">
+					<?php if( has_post_thumbnail($past->post) ) : ?>
+					<div class="thumb-vert">
+						<div class="event-d-vert">
+						<div class="event-day">
+								<?php echo date('j', $start_t); ?>
+							</div>
+							<div class="event-month">
+								<?php echo date('M', $start_t); ?>
+							</div>
+							<div class="event-weekday">
+								<?php echo date('l', $start_t); ?>
+							</div>
+						</div>
+						<div class="event-data-info-vert">
+							<div class="event-loc">
+								<span>Location: <?php echo $loc; ?></span>
+							</div>
+							<div class="event-times">
+								<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
+							</div>
+						</div>
+					</div>
+					<?php else : ?>
 					<div class="event-d">
 						<div class="event-day">
 							<?php echo date('j', $start_t); ?>
@@ -155,13 +203,15 @@
 							<span>Location: <?php echo $loc; ?></span>
 						</div>
 						<div class="event-times">
-							<?php echo date('n/j g:i a', $start_t). " - " .date('n/j g:i a', $end_t); ?>
+							<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
 						</div>
 					</div>
+					<?php endif;?>
 					<div class="event-main-cont">
 						<div class="event-title">
 							<b><?php echo $title; ?></b>
 						</div>
+						<?php the_post_thumbnail(); ?>
 						<div class="event-desc">
 							<?php echo $desc; ?>
 						</div>

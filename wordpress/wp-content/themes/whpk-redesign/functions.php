@@ -51,6 +51,16 @@ function hook_js() {
 	<?php
 }
 
+/** Thumbnails **/
+
+add_theme_support( 'post-thumbnails' );
+
+add_action( 'do_meta_boxes', 'remove_thumbnail_box' );
+
+function remove_thumbnail_box() {
+    remove_meta_box( 'postimagediv', 'show', 'side' );
+}
+
 /** Adding Role for User IDs **/
 
 function custom_fields($user) {

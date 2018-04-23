@@ -336,8 +336,12 @@ a:visited {
     width: 100% !important;
   }
 
-  .event-d {
+  .event-d, .event-d-vert {
     margin: auto !important;
+  }
+
+  .event-d-vert {
+    margin-bottom: 20px !important;
   }
 }
 
@@ -708,7 +712,7 @@ ol {
   padding: 20px;
 }
 
-.event-d {
+.event-d, .event-d-vert {
   border: 2px solid black;
   margin: 20px;
   padding: 10px;
@@ -746,6 +750,14 @@ ol {
 
 .event-title > b {
   font-weight: 700;
+}
+
+.event-main-cont > img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  padding-bottom: 20px;
 }
 
 /* Numeric Pagination */
