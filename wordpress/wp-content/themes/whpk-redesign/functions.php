@@ -563,9 +563,12 @@ function campaign_box_event() {
 function campaign_content_event( $post ) {
   wp_nonce_field( plugin_basename( __FILE__ ), 'campaign_nonce' );
 
-  $start_t = date('Y-n-j G:i', get_post_meta($post->ID, 'start_time', true));
-  $end_t   = date('Y-n-j G:i', get_post_meta($post->ID, 'end_time', true));
+  date_default_timezone_set('America/Chicago');
+
+  $start_t  = date('Y-n-j G:i', get_post_meta($post->ID, 'start_time', true));
+  $end_t    = date('Y-n-j G:i', get_post_meta($post->ID, 'end_time', true));
   $location = get_post_meta($post->ID, 'event_location', true);
+  $addr     = get_post_meta($post->ID, 'event_address', true);
 
   ?>
     <label for="start_time">Start time (Y-M-D H:M)</label>
@@ -577,6 +580,10 @@ function campaign_content_event( $post ) {
     <label for="event_location">Location</label>
     <br>
     <input type="text" id="event_location" name="event_location" placeholder="ex.) Reynold's club" value="<?php echo $location?>"/>
+    <br>
+    <label for="event_address">Address (optional)</label>
+    <br>
+    <input type="text" id="event_address" name="event_address" placeholder="ex.) 5706 S University Ave, Chicago, IL 60637" value="<?php echo $addr?>"/>
     <br>
   <?php
 }
@@ -597,12 +604,12 @@ function campaign_save_event( $post_id ) {
     return;
   }
 
-  /* "2007-01-01" is an aribitrary time that was used in the 
-   * legacy db needed to proper migration 
-   */
-  $start_t = strtotime($_POST['start_time']);
-  $end_t   = strtotime($_POST['end_time']);
+  date_default_timezone_set('America/Chicago');
+
+  $start_t  = strtotime($_POST['start_time']);
+  $end_t    = strtotime($_POST['end_time']);
   $location = esc_attr($_POST['event_location']);
+  $addr     = esc_attr($_POST['event_address']);
 
   if($end_t == "" || $start_t == ""){
     return;
@@ -610,6 +617,7 @@ function campaign_save_event( $post_id ) {
     update_post_meta( $post_id, 'start_time', $start_t);
     update_post_meta( $post_id, 'end_time', $end_t);
     update_post_meta( $post_id, 'event_location', $location);
+    update_post_meta( $post_id, 'event_address', $addr);
   }
 }
 

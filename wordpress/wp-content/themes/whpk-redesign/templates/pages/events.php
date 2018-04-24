@@ -73,7 +73,8 @@
 				$title = get_the_title();
 				$desc  = get_the_content();
 
-				$loc =  get_post_meta( $upcoming->post->ID, 'event_location', true );
+				$loc  = get_post_meta( $upcoming->post->ID, 'event_location', true );
+				$addr = get_post_meta( $upcoming->post->ID, 'event_address', true );
 
 				$start_t = get_post_meta( $upcoming->post->ID, 'start_time', true );
 				$end_t   = get_post_meta( $upcoming->post->ID, 'end_time', true );
@@ -97,6 +98,10 @@
 						<div class="event-data-info-vert">
 							<div class="event-loc">
 								<span>Location: <?php echo $loc; ?></span>
+								<?php if($addr != "") : ?>
+								<br>
+								<span>(<a class="g-maps-event" target="_blank" href="https://maps.google.com/?q=<?php echo $addr?>"><?php echo $addr?></a>)</span>
+							<?php endif; ?>
 							</div>
 							<div class="event-times">
 								<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
@@ -118,6 +123,11 @@
 					<div class="event-data-info">
 						<div class="event-loc">
 							<span>Location: <?php echo $loc; ?></span>
+							<?php if($addr != "") : ?>
+							<br>
+							<span>(<a class="g-maps-event" target="_blank" href="https://maps.google.com/?q=<?php echo $addr?>"><?php echo $addr?></a>)</span>
+	
+							<?php endif; ?>					
 						</div>
 						<div class="event-times">
 							<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
@@ -157,6 +167,7 @@
 				$desc  = get_the_content();
 
 				$loc =  get_post_meta( $past->post->ID, 'event_location', true );
+				$addr = get_post_meta( $past->post->ID, 'event_address', true );
 
 				$start_t = get_post_meta( $past->post->ID, 'start_time', true );
 				$end_t   = get_post_meta( $past->post->ID, 'end_time', true );
@@ -180,6 +191,10 @@
 						<div class="event-data-info-vert">
 							<div class="event-loc">
 								<span>Location: <?php echo $loc; ?></span>
+								<?php if($addr != "") : ?>
+								<br>
+								<span>(<a class="g-maps-event" target="_blank" href="https://maps.google.com/?q=<?php echo $addr?>"><?php echo $addr?></a>)</span>
+								<?php endif; ?>
 							</div>
 							<div class="event-times">
 								<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
@@ -201,6 +216,10 @@
 					<div class="event-data-info">
 						<div class="event-loc">
 							<span>Location: <?php echo $loc; ?></span>
+							<?php if($addr != "") : ?>
+							<br>
+							<span>(<a class="g-maps-event" target="_blank" href="https://maps.google.com/?q=<?php echo $addr?>"><?php echo $addr?></a>)</span>
+							<?php endif; ?>					
 						</div>
 						<div class="event-times">
 							<?php echo "<span>".date('n/j g:i a', $start_t). "</span> - <span>" .date('n/j g:i a', $end_t),"</span>"; ?>
