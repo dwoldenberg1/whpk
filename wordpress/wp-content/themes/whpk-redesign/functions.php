@@ -12,6 +12,8 @@
 
 /** Wordpress set up **/
 
+date_default_timezone_set('America/Chicago');
+
 function whpk_setup() {
 	/* linked scripts/css */
 	add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_script' );

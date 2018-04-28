@@ -5,6 +5,7 @@
 *.m3u
 *.svg
 *.pdf
+*.DS_STORE
 
 fontawesome-free-5.0.7/*
 wordpress/wp-config.php

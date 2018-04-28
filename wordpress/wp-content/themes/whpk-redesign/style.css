@@ -404,7 +404,7 @@ a:visited {
   margin: auto;
   font-size: 1.2em;
   font-family: 'Montserrat', sans-serif;
-
+  line-height: 22px;
 }
 
 .main > p > a, .sttmnt > div > a, .main > ol > li > a {

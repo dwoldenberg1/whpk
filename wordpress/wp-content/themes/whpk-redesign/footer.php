@@ -44,7 +44,7 @@
                       studio: 773-702-8424
                     </div>
                     <div>
-                      phone line: 712 432 7726
+                      Listen at 712-432-7726
                     </div>
                   </div>
               </div>

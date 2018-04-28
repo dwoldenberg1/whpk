@@ -30,7 +30,7 @@
 		<div class="contact-numbers contact-item">
 			<span>studio: 773-702-8424</span>
 			<br> 
-			<span>Phone Line: 712 432 7726</span>
+			<span>Listen at 712-432-7726</span>
 			<br>
 			<a href="mailto:contact@whpk.org">
 				<span>contact@whpk.org</span>
