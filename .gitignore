@@ -7,7 +7,6 @@
 *.pdf
 *.DS_Store
 
-.htaccess
-
+wordpress/.htaccess
 fontawesome-free-5.0.7/*
 wordpress/wp-config.php
