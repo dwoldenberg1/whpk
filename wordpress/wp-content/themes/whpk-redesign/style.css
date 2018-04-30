@@ -399,7 +399,7 @@ a:visited {
 }
 
 .main {
-  padding-top: 15px;
+  padding-top: 35px;
   width: 80%;
   margin: auto;
   font-size: 1.2em;
@@ -729,6 +729,8 @@ ol {
 
 .event-day {
   font-size: 80px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .event-month {
