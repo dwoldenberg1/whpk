@@ -233,6 +233,10 @@ a:visited {
   height: 35px;
 }
 
+.social-icon {
+  color: black !important;
+}
+
 /* hamburger menu for mobile*/
 
 .ham {
@@ -748,6 +752,10 @@ ol {
 .event-title, .event-loc {
   font-size: 30px;
   padding-bottom: 20px;
+}
+
+.event-loc {
+  line-height: 28px;
 }
 
 .event-title > b {

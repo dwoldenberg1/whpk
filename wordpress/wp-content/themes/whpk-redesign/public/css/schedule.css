@@ -324,7 +324,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-4"],
-.cd-schedule [data-event="event-4"] .header-bg, .spec {
+.cd-schedule [data-event="event-4"] .header-bg, .electronic {
   background: #d863a8;
 }
 
@@ -333,7 +333,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-5"],
-.cd-schedule [data-event="event-5"] .header-bg, .inter {
+.cd-schedule [data-event="event-5"] .header-bg, .international {
   background: #ff9ed7;
 }
 
@@ -360,7 +360,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-8"],
-.cd-schedule [data-event="event-8"] .header-bg, .pub {
+.cd-schedule [data-event="event-8"] .header-bg, .public-affairs {
   background: #ffd551;
 }
 
