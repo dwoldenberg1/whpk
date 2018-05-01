@@ -72,7 +72,7 @@
 			<span>Public Affairs</span>
 		</div>
 		<div class="legend-box spec">
-			<span>Specialty</span>
+			<span>Electronic</span>
 		</div>
 	</div>
 

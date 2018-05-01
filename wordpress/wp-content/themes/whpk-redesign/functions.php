@@ -237,21 +237,21 @@ add_action( 'init', 'create_day_taxonomy', 0 );
 function create_genre_taxonomy() {
  
   $labels = array(
-    'name' => _x( 'Genres', 'taxonomy general name' ),
-    'singular_name' => _x( 'Genre', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Genres' ),
-    'popular_items' => __( 'Popular Genres' ),
-    'all_items' => __( 'All Genres' ),
+    'name' => _x( 'Formats', 'taxonomy general name' ),
+    'singular_name' => _x( 'Format', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Formats' ),
+    'popular_items' => __( 'Popular Formats' ),
+    'all_items' => __( 'All Formats' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Genre' ), 
-    'update_item' => __( 'Update Genre' ),
-    'add_new_item' => __( 'Add New Genre' ),
-    'new_item_name' => __( 'New Genre Name' ),
-    'separate_items_with_commas' => __( 'Separate Genres with commas' ),
-    'add_or_remove_items' => __( 'Add or remove Genres' ),
-    'choose_from_most_used' => __( 'Choose from the most used Genres' ),
-    'menu_name' => __( 'Genre' ),
+    'edit_item' => __( 'Edit Format' ), 
+    'update_item' => __( 'Update Format' ),
+    'add_new_item' => __( 'Add New Format' ),
+    'new_item_name' => __( 'New Format Name' ),
+    'separate_items_with_commas' => __( 'Separate Formats with commas' ),
+    'add_or_remove_items' => __( 'Add or remove Formats' ),
+    'choose_from_most_used' => __( 'Choose from the most used Formats' ),
+    'menu_name' => __( 'Format' ),
   ); 
 
  
@@ -652,7 +652,7 @@ function get_genre_val($num) {
 		case "jazz":
 			return 3;
 			break;
-		case "specialty":
+		case "electronic":
 			return 4;
 			break;
 		case "international":
@@ -667,7 +667,7 @@ function get_genre_val($num) {
 		case "public-affairs":
 			return 8;
 			break;
-		case "dance-rpm":
+		case "specialty":
 			return 9;
 			break;
 		default:
