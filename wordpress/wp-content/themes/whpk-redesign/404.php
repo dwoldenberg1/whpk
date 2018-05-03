@@ -24,6 +24,8 @@ get_header(); ?>
 
 <div class="main">
 
+	<?php get_template_part('templates/navigation/playing'); ?>
+
 	<div id="fourofour-img">
 		<div class="fourfour">
 			4

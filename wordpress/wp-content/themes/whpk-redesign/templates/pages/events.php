@@ -41,7 +41,7 @@
       'paged' => $paged,
       'meta_key' => 'start_time',
       'orderby' => 'meta_value_num',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'meta_query' => array(
 	    array(
 	      'key' => 'start_time',
