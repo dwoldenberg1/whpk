@@ -296,17 +296,17 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-1"],
-.cd-schedule [data-event="event-1"] .header-bg, .rock{
+.cd-schedule [data-event="event-1"] .header-bg, .format-1 {
   /* this is used to set a background color for the event and the modal window */
-  background: #569c4c;
+  background: #9e17fb;
 }
 
 .cd-schedule .single-event[data-event="event-1"]:hover {
-  background: #8ad57f;
+  background: #d393ff;
 }
 
 .cd-schedule .single-event[data-event="event-2"],
-.cd-schedule [data-event="event-2"] .header-bg, .rap {
+.cd-schedule [data-event="event-2"] .header-bg, .format-2 {
   background: #f77372;
 }
 
@@ -315,16 +315,16 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-3"],
-.cd-schedule [data-event="event-3"] .header-bg, .jazz {
-  background: #408fde;
+.cd-schedule [data-event="event-3"] .header-bg, .format-3 {
+  background: #1eb7ac;
 }
 
 .cd-schedule .single-event[data-event="event-3"]:hover {
-  background: #7fb4e8;
+  background: #7dc5c0;
 }
 
 .cd-schedule .single-event[data-event="event-4"],
-.cd-schedule [data-event="event-4"] .header-bg, .electronic {
+.cd-schedule [data-event="event-4"] .header-bg, .format-4 {
   background: #d863a8;
 }
 
@@ -333,16 +333,16 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-5"],
-.cd-schedule [data-event="event-5"] .header-bg, .international {
-  background: #ff9ed7;
+.cd-schedule [data-event="event-5"] .header-bg, .format-5 {
+  background: #408fde;
 }
 
 .cd-schedule .single-event[data-event="event-5"]:hover {
-  background: #f9c3e2;
+  background: #7fb4e8;
 }
 
 .cd-schedule .single-event[data-event="event-6"],
-.cd-schedule [data-event="event-6"] .header-bg, .classical {
+.cd-schedule [data-event="event-6"] .header-bg, .format-6 {
   background: #feb042;
 }
 
@@ -351,7 +351,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-7"],
-.cd-schedule [data-event="event-7"] .header-bg, .folk {
+.cd-schedule [data-event="event-7"] .header-bg, .format-7 {
   background: #414dba;
 }
 
@@ -360,11 +360,29 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-8"],
-.cd-schedule [data-event="event-8"] .header-bg, .public-affairs {
-  background: #ffd551;
+.cd-schedule [data-event="event-8"] .header-bg, .format-8 {
+  background: #569c4c;
 }
 
 .cd-schedule .single-event[data-event="event-8"]:hover {
+  background: #8ad57f;
+}
+
+.cd-schedule .single-event[data-event="event-9"],
+.cd-schedule [data-event="event-9"] .header-bg, .format-9 {
+  background: #ff9ed7;
+}
+
+.cd-schedule .single-event[data-event="event-9"]:hover {
+  background: #f9c3e2;
+}
+
+.cd-schedule .single-event[data-event="event-10"],
+.cd-schedule [data-event="event-10"] .header-bg, .format-9 {
+  background: #ffd551;
+}
+
+.cd-schedule .single-event[data-event="event-10"]:hover {
   background: #ffe07e;
 }
 
@@ -666,4 +684,8 @@ Main Components
 
 .event-name {
   font-family: 'Montserrat', sans-serif;
+}
+
+.cd-schedule {
+  margin-top: 5px;
 }

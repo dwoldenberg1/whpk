@@ -14,9 +14,9 @@
  **/
 
 	$days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-	//$days = ["1", "2", "3", "4", "5", "6", "7"];
 	$day_count = 0;
 	$active_shows = array();
+	$formats = array();
 
 	foreach($days as $day){
 		$active_shows_perday = array(
@@ -50,12 +50,14 @@
 	<!-- https://codyhouse.co/gem/schedule-template/ -->
 
 	<div class="legend">
-	<?php 
+	<?php
+		$val = 1; 
 		$terms = get_terms('genres');
 		foreach ( $terms as $term):
 			if($term->description != "inactive"):
+				$formats[$term->slug] = $val;
 		?>
-		<div class="legend-box <?php echo $term->slug; ?>">
+		<div class="legend-box format-<?php echo $val++; ?>">
 			<span><?php echo (($term->slug == "international")?"Inter-national":$term->name); ?></span>
 		</div>
 	<?php endif; endforeach; ?>
@@ -64,6 +66,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri().'/public/css/schedule.css';?>">
 
+	<div class="alter-msg">* indicates that the show is alternating</div>
 	<div class="cd-schedule loading">
 		<div class="timeline">
 			<ul>
@@ -147,10 +150,10 @@
 
 						?>
 						<li class="single-event" data-start="<?php echo $start_time?>" data-end="<?php echo $end_time?>" 
-						data-content="event-<?php echo $show_title ?>" data-event="event-<?php echo get_genre_val($term->slug); ?>">
+						data-content="event-<?php echo $show_title ?>" data-event="event-<?php echo $formats[$term->slug]; ?>">
 							<a href="#0">
 								<em class="event-name"><?php 
-									echo ($alter)?($show_title."<br><span class='alter'>alternating with</span><br>".$show_title2):$show_title;
+									echo ($alter)?("<b>*</b> ".$show_title."<br><span class='alter'>alternating with</span><br>".$show_title2):$show_title;
 								?></em>
 							</a>
 							<div class="hidden" data-target="event-<?php echo get_the_ID() ?>" >

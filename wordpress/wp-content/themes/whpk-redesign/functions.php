@@ -641,6 +641,7 @@ function genre_type($post) {
 	return "not found";
 }
 
+/* Deprecated, do not use */
 function get_genre_val($num) {
 	switch($num) {
 		case "rock":
@@ -671,7 +672,7 @@ function get_genre_val($num) {
 			return 9;
 			break;
 		default:
-			return 42;
+			return 10;
 	}
 }
 
@@ -945,3 +946,31 @@ function numeric_posts_nav($query) {
   echo '</ul></div>' . "\n";
  
 }
+
+/* Adding support for different schedules */
+
+function schedule_selector($wp_customize){
+  $wp_customize->add_setting('schedule-selected', array(
+      'default'        => 'Default Schedule',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'schedule-chooser', 
+    array(
+      'label'    => __( 'Select Schedule Type', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'schedule-chooser',
+      'settings' => 'schedule-selected',
+      'type'     => 'radio',
+      'choices'  => array(
+        'Default Schedule'  => '0',
+        'Break Schedule'    => '1'
+      ),
+    )
+  );
+}
+
+add_action( 'customize_register', 'schedule_selector' );

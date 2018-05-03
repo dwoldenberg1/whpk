@@ -587,6 +587,12 @@ p {
   padding: 0px 0px 0px 0px !important;
 }
 
+.alter-msg {
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
 /* Contact stuff */
 
 .whpk-contact-head {
