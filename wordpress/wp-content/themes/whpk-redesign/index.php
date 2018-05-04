@@ -13,12 +13,15 @@
 
 $page_title = "home";
 
+//get_theme_mod('under-construction') == '' for not construction, == 1 for construction
+
 get_header(); ?>
 
 	<div class="space-taker" style="background : rgba(255, 255, 255, 0.4);">
 
 		<?php 	get_template_part('templates/headers/header'); 
-				get_template_part('templates/navigation/navbar'); 
+				get_template_part('templates/navigation/navbar');
+				//error_log(get_theme_mod('under-construction'), 0);
 		?>
 	</div>
 

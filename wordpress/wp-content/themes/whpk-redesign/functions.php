@@ -950,8 +950,31 @@ function numeric_posts_nav($query) {
 /* Adding support for different schedules */
 
 function schedule_selector($wp_customize){
+  $wp_customize->add_section('whpk-settings', array(
+      'title'    => __('WHPK Settings', 'whpk-redesign'),
+      'description' => 'Adjust general WHPK settings here',
+      'priority' => 120,
+  ));
+
+  $wp_customize->add_setting('under-construction', array(
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'is-under-construction', 
+    array(
+      'label'    => __( 'Check this to enable the under-construction landing page', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'under-construction',
+      'type'     => 'checkbox'
+    )
+  );
+
   $wp_customize->add_setting('schedule-selected', array(
-      'default'        => 'Default Schedule',
+      'default'        => '0',
       'capability'     => 'edit_theme_options',
       'type'           => 'theme_mod'
 
@@ -962,12 +985,12 @@ function schedule_selector($wp_customize){
     array(
       'label'    => __( 'Select Schedule Type', 'whpk-redesign' ),
       'priority' => 10,
-      'section'  => 'schedule-chooser',
+      'section'  => 'whpk-settings',
       'settings' => 'schedule-selected',
       'type'     => 'radio',
       'choices'  => array(
-        'Default Schedule'  => '0',
-        'Break Schedule'    => '1'
+        '0'  => 'Default Schedule',
+        '1'    => 'Break Schedule'
       ),
     )
   );

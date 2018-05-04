@@ -45,6 +45,8 @@
 
 		wp_reset_postdata();		
 	}
+
+	//get_theme_mod( 'schedule-selected' ); == 0 for default, == 1 for break schedule
 ?>
 
 	<!-- https://codyhouse.co/gem/schedule-template/ -->
