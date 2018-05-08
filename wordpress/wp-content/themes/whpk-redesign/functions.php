@@ -12,8 +12,6 @@
 
 /** Wordpress set up **/
 
-date_default_timezone_set('America/Chicago');
-
 function whpk_setup() {
 	/* linked scripts/css */
 	add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_script' );
@@ -565,8 +563,6 @@ function campaign_box_event() {
 function campaign_content_event( $post ) {
   wp_nonce_field( plugin_basename( __FILE__ ), 'campaign_nonce' );
 
-  date_default_timezone_set('America/Chicago');
-
   $start_t  = date('Y-n-j G:i', get_post_meta($post->ID, 'start_time', true));
   $end_t    = date('Y-n-j G:i', get_post_meta($post->ID, 'end_time', true));
   $location = get_post_meta($post->ID, 'event_location', true);
@@ -605,8 +601,6 @@ function campaign_save_event( $post_id ) {
   } else {
     return;
   }
-
-  date_default_timezone_set('America/Chicago');
 
   $start_t  = strtotime($_POST['start_time']);
   $end_t    = strtotime($_POST['end_time']);
