@@ -19,6 +19,8 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 <!DOCTYPE html>
 
 <head <?php language_attributes(); ?>>
+	<link rel="shortcut icon" href="<?php echo get_home_url(); ?>/favicon.ico" />
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
