@@ -33,7 +33,7 @@ get_header(); ?>
 	</div>
 	<div class="display-cont">
 	    <video class="video-cont" autoplay muted loop>
-	      	<source src="<?php echo get_template_directory_uri().'/public/img/whpk.mp4'; ?>" type="video/mp4">
+	      	<source src="<?php echo get_template_directory_uri().'/public/img/whpk2.mp4'; ?>" type="video/mp4">
 	    </video>
 
 	</div>
