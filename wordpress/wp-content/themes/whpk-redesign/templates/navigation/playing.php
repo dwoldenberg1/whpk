@@ -69,7 +69,7 @@
 	    		$term = genre_type($day_query->post);
 
 	    		$show     = "Now Playing: ".$title;
-	    		$genre    = "Genre: ".esc_attr($term->name);
+	    		$genre    = "Format: ".esc_attr($term->name);
 
 	    		$djs_string = implode(",", $djs); 
 				$dj = ((sizeof($djs) > 1 || $post_hasalter == 1)?"DJs: ":"DJ: ").implode(", ", $djs);
