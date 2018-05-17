@@ -347,6 +347,12 @@ a:visited {
   .event-d-vert {
     margin-bottom: 20px !important;
   }
+
+  .main-num {
+    font-size: 38px;
+    color: black;
+    margin-top: 5px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
