@@ -202,7 +202,7 @@
 
 <script>
 	var playing = "event-" + $('.playing').attr("data-content");
-	$('[data-content="'+ playing + '"]').css("border", "2px red solid").css("z-index", "101");
+	$('[data-content="'+ playing + '"]').css("border", "2px red solid").css("z-index", "101").css("overflow", "hidden");;
 </script>
 
 <script src="<?php echo get_template_directory_uri().'/public/js/modernizr.js';?>"></script>
