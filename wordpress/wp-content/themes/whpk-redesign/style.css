@@ -871,3 +871,10 @@ ol {
   left: 5px;
   top: 10px;
 }
+
+.msg-ann {
+  background: #ff0000a1;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 5px;
+}
