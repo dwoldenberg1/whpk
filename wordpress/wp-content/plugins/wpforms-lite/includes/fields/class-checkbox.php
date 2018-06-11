@@ -318,7 +318,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 						'slug'    => 'disclaimer_format',
 						'value'   => isset( $field['disclaimer_format'] ) ? '1' : '0',
 						'desc'    => esc_html__( 'Enable Disclaimer / Terms of Service Display', 'wpforms' ),
-						'tooltip' => esc_html__( 'Check this option apply adjust the field styling to support Disclaimers and Terms of Serice type agreements.', 'wpforms' ),
+						'tooltip' => esc_html__( 'Check this option to adjust the field styling to support Disclaimers and Terms of Service type agreements.', 'wpforms' ),
 					),
 					false
 				),
