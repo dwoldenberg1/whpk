@@ -42,10 +42,16 @@ function hook_css() {
 
 function hook_js() {
 	?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120012177-1"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function( $ ) {
+			//GA Stuff
+			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
 
-			//GA stuff eventually
+  			gtag('config', 'UA-120012177-1');
 		});
 	</script>
 	<?php

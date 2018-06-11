@@ -32,6 +32,8 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 	 ?>
 </head>
 <body>
+	<div class="msg-ann">WHPK WILL BE OFF-AIR 6/9-6/10. We apologize for the inconvenience, and do please tune back in on Monday.</div>
+
 	<div class="sticky-cont">
 		<audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay></audio>
 		<?php 	get_template_part('templates/headers/header'); 

@@ -27,7 +27,7 @@ get_header(); ?>
 
 	<div class="contact-icons">
 
-		<div class="main-num">773-702-8289</div>
+		<div class="main-num">773-702-8424</div>
 	  	<?php get_template_part('templates/navigation/social'); ?>
 
 	</div>
