@@ -124,26 +124,39 @@
 						$start_time = date('G:i', get_post_meta( $day_query->post->ID, 'start_time', true ));
 						$end_time = date('G:i', get_post_meta( $day_query->post->ID, 'end_time', true ));
 						$end_time = (($end_time == "0:00")?"24:00":$end_time); //correct for 24:00 = 0:00
-						$djs = unserialize(get_post_meta($post->ID, 'djs', true));
-						$post_hasalter = get_post_meta($post->ID, 'alter_show', true);
+						$djs = unserialize(get_post_meta($day_query->post->ID, 'djs', true));
+						$post_hasalter = get_post_meta($day_query->post->ID, 'alter_show', true);
 
 						$term = genre_type($day_query->post);
 						$show_title = get_the_title();
 						$content = get_the_content();
 
 						$alter = 0;
+						$next_p = 0;
+
+						error_log($alter, true);
 
 						if(isset($post_hasalter) && $post_hasalter == 1){
 							$alter = 1;
 
+							$post = get_post( $day_query->post->ID );
+
+							$t = $day_query->get_next_post();
+
+							$next_p = get_post_meta($t->ID, 'alter_show', true);
+							$test = print_r($t, true);
+							error_log($test." ".$next_p);
+
 							if($day_query->have_posts()){
-								$day_query->the_post();
+								if ($next_p == 1){
+									$day_query->the_post();
 
-								$djs2 = unserialize(get_post_meta($post->ID, 'djs', true));
-								$term2 = genre_type($day_query->post);
-								$show_title2 = get_the_title();
+									$djs2 = unserialize(get_post_meta($post->ID, 'djs', true));
+									$term2 = genre_type($day_query->post);
+									$show_title2 = get_the_title();
 
-								$content2 = get_the_content();
+									$content2 = get_the_content();
+								}
 							} else {
 								$alter = 0;
 								break;
