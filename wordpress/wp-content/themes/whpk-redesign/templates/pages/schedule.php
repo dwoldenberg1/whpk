@@ -143,7 +143,7 @@
 
 							$t = $day_query->get_next_post();
 
-							$next_p = get_post_meta($t->ID, 'alter_show', true);
+							$next_p = 1; get_post_meta($t->ID, 'alter_show', true);
 							$test = print_r($t, true);
 							error_log($test." ".$next_p);
 
