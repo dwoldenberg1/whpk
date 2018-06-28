@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.4.7.2 =
+- Fixed: Honeypot field using a none unique CSS ID.
+- Fixed: Form builder Bulk Add display issues in certain use cases.
+- Fixed: Checkbox field values not saving if Show Values field option is enabled.
+
 = 1.4.7.1 =
 - Changed: Updated Russian translation.
 - Fixed: Various i18n issues.

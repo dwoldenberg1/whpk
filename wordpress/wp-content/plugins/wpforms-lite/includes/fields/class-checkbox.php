@@ -507,8 +507,6 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 			// the choice keys.
 			if ( ! empty( $field['show_values'] ) && '1' == $field['show_values'] ) {
 
-				$labels = array();
-
 				foreach ( $field_submit as $item ) {
 					foreach ( $field['choices'] as $key => $choice ) {
 						if ( $item == $choice['value'] ) {
@@ -519,7 +517,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 					}
 				}
 
-				$data['value'] = ! empty( $labels ) ? wpforms_sanitize_array_combine( $labels ) : '';
+				$data['value'] = ! empty( $value ) ? wpforms_sanitize_array_combine( $value ) : '';
 
 			} else {
 
