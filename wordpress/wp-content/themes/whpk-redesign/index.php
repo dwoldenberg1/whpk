@@ -27,8 +27,13 @@ get_header(); ?>
 
 	<div class="contact-icons">
 
-		<div class="main-num">773-702-8424</div>
+		<div class="main-nums">
+			<div class="main-num">office: 773-702-0229</div>
+			<div class="main-num">studio: 773-702-8424</div>
+		</div>
+		<div class="social-vert">
 	  	<?php get_template_part('templates/navigation/social'); ?>
+	  </div>
 
 	</div>
 	<div class="display-cont">

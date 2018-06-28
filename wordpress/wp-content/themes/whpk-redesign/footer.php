@@ -41,10 +41,10 @@
                       </a>
                     </div>
                     <div>
-                      studio: 773-702-8424
+                      office: 773-702-0229
                     </div>
                     <div>
-                      Listen at 712-432-7726
+                      studio: 773-702-8424
                     </div>
                   </div>
               </div>

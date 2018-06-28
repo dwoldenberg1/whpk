@@ -3,22 +3,34 @@ jQuery(document).ready(function( $ ) {
 
 	var strm = document.getElementById("whpk-play");
 
-	strm.muted = true;
+	strm.volume = 0;
 
 	var playing  = getCookie("playing");
 	var play_vis = getCookie("play-visible");
 
-	if(playing == "1"){
-		listenStuff(2);
-	} else {
-		listenStuff(1);
+	function do_loaded(){
+		$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
+		$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
+
+		if(playing == "1"){
+			listenStuff(2);
+			strm.volume = 1;
+		} else {
+			listenStuff(1);
+			strm.volume = 0;
+		}
+
+		if(play_vis == "0"){
+			togglePlayVis(1);
+		} else {
+			togglePlayVis(2);
+		}
+
+		$('.listen').click(listenStuff);
+		$('.bar-listen').click(listenStuff);
 	}
 
-	if(play_vis == "0"){
-		togglePlayVis(1);
-	} else {
-		togglePlayVis(2);
-	}
+	strm.addEventListener('canplaythrough', do_loaded, false);
 
 	function listenStuff(forced){
 		var l = $('.listen');
@@ -30,23 +42,20 @@ jQuery(document).ready(function( $ ) {
 		} else {
 			l.toggleClass("pulse");
 		}
-		if(forced == 2 || (strm.muted && forced != 1)){
-			strm.muted = false;
+		if(forced == 2 || (!strm.volume && forced != 1)){
+			strm.volume = 1;
 			$('#listen-item').css("color", "#2fab2f");
 			$('.bar-listen').css("color", "#2fab2f");
 			setCookie("playing", "1", 60);
 			return;
-		} else if (forced == 1 || !strm.muted ){
-			strm.muted = true;
+		} else if (forced == 1 || strm.volume ){
+			strm.volume = 0;
 			$('#listen-item').css("color", "#000");
 			$('.bar-listen').css("color", "#000");
 			setCookie("playing", "0", 60);
 			return;
 		}
 	}
-
-	$('.listen').click(listenStuff);
-	$('.bar-listen').click(listenStuff);
 
 	if($(document).find("title").text().indexOf("home") == -1){
 		$('.sticky-cont').css("background", "rgba(255, 255, 255, 1)");

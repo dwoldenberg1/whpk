@@ -19,7 +19,7 @@
 <div class="navbar">
   <div class="nav mobile">
     <div id="bar-listen">
-      <h1 id="listen-item-bar" class="bar-listen">LISTEN</h1>
+      <h1 id="listen-item-bar" class="bar-listen strm-loading">...loading</h1>
       <img id="mega-bar" class="mega bar-listen" src="<?php echo get_template_directory_uri().'/public/img/megaphone.svg'; ?>">
     </div>
     <div class="ham">

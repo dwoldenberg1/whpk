@@ -28,6 +28,8 @@
 			</a>
 		</div>
 		<div class="contact-numbers contact-item">
+			<span>office: 773-702-0229</span>
+			<br> 
 			<span>studio: 773-702-8424</span>
 			<br> 
 			<span>Listen at 712-432-7726</span>

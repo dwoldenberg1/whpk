@@ -24,7 +24,7 @@
     </div>
   </a>
   <div class="top listen">
-    <h1 id="listen-item">LISTEN</h1>
+    <h1 id="listen-item" class="strm-loading">...loading</h1>
     <img id="mega-top" class="mega" src="<?php echo get_template_directory_uri().'/public/img/megaphone.svg'; ?>">
   </div>
 </div>
