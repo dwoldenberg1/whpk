@@ -1,7 +1,78 @@
+
+
+function listenStuff(forced){
+	var strm_local = document.getElementById("whpk-play");
+
+	var l = $('.listen');
+
+	if(forced == 2){
+		l.addClass("pulse");
+	} else if (forced == 1) {
+		l.removeClass("pulse");
+	} else {
+		l.toggleClass("pulse");
+	}
+	if(forced == 2 || (strm_local.muted && forced != 1)){
+		strm_local.muted = false;
+		$('#listen-item').css("color", "#2fab2f");
+		$('.bar-listen').css("color", "#2fab2f");
+		setCookie("playing", "1", 60);
+		return;
+	} else if (forced == 1 || !strm_local.muted ){
+		strm_local.muted = true;
+		$('#listen-item').css("color", "#000");
+		$('.bar-listen').css("color", "#000");
+		setCookie("playing", "0", 60);
+		return;
+	}
+}
+
+function togglePlayVis(forced){
+	var p = $('.playing');
+
+	if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
+		p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
+		setTimeout(function(){
+			p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
+		}, 400); // needed for mobile text-wrapping
+		p.removeClass('playing-open');
+		p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
+		setCookie("play-visible", "0", 60);
+		return;
+	} else if(forced == 2 || !p.hasClass('playing-open')) {
+		p.addClass('playing-open');
+		p.css("right", "0px");
+		p.find('svg').addClass('fa-arrow-circle-right').removeClass('fa-arrow-circle-left');
+		setCookie("play-visible", "1", 60);
+		return;
+	}
+}
+
+function do_loaded(){
+	var playing  = getCookie("playing");
+
+	$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
+	$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
+
+	if(playing == "1"){
+		listenStuff(2);
+	} else {
+		listenStuff(1);
+	}
+
+	$('.listen').click(listenStuff);
+	$('.bar-listen').click(listenStuff);
+}
+
 jQuery(document).ready(function( $ ) {
 	/** Front end stuff **/
 
-	var playing  = getCookie("playing");
+	var strm = document.getElementById("whpk-play");
+
+	is_mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+	strm.muted = true;
+
 	var play_vis = getCookie("play-visible");
 
 	if(play_vis == "0"){
@@ -10,56 +81,11 @@ jQuery(document).ready(function( $ ) {
 		togglePlayVis(2);
 	}
 
-	function listenStuff(forced){
-		var strm_local = document.getElementById("whpk-play");
-
-		var l = $('.listen');
-
-		if(forced == 2){
-			l.addClass("pulse");
-		} else if (forced == 1) {
-			l.removeClass("pulse");
-		} else {
-			l.toggleClass("pulse");
-		}
-		if(forced == 2 || (!strm_local.volume && forced != 1)){
-			strm_local.volume = 1;
-			$('#listen-item').css("color", "#2fab2f");
-			$('.bar-listen').css("color", "#2fab2f");
-			setCookie("playing", "1", 60);
-			return;
-		} else if (forced == 1 || strm_local.volume ){
-			strm_local.volume = 0;
-			$('#listen-item').css("color", "#000");
-			$('.bar-listen').css("color", "#000");
-			setCookie("playing", "0", 60);
-			return;
-		}
-	}
-
-	function do_loaded(){
-		var strm = document.getElementById("whpk-play");
-
-		strm.volume = 0;
-
-		$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
-		$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
-
-		if(playing == "1"){
-			listenStuff(2);
-		} else {
-			listenStuff(1);
-		}
-
-		$('.listen').click(listenStuff);
-		$('.bar-listen').click(listenStuff);
-	}
-
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if (is_mobile) {
 		do_loaded();
-	} else {
-		document.getElementById("whpk-play").addEventListener('canplaythrough', do_loaded, false);
 	}
+
+	document.getElementById("whpk-play").addEventListener('canplaythrough', do_loaded, false);
 
 	if($(document).find("title").text().indexOf("home") == -1){
 		$('.sticky-cont').css("background", "rgba(255, 255, 255, 1)");
@@ -76,27 +102,6 @@ jQuery(document).ready(function( $ ) {
 	});
 
 	$('.toggle-arrow').on('click', togglePlayVis);
-
-	function togglePlayVis(forced){
-		var p = $('.playing');
-
-		if(forced == 1 || (p.hasClass('playing-open') && forced != 2)){
-			p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
-			setTimeout(function(){
-				p.css("right", -1 * (p[0].offsetWidth - 35) + "px");
-			}, 400); // needed for mobile text-wrapping
-			p.removeClass('playing-open');
-			p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
-			setCookie("play-visible", "0", 60);
-			return;
-		} else if(forced == 2 || !p.hasClass('playing-open')) {
-			p.addClass('playing-open');
-			p.css("right", "0px");
-			p.find('svg').addClass('fa-arrow-circle-right').removeClass('fa-arrow-circle-left');
-			setCookie("play-visible", "1", 60);
-			return;
-		}
-	}
 
 	/** wp-admin stuff **/
 });
