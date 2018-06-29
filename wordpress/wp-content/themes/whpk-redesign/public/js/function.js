@@ -32,7 +32,11 @@ jQuery(document).ready(function( $ ) {
 		$('.bar-listen').click(listenStuff);
 	}
 
-	strm.addEventListener('canplaythrough', do_loaded, false);
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		do_loaded();
+	} else {
+		strm.addEventListener('canplaythrough', do_loaded, false);
+	}
 
 	function listenStuff(forced){
 		var strm_local = document.getElementById("whpk-play");
