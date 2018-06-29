@@ -1,10 +1,6 @@
 jQuery(document).ready(function( $ ) {
 	/** Front end stuff **/
 
-	var strm = document.getElementById("whpk-play");
-
-	strm.volume = 0;
-
 	var playing  = getCookie("playing");
 	var play_vis = getCookie("play-visible");
 
@@ -12,30 +8,6 @@ jQuery(document).ready(function( $ ) {
 		togglePlayVis(1);
 	} else {
 		togglePlayVis(2);
-	}
-
-	function do_loaded(){
-		var strm_local = document.getElementById("whpk-play");
-
-		$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
-		$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
-
-		if(playing == "1"){
-			listenStuff(2);
-			strm_local.volume = 1;
-		} else {
-			listenStuff(1);
-			strm_local.volume = 0;
-		}
-
-		$('.listen').click(listenStuff);
-		$('.bar-listen').click(listenStuff);
-	}
-
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		do_loaded();
-	} else {
-		strm.addEventListener('canplaythrough', do_loaded, false);
 	}
 
 	function listenStuff(forced){
@@ -63,6 +35,30 @@ jQuery(document).ready(function( $ ) {
 			setCookie("playing", "0", 60);
 			return;
 		}
+	}
+
+	function do_loaded(){
+		var strm = document.getElementById("whpk-play");
+
+		strm.volume = 0;
+
+		$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
+		$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
+
+		if(playing == "1"){
+			listenStuff(2);
+		} else {
+			listenStuff(1);
+		}
+
+		$('.listen').click(listenStuff);
+		$('.bar-listen').click(listenStuff);
+	}
+
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		do_loaded();
+	} else {
+		document.getElementById("whpk-play").addEventListener('canplaythrough', do_loaded, false);
 	}
 
 	if($(document).find("title").text().indexOf("home") == -1){
