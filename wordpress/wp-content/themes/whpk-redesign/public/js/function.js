@@ -54,11 +54,11 @@ function do_loaded(){
 	$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
 	$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
 
-	if(playing == "1"){
-		listenStuff(2);
-	} else {
-		listenStuff(1);
-	}
+	// if(playing == "1"){
+	// 	listenStuff(2);
+	// } else {
+	// 	listenStuff(1);
+	// }
 
 	$('.listen').click(listenStuff);
 	$('.bar-listen').click(listenStuff);
