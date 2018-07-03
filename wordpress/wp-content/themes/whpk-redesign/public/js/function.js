@@ -15,6 +15,7 @@ function listenStuff(forced){
 
 	if (forced.target){
 		forced.stopPropagation();
+		forced.preventDefault();
 	}
 
 	if(forced == 2 || (strm_local.muted && forced != 1)){
@@ -74,8 +75,6 @@ jQuery(document).ready(function( $ ) {
 
 	var strm = document.getElementById("whpk-play");
 
-	is_mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
 	strm.muted = true;
 
 	var play_vis = getCookie("play-visible");
@@ -84,10 +83,6 @@ jQuery(document).ready(function( $ ) {
 		togglePlayVis(1);
 	} else {
 		togglePlayVis(2);
-	}
-
-	if (is_mobile) {
-		do_loaded();
 	}
 
 	document.getElementById("whpk-play").addEventListener('canplaythrough', do_loaded, false);
