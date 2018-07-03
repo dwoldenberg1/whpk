@@ -25,6 +25,10 @@ function listenStuff(forced){
 		setCookie("playing", "0", 60);
 		return;
 	}
+
+	if (forced.target){
+		forced.stopPropogation();
+	}
 }
 
 function togglePlayVis(forced){
