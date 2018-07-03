@@ -12,9 +12,9 @@ function listenStuff(forced){
 	} else {
 		l.toggleClass("pulse");
 	}
-	
+
 	if (forced.target){
-		forced.stopPropogation();
+		forced.stopPropagation();
 	}
 
 	if(forced == 2 || (strm_local.muted && forced != 1)){
