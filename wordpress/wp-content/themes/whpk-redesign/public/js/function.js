@@ -12,6 +12,11 @@ function listenStuff(forced){
 	} else {
 		l.toggleClass("pulse");
 	}
+	
+	if (forced.target){
+		forced.stopPropogation();
+	}
+
 	if(forced == 2 || (strm_local.muted && forced != 1)){
 		strm_local.muted = false;
 		$('#listen-item').css("color", "#2fab2f");
@@ -24,10 +29,6 @@ function listenStuff(forced){
 		$('.bar-listen').css("color", "#000");
 		setCookie("playing", "0", 60);
 		return;
-	}
-
-	if (forced.target){
-		forced.stopPropogation();
 	}
 }
 
