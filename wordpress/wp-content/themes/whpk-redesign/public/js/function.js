@@ -22,13 +22,13 @@ function listenStuff(forced){
 		strm_local.muted = false;
 		$('#listen-item').css("color", "#2fab2f");
 		$('.bar-listen').css("color", "#2fab2f");
-		setCookie("playing", "1", 60);
+		localStorage.setItem("playing", "1");
 		return;
 	} else if (forced == 1 || !strm_local.muted ){
 		strm_local.muted = true;
 		$('#listen-item').css("color", "#000");
 		$('.bar-listen').css("color", "#000");
-		setCookie("playing", "0", 60);
+		localStorage.setItem("playing", "0");
 		return;
 	}
 }
@@ -43,19 +43,19 @@ function togglePlayVis(forced){
 		}, 400); // needed for mobile text-wrapping
 		p.removeClass('playing-open');
 		p.find('svg').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
-		setCookie("play-visible", "0", 60);
+		localStorage.setItem("play-visible", "0");
 		return;
 	} else if(forced == 2 || !p.hasClass('playing-open')) {
 		p.addClass('playing-open');
 		p.css("right", "0px");
 		p.find('svg').addClass('fa-arrow-circle-right').removeClass('fa-arrow-circle-left');
-		setCookie("play-visible", "1", 60);
+		localStorage.setItem("play-visible", "1");
 		return;
 	}
 }
 
 function do_loaded(){
-	var playing  = getCookie("playing");
+	var playing  = localStorage.getItem("playing");
 
 	$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
 	$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
@@ -71,11 +71,13 @@ function do_loaded(){
 }
 
 function closeModal(){
+	var text = $('.modal-text')[0].innerText.replace(/(\n|\t| )/g, "")
+
 	$('#main-cont').removeClass('modal-enabled');
 	$('.custom-modal').addClass('hidden');
 
-	setCookie('oldmsg', $('.modal-text').text(), 365);
-	setCookie('hidemodal', "1", 365);
+	localStorage.setItem('old-msg', text);
+	localStorage.setItem('hide-modal', "1");
 }
 
 jQuery(document).ready(function( $ ) {
@@ -85,7 +87,7 @@ jQuery(document).ready(function( $ ) {
 
 	strm.muted = true;
 
-	var play_vis = getCookie("play-visible");
+	var play_vis = localStorage.getItem("play-visible");
 
 	if(play_vis == "0"){
 		togglePlayVis(1);
@@ -111,10 +113,12 @@ jQuery(document).ready(function( $ ) {
 
 	modaltxt = $('.modal-text');
 
-	if(modaltxt[0] && modaltxt.text() != getCookie("oldmsg")) {
-		setCookie('hidemodal', "0", 365);
-		setCookie('oldmsg', modaltxt.text(), 365);
-	} else if (getCookie("hidemodal") == "1") {
+	if(modaltxt[0] && modaltxt[0].innerText.replace(/(\n|\t| )/g, "") != localStorage.getItem("old-msg")) {
+		$('#main-cont').addClass('modal-enabled');
+		$('.custom-modal').removeClass('hidden');
+		localStorage.setItem('hide-modal', "0");
+		localStorage.setItem('old-msg', modaltxt[0].innerText.replace(/(\n|\t| )/g, ""));
+	} else if (localStorage.getItem("hide-modal") == "1") {
 		closeModal();
 	}
 
@@ -124,27 +128,3 @@ jQuery(document).ready(function( $ ) {
 
 	/** wp-admin stuff **/
 });
-
-/* Straight outa w3schools baby */
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}

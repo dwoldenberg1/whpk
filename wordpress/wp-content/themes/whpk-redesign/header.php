@@ -34,7 +34,7 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 <body>
 
 	<?php if(get_theme_mod( 'display-modal') != 0): ?>
-		<div class="custom-modal ">
+		<div class="custom-modal hidden">
 			<div class="close-modal">
 			</div>
 			<div class="modal-text">
@@ -43,7 +43,7 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 		</div>
 	<?php endif; ?>
 
-	<div id="main-cont" class="<?php if(get_theme_mod( 'display-modal') != 0) echo "modal-enabled"; ?>">
+	<div id="main-cont">
 
 	<div class="sticky-cont">
 	<?php if(get_theme_mod( 'display-msg' ) != 0): ?>
