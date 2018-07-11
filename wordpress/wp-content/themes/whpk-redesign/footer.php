@@ -54,11 +54,11 @@
           </div>     
       </div>
       <?php
-  }
+  } ?>
 
   </div>
 
-  wp_footer(); ?>
+  <?php wp_footer(); ?>
 
     </body>
 </html>
