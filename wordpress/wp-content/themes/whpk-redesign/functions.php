@@ -1022,10 +1022,44 @@ function schedule_selector($wp_customize){
   $wp_customize->add_control(
     'main-ann-input', 
     array(
-      'label'    => __( 'Message to display', 'whpk-redesign' ),
+      'label'    => __( 'Message to display in banner', 'whpk-redesign' ),
       'priority' => 10,
       'section'  => 'whpk-settings',
       'settings' => 'main-ann',
+    )
+  );
+
+  $wp_customize->add_setting('display-modal', array(
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'display-modal-chk', 
+    array(
+      'label'    => __( 'Check this to enable the message (below) in a modal display on the homepage', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'display-modal',
+      'type'     => 'checkbox'
+    )
+  );
+
+  $wp_customize->add_setting('modal-text', array(
+      'default'        => ' ',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'modal-text-input', 
+    array(
+      'label'    => __( 'Message to display in modal', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'modal-text',
     )
   );
 }

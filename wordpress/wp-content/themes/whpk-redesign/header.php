@@ -33,8 +33,23 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 </head>
 <body>
 
+	<?php if(get_theme_mod( 'display-modal') != 0): ?>
+		<div class="custom-modal ">
+			<div class="close-modal">
+			</div>
+			<div class="modal-text">
+				<?php echo get_theme_mod( 'modal-text' ); ?>
+			</div>
+		</div>
+	<?php endif; ?>
+
+	<div id="main-cont" class="<?php if(get_theme_mod( 'display-modal') != 0) echo "modal-enabled"; ?>">
+
 	<div class="sticky-cont">
-	<div class="msg-ann <?php if(get_theme_mod( 'display-msg' ) == 0) echo "hidden"; ?>"><?php echo get_theme_mod( 'main-ann' ); ?></div>
+	<?php if(get_theme_mod( 'display-msg' ) != 0): ?>
+		<div class="msg-ann"><?php echo get_theme_mod( 'main-ann' ); ?></div>
+	<?php endif; ?>
+
 		<audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay></audio>
 		<?php 	get_template_part('templates/headers/header'); 
 				get_template_part('templates/navigation/navbar'); 

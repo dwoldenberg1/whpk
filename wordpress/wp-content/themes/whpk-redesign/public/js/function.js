@@ -60,14 +60,22 @@ function do_loaded(){
 	$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
 	$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
 
-	// if(playing == "1"){
-	// 	listenStuff(2);
-	// } else {
-	// 	listenStuff(1);
-	// }
+	if(playing == "1"){
+		listenStuff(2);
+	} else {
+		listenStuff(1);
+	}
 
 	$('.listen').click(listenStuff);
 	$('.bar-listen').click(listenStuff);
+}
+
+function closeModal(){
+	$('#main-cont').removeClass('modal-enabled');
+	$('.custom-modal').addClass('hidden');
+
+	setCookie('oldmsg', $('.modal-text').text(), 365);
+	setCookie('hidemodal', "1", 365);
 }
 
 jQuery(document).ready(function( $ ) {
@@ -101,7 +109,18 @@ jQuery(document).ready(function( $ ) {
 		}
 	});
 
+	modaltxt = $('.modal-text');
+
+	if(modaltxt[0] && modaltxt.text() != getCookie("oldmsg")) {
+		setCookie('hidemodal', "0", 365);
+		setCookie('oldmsg', modaltxt.text(), 365);
+	} else if (getCookie("hidemodal") == "1") {
+		closeModal();
+	}
+
 	$('.toggle-arrow').on('click', togglePlayVis);
+
+	$('.close-modal').on('click', closeModal);
 
 	/** wp-admin stuff **/
 });
