@@ -1118,6 +1118,7 @@ function schedule_selector($wp_customize){
       'settings' => 'custom-schedule-start',
       'type'     => 'select',
       'choices'  => array(
+        '0'   => '0:00',
         '1'   => '1:00',
         '2'   => '2:00',
         '3'   => '3:00',
@@ -1162,6 +1163,7 @@ function schedule_selector($wp_customize){
       'settings' => 'custom-schedule-end',
       'type'     => 'select',
       'choices'  => array(
+        '0'   => '0:00',
         '1'   => '1:00',
         '2'   => '2:00',
         '3'   => '3:00',

@@ -212,9 +212,8 @@ Main Components
     margin-bottom: 0;
   }
   .cd-schedule .events .events-group > ul {
-    height: 1599px;
-    /* new precise measurement */
-    /* reset style */
+    height: 2400px;
+    /* Gets reset client-side */
     display: block;
     overflow: visible;
     padding: 0;

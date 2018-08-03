@@ -97,8 +97,16 @@ jQuery(document).ready(function( $ ) {
 
 	document.getElementById("whpk-play").addEventListener('canplaythrough', do_loaded, false);
 
-	if($(document).find("title").text().indexOf("home") == -1){
+	var title = $(document).find("title").text()
+
+	if(title.indexOf("home") == -1){
 		$('.sticky-cont').css("background", "rgba(255, 255, 255, 1)");
+	}
+	
+	if (title.indexOf("schedule") != -1){
+		var d_val = parseInt($('.timeline').find('ul').attr('data-val'));
+		var new_height = (2400 * d_val/24) - 1;
+		$('.cd-schedule .events .events-group > ul').css("height", new_height);
 	}
 
 	$('.ham').click(function(){

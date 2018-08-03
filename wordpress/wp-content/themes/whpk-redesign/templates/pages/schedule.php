@@ -71,7 +71,6 @@
 	<div class="alter-msg">* indicates that the show is alternating</div>
 	<div class="cd-schedule loading">
 		<div class="timeline">
-			<ul>
 				<?php
 					$sched = get_theme_mod('schedule-select');
 					$is_cust_sched = get_theme_mod('custom-schedule');
@@ -83,19 +82,20 @@
 
 					if($is_cust_sched == 1){
 						$start = $cust_start;
-						$start = $cust_end;
+						$end = $cust_end;
 					} else {
 						$vals = explode("-", $sched);
 						$start = $vals[0];
 						$end = $vals[1];
 					}
-
+			?>
+			<ul data-val='<?php echo $end - $start; ?>'>
+				<?php
 					for(; $start < $end; $start++) {
 						$val = ($start < 10) ? "0".$start : $start;
 						echo "<li><span>".$val.":00</span></li>";
 						echo "<li><span>".$val.":30</span></li>";
 					}
-
 				?>
 			</ul>
 		</div>
