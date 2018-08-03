@@ -965,101 +965,11 @@ function schedule_selector($wp_customize){
   $wp_customize->add_control(
     'is-under-construction', 
     array(
-      'label'    => __( 'Check this to enable the under-construction landing page', 'whpk-redesign' ),
+      'label'    => __( 'Check this to enable the under-construction landing page (currently does nothing)', 'whpk-redesign' ),
       'priority' => 10,
       'section'  => 'whpk-settings',
       'settings' => 'under-construction',
       'type'     => 'checkbox'
-    )
-  );
-
-  $wp_customize->add_setting('schedule-selected', array(
-      'default'        => '0',
-      'capability'     => 'edit_theme_options',
-      'type'           => 'theme_mod'
-
-  ));
-
-  $wp_customize->add_control(
-    'schedule-chooser', 
-    array(
-      'label'    => __( 'Select Schedule Type', 'whpk-redesign' ),
-      'priority' => 10,
-      'section'  => 'whpk-settings',
-      'settings' => 'schedule-selected',
-      'type'     => 'radio',
-      'choices'  => array(
-        '0'  => 'Default Schedule',
-        '1'    => 'Break Schedule'
-      ),
-    )
-  );
-
-  $wp_customize->add_setting('display-msg', array(
-      'capability'     => 'edit_theme_options',
-      'type'           => 'theme_mod'
-
-  ));
-
-  $wp_customize->add_control(
-    'display-msg-chk', 
-    array(
-      'label'    => __( 'Check this to enable the message (below) on top of the navigational banner', 'whpk-redesign' ),
-      'priority' => 10,
-      'section'  => 'whpk-settings',
-      'settings' => 'display-msg',
-      'type'     => 'checkbox'
-    )
-  );
-
-  $wp_customize->add_setting('main-ann', array(
-      'default'        => ' ',
-      'capability'     => 'edit_theme_options',
-      'type'           => 'theme_mod'
-
-  ));
-
-  $wp_customize->add_control(
-    'main-ann-input', 
-    array(
-      'label'    => __( 'Message to display in banner', 'whpk-redesign' ),
-      'priority' => 10,
-      'section'  => 'whpk-settings',
-      'settings' => 'main-ann',
-    )
-  );
-
-  $wp_customize->add_setting('display-modal', array(
-      'capability'     => 'edit_theme_options',
-      'type'           => 'theme_mod'
-
-  ));
-
-  $wp_customize->add_control(
-    'display-modal-chk', 
-    array(
-      'label'    => __( 'Check this to enable the message (below) in a modal display on the homepage', 'whpk-redesign' ),
-      'priority' => 10,
-      'section'  => 'whpk-settings',
-      'settings' => 'display-modal',
-      'type'     => 'checkbox'
-    )
-  );
-
-  $wp_customize->add_setting('modal-text', array(
-      'default'        => ' ',
-      'capability'     => 'edit_theme_options',
-      'type'           => 'theme_mod'
-
-  ));
-
-  $wp_customize->add_control(
-    'modal-text-input', 
-    array(
-      'label'    => __( 'Message to display in modal', 'whpk-redesign' ),
-      'priority' => 10,
-      'section'  => 'whpk-settings',
-      'settings' => 'modal-text',
     )
   );
 
@@ -1189,6 +1099,74 @@ function schedule_selector($wp_customize){
         '23'  => '23:00',
         '24'  => '24:00',
       )
+    )
+  );
+
+  $wp_customize->add_setting('display-msg', array(
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'display-msg-chk', 
+    array(
+      'label'    => __( 'Check this to enable the message (below) on top of the navigational banner', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'display-msg',
+      'type'     => 'checkbox'
+    )
+  );
+
+  $wp_customize->add_setting('main-ann', array(
+      'default'        => ' ',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'main-ann-input', 
+    array(
+      'label'    => __( 'Message to display in banner', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'main-ann',
+    )
+  );
+
+  $wp_customize->add_setting('display-modal', array(
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'display-modal-chk', 
+    array(
+      'label'    => __( 'Check this to enable the message (below) in a modal display on the homepage', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'display-modal',
+      'type'     => 'checkbox'
+    )
+  );
+
+  $wp_customize->add_setting('modal-text', array(
+      'default'        => ' ',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'modal-text-input', 
+    array(
+      'label'    => __( 'Message to display in modal', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'modal-text',
     )
   );
 }
