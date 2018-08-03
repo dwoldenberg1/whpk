@@ -1062,6 +1062,133 @@ function schedule_selector($wp_customize){
       'settings' => 'modal-text',
     )
   );
+
+  $wp_customize->add_setting('schedule-select', array(
+      'default'        => 'reg',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'schedule-select-box', 
+    array(
+      'label'    => __( 'Choose the schedule format here', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'schedule-select',
+      'type'     => 'select',
+      'choices'  => array(
+        '7-24'  => 'Regular Schedule (7:00 - 24:00)',
+        '8-24'  => 'Summer Schedule (8:00 - 24:00)',
+        '9-24'  => 'Lazy Schedule (9:00 - 24:00)'
+      )
+    )
+  );
+
+  $wp_customize->add_setting('custom-schedule', array(
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+  ));
+
+  $wp_customize->add_control(
+    'custom-schedule-chk', 
+    array(
+      'label'    => __( 'Check this to enable a custom schedule format (specified below):', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'custom-schedule',
+      'type'     => 'checkbox'
+    )
+  );
+
+  $wp_customize->add_setting('custom-schedule-start', array(
+      'default'        => '7',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'custom-schedule-start-select', 
+    array(
+      'label'    => __( 'Custom Start Time', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'custom-schedule-start',
+      'type'     => 'select',
+      'choices'  => array(
+        '1'   => '1:00',
+        '2'   => '2:00',
+        '3'   => '3:00',
+        '4'   => '4:00',
+        '5'   => '5:00',
+        '6'   => '6:00',
+        '7'   => '7:00',
+        '8'   => '8:00',
+        '9'   => '9:00',
+        '10'  => '10:00',
+        '11'  => '11:00',
+        '12'  => '12:00',
+        '13'  => '13:00',
+        '14'  => '14:00',
+        '15'  => '15:00',
+        '16'  => '16:00',
+        '17'  => '17:00',
+        '18'  => '18:00',
+        '19'  => '19:00',
+        '20'  => '20:00',
+        '21'  => '21:00',
+        '22'  => '22:00',
+        '23'  => '23:00',
+        '24'  => '24:00',
+      )
+    )
+  );
+
+  $wp_customize->add_setting('custom-schedule-end', array(
+      'default'        => '24',
+      'capability'     => 'edit_theme_options',
+      'type'           => 'theme_mod'
+
+  ));
+
+  $wp_customize->add_control(
+    'custom-schedule-end-select', 
+    array(
+      'label'    => __( 'Custom End time', 'whpk-redesign' ),
+      'priority' => 10,
+      'section'  => 'whpk-settings',
+      'settings' => 'custom-schedule-end',
+      'type'     => 'select',
+      'choices'  => array(
+        '1'   => '1:00',
+        '2'   => '2:00',
+        '3'   => '3:00',
+        '4'   => '4:00',
+        '5'   => '5:00',
+        '6'   => '6:00',
+        '7'   => '7:00',
+        '8'   => '8:00',
+        '9'   => '9:00',
+        '10'  => '10:00',
+        '11'  => '11:00',
+        '12'  => '12:00',
+        '13'  => '13:00',
+        '14'  => '14:00',
+        '15'  => '15:00',
+        '16'  => '16:00',
+        '17'  => '17:00',
+        '18'  => '18:00',
+        '19'  => '19:00',
+        '20'  => '20:00',
+        '21'  => '21:00',
+        '22'  => '22:00',
+        '23'  => '23:00',
+        '24'  => '24:00',
+      )
+    )
+  );
 }
 
 add_action( 'customize_register', 'schedule_selector' );

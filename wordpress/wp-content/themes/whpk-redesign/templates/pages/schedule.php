@@ -72,41 +72,31 @@
 	<div class="cd-schedule loading">
 		<div class="timeline">
 			<ul>
-				<!-- <li><span>07:00</span></li>
-				<li><span>07:30</span></li>-->
-				<li><span>08:00</span></li>
-				<li><span>08:30</span></li>
-				<li><span>09:00</span></li>
-				<li><span>09:30</span></li>
-				<li><span>10:00</span></li>
-				<li><span>10:30</span></li>
-				<li><span>11:00</span></li>
-				<li><span>11:30</span></li>
-				<li><span>12:00</span></li>
-				<li><span>12:30</span></li>
-				<li><span>13:00</span></li>
-				<li><span>13:30</span></li>
-				<li><span>14:00</span></li>
-				<li><span>14:30</span></li>
-				<li><span>15:00</span></li>
-				<li><span>15:30</span></li>
-				<li><span>16:00</span></li>
-				<li><span>16:30</span></li>
-				<li><span>17:00</span></li>
-				<li><span>17:30</span></li>
-				<li><span>18:00</span></li>
-				<li><span>18:30</span></li>
-				<li><span>19:00</span></li>
-				<li><span>19:30</span></li>
-				<li><span>20:00</span></li>
-				<li><span>20:30</span></li>
-				<li><span>21:00</span></li>
-				<li><span>21:30</span></li>
-				<li><span>22:00</span></li>
-				<li><span>22:30</span></li>
-				<li><span>23:00</span></li>
-				<li><span>23:30</span></li>
+				<?php
+					$sched = get_theme_mod('schedule-select');
+					$is_cust_sched = get_theme_mod('custom-schedule');
+					$cust_start = get_theme_mod('custom-schedule-start');
+					$cust_end = get_theme_mod('custom-schedule-end');
 
+					$start = 7;
+					$end = 24;
+
+					if($is_cust_sched == 1){
+						$start = $cust_start;
+						$start = $cust_end;
+					} else {
+						$vals = explode("-", $sched);
+						$start = $vals[0];
+						$end = $vals[1];
+					}
+
+					for(; $start < $end; $start++) {
+						$val = ($start < 10) ? "0".$start : $start;
+						echo "<li><span>".$val.":00</span></li>";
+						echo "<li><span>".$val.":30</span></li>";
+					}
+
+				?>
 			</ul>
 		</div>
 
@@ -134,18 +124,11 @@
 						$alter = 0;
 						$next_p = 0;
 
-						error_log($alter, true);
-
 						if(isset($post_hasalter) && $post_hasalter == 1){
 							$alter = 1;
 
-							$post = get_post( $day_query->post->ID );
-
-							$t = $day_query->get_next_post();
-
-							$next_p = 1; get_post_meta($t->ID, 'alter_show', true);
-							$test = print_r($t, true);
-							error_log($test." ".$next_p);
+							$next_q = $day_query->posts[$day_query->current_post + 1];
+							$next_p = get_post_meta($next_q->ID, 'alter_show', true);
 
 							if($day_query->have_posts()){
 								if ($next_p == 1){
@@ -156,6 +139,8 @@
 									$show_title2 = get_the_title();
 
 									$content2 = get_the_content();
+								} else {
+									$alter = 0;
 								}
 							} else {
 								$alter = 0;
