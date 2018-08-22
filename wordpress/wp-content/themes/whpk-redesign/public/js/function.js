@@ -103,7 +103,7 @@ jQuery(document).ready(function( $ ) {
 		$('.sticky-cont').css("background", "rgba(255, 255, 255, 1)");
 	}
 	
-	if (title.indexOf("schedule") != -1){
+	if (title.indexOf("schedule") != -1 && $(document).width() >= 800){
 		var d_val = parseInt($('.timeline').find('ul').attr('data-val'));
 		var new_height = (2400 * d_val/24) - 1;
 		$('.cd-schedule .events .events-group > ul').css("height", new_height);
