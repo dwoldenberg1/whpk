@@ -55,16 +55,16 @@ function togglePlayVis(forced){
 }
 
 function do_loaded(){
-	var playing  = localStorage.getItem("playing");
+	//var playing  = localStorage.getItem("playing");
 
 	$('#listen-item-bar').text("LISTEN").removeClass("strm-loading").css("left", "45px");
 	$('#listen-item').text("LISTEN").removeClass("strm-loading").css("left", "0px");
 
-	if(playing == "1"){
+	/*if(playing == "1"){
 		listenStuff(2);
 	} else {
 		listenStuff(1);
-	}
+	}*/
 
 	$('.listen').click(listenStuff);
 	$('.bar-listen').click(listenStuff);
