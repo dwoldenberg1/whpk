@@ -1,10 +1,10 @@
 === SSH SFTP Updater Support ===
-Contributors: TerraFrost, DavidAnderson
+Contributors: DavidAnderson, TerraFrost, pmbaldha
 Donate link: http://sourceforge.net/donate/index.php?group_id=198487
 Tags: ssh, sftp
 Requires at least: 3.1
 Tested up to: 4.9
-Stable tag: 0.7.3
+Stable tag: 0.7.4
 
 "SSH SFTP Updater Support" is the easiest way to keep your Wordpress installation up-to-date with SFTP.
 
@@ -12,12 +12,27 @@ Stable tag: 0.7.3
 
 Keeping your Wordpress install up-to-date and installing plugins in a hassle-free manner is not so easy if your server uses SFTP. "SSH SFTP Updater Support" for Wordpress uses phpseclib to remedy this deficiency.
 
+This plugin is offered and maintained as a free service to the WP community. You might also be interested in enhancing your WordPress site with our other top plugins, below.
+
+* **[UpdraftPlus](https://updraftplus.com/?ref=212&source=sshsmtp)** simplifies backups and restoration. It is the #1 most-used backup/restore plugin, with over a million currently-active installs.
+* **[UpdraftCentral](https://updraftplus.com/updraftcentral/?ref=212&source=sshsmtp)** - a highly efficient way to manage, optimize, update and backup multiple websites from one place.
+* **[WP-Optimize](https://getwpo.com/)** helps you to optimize and clean your WordPress database so that it runs at maximum efficiency.
+* **[Keyy](https://getkeyy.com/)**: Simple and secure logins with a wave of your phone.
+* **[MetaSlider](https://www.metaslider.com)**: Easily create beautifully-designed sliders with the #1-most installed WP slider plugin.
+* **More quality plugins**: **[Premium WooCommerce extensions](https://www.simbahosting.co.uk/s3/shop/)** | **[Other useful plugins](https://profiles.wordpress.org/davidanderson#content-plugins)**
+
 == Installation ==
 
 1. Upload the files to the `/wp-content/plugins/ssh-sftp-updater-support` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.7.4 - 2018/Aug/25 =
+
+* TWEAK: Update phpseclib to latest version (1.0.10)
+* TWEAK: Replace deprecated constructor for WP_Filesystem_SSH2 class
+* TWEAK: Adds a "Other useful plugins" link on the plugin listing page and 'thank you' notice
 
 = 0.7.3 =
 
@@ -65,4 +80,4 @@ Keeping your Wordpress install up-to-date and installing plugins in a hassle-fre
 * Initial Release
 
 == Upgrade Notice ==
-* 1.14.4: Update phpseclib to latest version (1.0.10)
+* 0.7.4: Update phpseclib to latest version (1.0.11), and prevent deprecation notice

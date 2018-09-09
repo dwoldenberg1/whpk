@@ -3,15 +3,16 @@
 Plugin Name: SSH SFTP Updater Support
 Plugin URI: https://wordpress.org/plugins/ssh-sftp-updater-support/
 Description: Update your WordPress blog / plugins via SFTP without libssh2
-Version: 0.7.3
-Author: TerraFrost
-Author URI: http://phpseclib.sourceforge.net/
+Version: 0.7.4
+Author: TerraFrost, David Anderson + Team Updraft
+Author URI: https://updraftplus.com/
 */
 
 if (!defined('ABSPATH')) die('No direct access allowed');
 
 define('SSH_SFTP_UPDATER_SUPPORT_MAIN_PATH', plugin_dir_path(__FILE__));
-define('SSH_SFTP_UPDATER_SUPPORT_VERSION', '0.7.3');
+define('SSH_SFTP_UPDATER_SUPPORT_BASENAME', plugin_basename(__FILE__));
+define('SSH_SFTP_UPDATER_SUPPORT_VERSION', '0.7.4');
 define('SSH_SFTP_UPDATER_SUPPORT_URL', plugin_dir_url(__FILE__));
 // see http://adambrown.info/p/wp_hooks/hook/<filter name>
 add_filter('filesystem_method', 'phpseclib_filesystem_method', 10, 2); // since 2.6 - WordPress will ignore the ssh option if the php ssh extension is not loaded
@@ -276,6 +277,7 @@ class SSH_SFTP_Updater_Support {
 		add_action('plugins_loaded', array($this, 'plugins_loaded'), 1);
 		add_action('admin_init', array($this, 'admin_init'));
 		add_action('wp_ajax_ssh_sftp_updater_support_ajax', array($this, 'ssh_sftp_updater_support_ajax_handler'));
+		add_filter('plugin_row_meta',  array($this, 'plugin_row_meta'), 10, 2);
 	}
 
 	public static function instance() {
@@ -518,6 +520,20 @@ class SSH_SFTP_Updater_Support {
 		}
 		if ($return_instead_of_echo) return $result;
 		echo $result;
+	}
+	
+	/**
+    * Add a "Other useful plugins" link in the links in the line for the plugin in the 'Plugin' page
+    *
+    * @param array  $plugin_meta An array of the plugin's metadata
+	* @param string $plugin_file Path to the plugin file, relative to the plugins directory
+    * @return array $links An array of plugin action links
+    */
+	public function plugin_row_meta($plugin_meta_links, $plugin_file) {
+		if (SSH_SFTP_UPDATER_SUPPORT_BASENAME ==  $plugin_file) {
+			$plugin_meta_links[] = '<a href="https://profiles.wordpress.org/davidanderson#content-plugins">'.__('Other useful plugins', 'ssh-sftp-updater-support').'</a>';
+		}
+		return $plugin_meta_links;
 	}
 }
 

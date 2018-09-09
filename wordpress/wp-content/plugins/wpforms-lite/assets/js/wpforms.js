@@ -79,6 +79,17 @@
 					$( this ).attr( 'name', 'wpf-temp-' + random );
 				});
 
+				// Prepend URL field contents with http:// if user input doesn't contain a schema.
+				$( '.wpforms-validate input[type=url]' ).change( function () {
+					var url = $( this ).val();
+					if ( ! url ) {
+						return false;
+					}
+					if ( url.substr( 0, 7 ) !== 'http://' && url.substr( 0, 8 ) !== 'https://' ) {
+						$( this ).val( 'http://' + url );
+					}
+				});
+
 				$.validator.messages.required = wpforms_settings.val_required;
 				$.validator.messages.url = wpforms_settings.val_url;
 				$.validator.messages.email = wpforms_settings.val_email;
@@ -754,7 +765,7 @@
 		 */
 		setUserIndentifier: function() {
 
-			if ( wpforms_settings.uuid_cookie && ! WPForms.getCookie('_wpfuuid') ) {
+			if ( typeof wpforms_settings !== 'undefined' && wpforms_settings.uuid_cookie && ! WPForms.getCookie('_wpfuuid') ) {
 
 				// Generate UUID - http://stackoverflow.com/a/873856/1489528
 				var s         = new Array(36),

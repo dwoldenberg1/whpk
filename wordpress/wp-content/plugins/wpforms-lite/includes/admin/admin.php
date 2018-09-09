@@ -10,35 +10,6 @@
  */
 
 /**
- * Helper function to determine if viewing an WPForms related admin page.
- *
- * Here we determine if the current administration page is owned/created by
- * WPForms. This is done in compliance with WordPress best practices for
- * development, so that we only load required WPForms CSS and JS files on pages
- * we create. As a result we do not load our assets admin wide, where they might
- * conflict with other plugins needlessly, also leading to a better, faster user
- * experience for our users.
- *
- * @since 1.3.9
- *
- * @return boolean
- */
-function wpforms_is_admin_page() {
-
-	// Bail if we're not on a WPForms screen or page (also exclude form builder).
-	if (
-		! is_admin() ||
-		empty( $_REQUEST['page'] ) ||
-		strpos( $_REQUEST['page'], 'wpforms' ) === false ||
-		'wpforms-builder' === $_REQUEST['page']
-	) {
-		return false;
-	}
-
-	return true;
-}
-
-/**
  * Load styles for all WPForms-related admin screens.
  *
  * @since 1.3.9
@@ -402,7 +373,7 @@ function wpforms_check_php_version() {
 		) .
 		'<br><br><em>' .
 		wp_kses(
-			__( '<strong>Please Note:</strong> After July 2018, if no further action is taken, WPForms functionality will be disabled.', 'wpforms' ),
+			__( '<strong>Please Note:</strong> After September 2018, if no further action is taken, WPForms functionality will be disabled.', 'wpforms' ),
 			array(
 				'strong' => array(),
 				'em'     => array(),

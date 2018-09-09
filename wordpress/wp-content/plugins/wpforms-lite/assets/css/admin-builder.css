@@ -422,7 +422,8 @@ body {
 	max-width: 450px;
 }
 
-#wpforms-builder .wpforms-panel-field-tinymce {
+#wpforms-builder .wpforms-panel-field-tinymce,
+#wpforms-builder .wpforms-confirmation .wpforms-panel-field-textarea {
 	max-width: 800px;
 }
 
