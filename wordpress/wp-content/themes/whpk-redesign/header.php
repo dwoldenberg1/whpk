@@ -50,7 +50,7 @@ $page_title = (isset($GLOBALS["page_title"]))?$GLOBALS["page_title"]:$pagename;
 		<div class="msg-ann"><?php echo get_theme_mod( 'main-ann' ); ?></div>
 	<?php endif; ?>
 
-		<audio id="whpk-play" src="http://www.whpk.org:8000/mp3" autoplay></audio>
+		<audio id="whpk-play" src="http://www.whpk.org:8000/stream" autoplay></audio>
 		<?php 	get_template_part('templates/headers/header'); 
 				get_template_part('templates/navigation/navbar'); 
 		?>		
