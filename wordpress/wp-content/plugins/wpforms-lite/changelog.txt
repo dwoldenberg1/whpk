@@ -1,7 +1,14 @@
 == Changelog ==
 
+= 1.4.9 =
+- Added: Pirate Forms importer.
+- Changed: Some form builder tooltips to contain documentation links.
+- Fixed: Form builder javascript conflict with jQuery non-conflict mode.
+- Fixed: PHP Notice from WPForms widget.
+- Fixed: Incorrect markup around Addons submenu item.
+
 = 1.4.8.1 =
-- Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
+- Fixed: Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
 
 = 1.4.8 =
 - Added: Gutenberg block.

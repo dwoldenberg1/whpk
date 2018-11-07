@@ -562,11 +562,12 @@ var wpf = {
 	 */
 	initTooltips: function() {
 
-		$( '.wpforms-help-tooltip' ).tooltipster( {
+		jQuery( '.wpforms-help-tooltip' ).tooltipster( {
 			contentAsHTML: true,
 			position: 'right',
 			maxWidth: 300,
-			multiple: true
+			multiple: true,
+			interactive: true
 		} );
 	}
 };

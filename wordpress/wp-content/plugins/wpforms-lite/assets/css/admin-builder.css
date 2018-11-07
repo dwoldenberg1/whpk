@@ -420,15 +420,12 @@ body {
 
 #wpforms-builder .wpforms-panel-field {
 	max-width: 450px;
+	margin-bottom: 18px;
 }
 
 #wpforms-builder .wpforms-panel-field-tinymce,
 #wpforms-builder .wpforms-confirmation .wpforms-panel-field-textarea {
 	max-width: 800px;
-}
-
-#wpforms-builder .wpforms-panel-field {
-	margin-bottom: 18px;
 }
 
 #wpforms-builder .wpforms-panel-field label {

@@ -1,7 +1,7 @@
 === Contact Form by WPForms - Drag & Drop Form Builder for WordPress ===
 Contributors: wpforms, jaredatch, smub, slaFFik
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form
-Requires at least: 4.6
+Requires at least: 4.8
 Tested up to: 4.9.1
 Stable tag: trunk
 Requires PHP: 5.2.4
@@ -213,8 +213,15 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.4.9 =
+- Added: Pirate Forms importer.
+- Changed: Some form builder tooltips to contain documentation links.
+- Fixed: Form builder javascript conflict with jQuery non-conflict mode.
+- Fixed: PHP Notice from WPForms widget.
+- Fixed: Incorrect markup around Addons submenu item.
+
 = 1.4.8.1 =
-- Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
+- Fixed: Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
 
 = 1.4.8 =
 - Added: Gutenberg block.

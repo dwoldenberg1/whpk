@@ -365,6 +365,10 @@ class WPForms_Process {
 		// Pass a message to a frontend if no redirection happened.
 		if ( ! empty( $confirmations[ $confirmation_id ]['type'] ) && 'message' === $confirmations[ $confirmation_id ]['type'] ) {
 			wpforms()->frontend->confirmation_message = $confirmations[ $confirmation_id ]['message'];
+
+			if ( ! empty( $confirmations[ $confirmation_id ]['message_scroll'] ) ) {
+				wpforms()->frontend->confirmation_message_scroll = true;
+			}
 		}
 	}
 

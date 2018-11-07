@@ -209,7 +209,7 @@ class WPForms_Conditional_Logic_Core {
 							'slug'    => 'conditional_logic',
 							'value'   => $enabled,
 							'desc'    => esc_html__( 'Enable conditional logic', 'wpforms' ),
-							'tooltip' => esc_html__( 'Check this option to enable conditional logic on this field.', 'wpforms' ),
+							'tooltip' => '<a href="https://wpforms.com/docs/how-to-use-conditional-logic-with-wpforms/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'How to use Conditional Logic', 'wpforms' ) . '</a>',
 							'data'    => array(
 								'name'        => $field_name,
 								'actions'     => $actions,
@@ -285,7 +285,7 @@ class WPForms_Conditional_Logic_Core {
 						$args['form'],
 						esc_html__( 'Enable conditional logic', 'wpforms' ),
 						array(
-							'tooltip'     => esc_html__( 'Check this option to enable conditional logic.', 'wpforms' ),
+							'tooltip'     => '<a href="https://wpforms.com/docs/how-to-use-conditional-logic-with-wpforms/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'How to use Conditional Logic', 'wpforms' ) . '</a>',
 							'parent'      => $parent,
 							'subsection'  => $subsection,
 							'input_id'    => 'wpforms-panel-field-' . implode( '-', array_filter( array( $parent, $panel, $subsection, 'conditional_logic', 'checkbox' ) ) ),

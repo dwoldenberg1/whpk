@@ -3,7 +3,7 @@
 Plugin Name: SSH SFTP Updater Support
 Plugin URI: https://wordpress.org/plugins/ssh-sftp-updater-support/
 Description: Update your WordPress blog / plugins via SFTP without libssh2
-Version: 0.7.4
+Version: 0.7.5
 Author: TerraFrost, David Anderson + Team Updraft
 Author URI: https://updraftplus.com/
 */
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) die('No direct access allowed');
 
 define('SSH_SFTP_UPDATER_SUPPORT_MAIN_PATH', plugin_dir_path(__FILE__));
 define('SSH_SFTP_UPDATER_SUPPORT_BASENAME', plugin_basename(__FILE__));
-define('SSH_SFTP_UPDATER_SUPPORT_VERSION', '0.7.4');
+define('SSH_SFTP_UPDATER_SUPPORT_VERSION', '0.7.5');
 define('SSH_SFTP_UPDATER_SUPPORT_URL', plugin_dir_url(__FILE__));
 // see http://adambrown.info/p/wp_hooks/hook/<filter name>
 add_filter('filesystem_method', 'phpseclib_filesystem_method', 10, 2); // since 2.6 - WordPress will ignore the ssh option if the php ssh extension is not loaded
@@ -252,8 +252,10 @@ foreach ( (array) $extra_fields as $field ) {
 	if ( isset( $_POST[ $field ] ) )
 		echo '<input type="hidden" name="' . esc_attr( $field ) . '" value="' . esc_attr( stripslashes( $_POST[ $field ] ) ) . '" />';
 }
-submit_button( __( 'Proceed' ), 'button', 'upgrade' );
 ?>
+<p class="submit">
+	<input type="submit" name="upgrade" id="upgrade" class="button" value="<?php esc_attr_e( 'Proceed' ); ?>"  />
+</p>
 </div>
 </form>
 <?php

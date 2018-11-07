@@ -4,7 +4,7 @@ Donate link: http://sourceforge.net/donate/index.php?group_id=198487
 Tags: ssh, sftp
 Requires at least: 3.1
 Tested up to: 4.9
-Stable tag: 0.7.4
+Stable tag: 0.7.5
 
 "SSH SFTP Updater Support" is the easiest way to keep your Wordpress installation up-to-date with SFTP.
 
@@ -27,6 +27,10 @@ This plugin is offered and maintained as a free service to the WP community. You
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.7.5 - 2018/Oct/13 =
+
+* TWEAK: Replace use of the submit_button() function (one user was seeing a fatal error related to it)
 
 = 0.7.4 - 2018/Aug/25 =
 
@@ -80,4 +84,4 @@ This plugin is offered and maintained as a free service to the WP community. You
 * Initial Release
 
 == Upgrade Notice ==
-* 0.7.4: Update phpseclib to latest version (1.0.11), and prevent deprecation notice
+* 0.7.5: Replace use of the submit_button() function (one user was seeing a fatal error related to it)

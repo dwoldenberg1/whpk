@@ -114,15 +114,15 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 
 		// TinyMCE.
 		case 'tinymce':
-			$args                  = wp_parse_args( $args['tinymce'], array(
+			$id                               = str_replace( '-', '_', $input_id );
+			$args['tinymce']['textarea_name'] = $field_name;
+			$args['tinymce']['teeny']         = true;
+			$args['tinymce']                  = wp_parse_args( $args['tinymce'], array(
 				'media_buttons' => false,
 				'teeny'         => true,
 			) );
-			$args['textarea_name'] = $field_name;
-			$args['teeny']         = true;
-			$id                    = str_replace( '-', '_', $input_id );
 			ob_start();
-			wp_editor( $value, $id, $args );
+			wp_editor( $value, $id, $args['tinymce'] );
 			$output = ob_get_clean();
 			break;
 

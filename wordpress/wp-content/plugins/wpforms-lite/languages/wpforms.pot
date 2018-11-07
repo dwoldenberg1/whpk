@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPForms package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPForms 1.4.8.1\n"
+"Project-Id-Version: WPForms 1.4.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpforms\n"
-"POT-Creation-Date: 2018-08-31 15:15:02+00:00\n"
+"POT-Creation-Date: 2018-09-17 18:49:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,23 +13,23 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: includes/admin/admin.php:121 includes/admin/admin.php:151
-#: pro/includes/admin/class-addons.php:289
+#: pro/includes/admin/class-addons.php:290
 msgid "Activate"
 msgstr ""
 
-#: includes/admin/admin.php:122 pro/includes/admin/class-addons.php:241
+#: includes/admin/admin.php:122 pro/includes/admin/class-addons.php:242
 msgid "Active"
 msgstr ""
 
-#: includes/admin/admin.php:123 pro/includes/admin/class-addons.php:284
+#: includes/admin/admin.php:123 pro/includes/admin/class-addons.php:285
 msgid "Deactivate"
 msgstr ""
 
-#: includes/admin/admin.php:124 pro/includes/admin/class-addons.php:247
+#: includes/admin/admin.php:124 pro/includes/admin/class-addons.php:248
 msgid "Inactive"
 msgstr ""
 
-#: includes/admin/admin.php:125 pro/includes/admin/class-addons.php:294
+#: includes/admin/admin.php:125 pro/includes/admin/class-addons.php:295
 msgid "Install Addon"
 msgstr ""
 
@@ -362,7 +362,8 @@ msgid ""
 "Notifications dropdown setting."
 msgstr ""
 
-#: includes/admin/builder/class-builder.php:359 lite/wpforms-lite.php:95
+#: includes/admin/builder/class-builder.php:359
+#: includes/admin/importers/class-pirate-forms.php:445 lite/wpforms-lite.php:95
 #: pro/wpforms-pro.php:485
 msgid "Default Notification"
 msgstr ""
@@ -755,7 +756,7 @@ msgstr ""
 
 #: includes/admin/builder/panels/class-fields.php:142
 #: includes/admin/builder/panels/class-settings.php:118
-#: includes/admin/importers/class-contact-form-7.php:106
+#: includes/admin/importers/class-contact-form-7.php:115
 #: includes/admin/importers/class-ninja-forms.php:123
 msgid "Submit"
 msgstr ""
@@ -1080,9 +1081,9 @@ msgid ""
 "a>?"
 msgstr ""
 
-#. #-#-#-#-#  wpforms.pot (WPForms 1.4.8.1)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.4.9)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  wpforms.pot (WPForms 1.4.8.1)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.4.9)  #-#-#-#-#
 #. Author of the plugin/theme
 #: includes/admin/class-menu.php:39 includes/admin/class-menu.php:40
 #: includes/admin/class-menu.php:51 includes/admin/class-menu.php:103
@@ -1400,7 +1401,7 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: includes/admin/class-settings.php:426 includes/class-frontend.php:1023
+#: includes/admin/class-settings.php:426 includes/class-frontend.php:1029
 #: includes/functions.php:1708
 msgid "This field is required."
 msgstr ""
@@ -1409,12 +1410,12 @@ msgstr ""
 msgid "Website URL"
 msgstr ""
 
-#: includes/admin/class-settings.php:432 includes/class-frontend.php:1024
+#: includes/admin/class-settings.php:432 includes/class-frontend.php:1030
 #: pro/includes/fields/class-url.php:158
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: includes/admin/class-settings.php:438 includes/class-frontend.php:1025
+#: includes/admin/class-settings.php:438 includes/class-frontend.php:1031
 msgid "Please enter a valid email address."
 msgstr ""
 
@@ -1422,7 +1423,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: includes/admin/class-settings.php:444 includes/class-frontend.php:1026
+#: includes/admin/class-settings.php:444 includes/class-frontend.php:1032
 #: includes/fields/class-number.php:157
 msgid "Please enter a valid number."
 msgstr ""
@@ -1431,7 +1432,7 @@ msgstr ""
 msgid "Confirm Value"
 msgstr ""
 
-#: includes/admin/class-settings.php:450 includes/class-frontend.php:1027
+#: includes/admin/class-settings.php:450 includes/class-frontend.php:1033
 #: pro/includes/fields/class-password.php:404
 msgid "Field values do not match."
 msgstr ""
@@ -1523,7 +1524,7 @@ msgstr ""
 msgid "Select previous contact form plugin..."
 msgstr ""
 
-#: includes/admin/class-tools.php:276 pro/includes/admin/class-addons.php:244
+#: includes/admin/class-tools.php:276 pro/includes/admin/class-addons.php:245
 msgid "Not Installed"
 msgstr ""
 
@@ -1632,7 +1633,7 @@ msgstr ""
 
 #: includes/admin/class-tools.php:498 includes/admin/class-welcome.php:260
 #: lite/wpforms-lite.php:1324 lite/wpforms-lite.php:1350
-#: pro/includes/admin/class-addons.php:297
+#: pro/includes/admin/class-addons.php:298
 msgid "Upgrade Now"
 msgstr ""
 
@@ -1931,65 +1932,85 @@ msgstr ""
 msgid "There was an error while creating a new form."
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:107
+#: includes/admin/importers/class-contact-form-7.php:93
+msgid "Unknown Form"
+msgstr ""
+
+#: includes/admin/importers/class-contact-form-7.php:94
+msgid "The form you are trying to import does not exist."
+msgstr ""
+
+#: includes/admin/importers/class-contact-form-7.php:116
 #: includes/admin/importers/class-ninja-forms.php:124
+#: includes/admin/importers/class-pirate-forms.php:440
 msgid "Sending"
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:112
+#: includes/admin/importers/class-contact-form-7.php:121
 #: includes/admin/importers/class-ninja-forms.php:129
 msgid "Notification 1"
 msgstr ""
 
 #. translators: %s - Contact Form 7 form name.
 #. translators: %s - Ninja Forms form name.
+#. translators: %s - PirateForms form name.
 #. translators: %s - form name.
 #. translators: %s - form name.
-#: includes/admin/importers/class-contact-form-7.php:115
-#: includes/admin/importers/class-contact-form-7.php:400
+#: includes/admin/importers/class-contact-form-7.php:124
+#: includes/admin/importers/class-contact-form-7.php:414
 #: includes/admin/importers/class-ninja-forms.php:132
-#: includes/admin/importers/class-ninja-forms.php:406 lite/wpforms-lite.php:144
-#: pro/wpforms-pro.php:566
+#: includes/admin/importers/class-ninja-forms.php:409
+#: includes/admin/importers/class-pirate-forms.php:448
+#: lite/wpforms-lite.php:144 pro/wpforms-pro.php:566
 msgid "New Entry: %s"
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:123
-#: includes/admin/importers/class-ninja-forms.php:140
+#: includes/admin/importers/class-contact-form-7.php:134
+#: includes/admin/importers/class-ninja-forms.php:142
+#: includes/admin/importers/class-pirate-forms.php:459
 #: includes/class-process.php:316 lite/wpforms-lite.php:248
 #: lite/wpforms-lite.php:298 pro/wpforms-pro.php:694 pro/wpforms-pro.php:781
 msgid "Thanks for contacting us! We will be in touch with you shortly."
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:134
-#: includes/admin/importers/class-ninja-forms.php:151
+#: includes/admin/importers/class-contact-form-7.php:147
+#: includes/admin/importers/class-ninja-forms.php:155
+#: includes/admin/importers/class-pirate-forms.php:426
 msgid "No form fields found."
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:302
+#: includes/admin/importers/class-contact-form-7.php:316
 msgid "Acceptance Field"
 msgstr ""
 
-#: includes/admin/importers/class-contact-form-7.php:397
+#: includes/admin/importers/class-contact-form-7.php:411
 msgid "Notification 2"
 msgstr ""
 
 #. translators: %1$s - field type; %2$s - field name if available.
-#: includes/admin/importers/class-contact-form-7.php:490
+#: includes/admin/importers/class-contact-form-7.php:504
 msgid "%1$s Field %2$s"
 msgstr ""
 
-#: includes/admin/importers/class-ninja-forms.php:227
+#: includes/admin/importers/class-ninja-forms.php:231
+#: includes/admin/importers/class-pirate-forms.php:243
+#: includes/admin/importers/class-pirate-forms.php:335
 msgid "Single Checkbox Field"
 msgstr ""
 
-#: includes/admin/importers/class-ninja-forms.php:403
-#: includes/admin/importers/class-ninja-forms.php:419
+#: includes/admin/importers/class-ninja-forms.php:406
+#: includes/admin/importers/class-ninja-forms.php:422
 msgid "Notification"
 msgstr ""
 
 #. translators: %1$s - field type; %2$s - field name if available.
-#: includes/admin/importers/class-ninja-forms.php:473
+#: includes/admin/importers/class-ninja-forms.php:476
 msgid "%1$s Field"
+msgstr ""
+
+#: includes/admin/importers/class-pirate-forms.php:88
+#: includes/admin/importers/class-pirate-forms.php:176
+msgid "Default Form"
 msgstr ""
 
 #: includes/admin/overview/class-overview-table.php:51
@@ -2139,7 +2160,8 @@ msgid "Enable conditional logic"
 msgstr ""
 
 #: includes/class-conditional-logic-core.php:212
-msgid "Check this option to enable conditional logic on this field."
+#: includes/class-conditional-logic-core.php:288
+msgid "How to use Conditional Logic"
 msgstr ""
 
 #: includes/class-conditional-logic-core.php:244
@@ -2152,10 +2174,6 @@ msgstr ""
 
 #: includes/class-conditional-logic-core.php:249
 msgid "Don't process"
-msgstr ""
-
-#: includes/class-conditional-logic-core.php:288
-msgid "Check this option to enable conditional logic."
 msgstr ""
 
 #: includes/class-conditional-logic-core.php:494
@@ -2172,36 +2190,36 @@ msgstr ""
 msgid "Add rule group"
 msgstr ""
 
-#: includes/class-frontend.php:1028
+#: includes/class-frontend.php:1034
 #: pro/includes/fields/class-file-upload.php:383
 #: pro/includes/fields/class-file-upload.php:399
 #: pro/includes/fields/class-file-upload.php:417 pro/wpforms-pro.php:194
 msgid "File type is not allowed."
 msgstr ""
 
-#: includes/class-frontend.php:1029 pro/wpforms-pro.php:200
+#: includes/class-frontend.php:1035 pro/wpforms-pro.php:200
 msgid "File exceeds max size allowed."
 msgstr ""
 
-#: includes/class-frontend.php:1030 pro/wpforms-pro.php:206
+#: includes/class-frontend.php:1036 pro/wpforms-pro.php:206
 msgid "Please enter time in 12-hour AM/PM format (eg 8:45 AM)."
 msgstr ""
 
-#: includes/class-frontend.php:1031 pro/wpforms-pro.php:212
+#: includes/class-frontend.php:1037 pro/wpforms-pro.php:212
 msgid "Please enter time in 24-hour format (eg 22:45)."
 msgstr ""
 
-#: includes/class-frontend.php:1032
+#: includes/class-frontend.php:1038
 #: pro/includes/fields/class-payment-total.php:208 pro/wpforms-pro.php:218
 msgid "Payment is required."
 msgstr ""
 
-#: includes/class-frontend.php:1033 pro/wpforms-pro.php:224
+#: includes/class-frontend.php:1039 pro/wpforms-pro.php:224
 msgid "Please enter a valid credit card number."
 msgstr ""
 
 #. translators: %s - URL to a non-amp version of a page with the form.
-#: includes/class-frontend.php:1142
+#: includes/class-frontend.php:1148
 msgid "<a href=\"%s\">Go to the full page</a> to view and submit the form."
 msgstr ""
 
@@ -2331,7 +2349,7 @@ msgid "WPForms honeypot field triggered."
 msgstr ""
 
 #. translators: %s - form name.
-#: includes/class-process.php:434 lite/wpforms-lite.php:59
+#: includes/class-process.php:438 lite/wpforms-lite.php:59
 #: pro/wpforms-pro.php:454
 msgid "New %s Entry"
 msgstr ""
@@ -2447,22 +2465,22 @@ msgctxt "Widget"
 msgid "Form:"
 msgstr ""
 
-#: includes/class-widget.php:135
+#: includes/class-widget.php:137
 msgctxt "Widget"
 msgid "Select your form"
 msgstr ""
 
-#: includes/class-widget.php:141
+#: includes/class-widget.php:143
 msgctxt "Widget"
 msgid "No forms"
 msgstr ""
 
-#: includes/class-widget.php:149
+#: includes/class-widget.php:152
 msgctxt "Widget"
 msgid "Display form name"
 msgstr ""
 
-#: includes/class-widget.php:153
+#: includes/class-widget.php:158
 msgctxt "Widget"
 msgid "Display form description"
 msgstr ""
@@ -2814,7 +2832,7 @@ msgstr ""
 #: pro/includes/fields/class-date-time.php:59
 #: pro/includes/fields/class-date-time.php:146
 #: pro/includes/fields/class-date-time.php:186
-#: pro/includes/fields/class-phone.php:81
+#: pro/includes/fields/class-phone.php:86
 msgid "Format"
 msgstr ""
 
@@ -4976,7 +4994,7 @@ msgstr ""
 msgid "Upgrade to WPForms Pro Now"
 msgstr ""
 
-#: lite/wpforms-lite.php:1317 pro/includes/admin/class-addons.php:93
+#: lite/wpforms-lite.php:1317 pro/includes/admin/class-addons.php:95
 msgid "Search Addons"
 msgstr ""
 
@@ -5010,59 +5028,59 @@ msgstr ""
 msgid "Could not activate addon. Please activate from the Plugins page."
 msgstr ""
 
-#: pro/includes/admin/ajax-actions.php:121
+#: pro/includes/admin/ajax-actions.php:124
 msgid "Addon installed."
 msgstr ""
 
-#: pro/includes/admin/ajax-actions.php:237
-#: pro/includes/admin/ajax-actions.php:282
+#: pro/includes/admin/ajax-actions.php:240
+#: pro/includes/admin/ajax-actions.php:285
 msgid "Please enter a license key."
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:92
+#: pro/includes/admin/class-addons.php:93
 msgid "Refresh Addons"
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:99
+#: pro/includes/admin/class-addons.php:101
 msgid ""
 "There was an issue retrieving Addons for this site. Please click on the "
-"button above the refresh."
+"button above to refresh."
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:105
+#: pro/includes/admin/class-addons.php:107
 msgid ""
 "In order to get access to Addons, you need to resolve your license key "
 "errors."
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:111
+#: pro/includes/admin/class-addons.php:113
 msgid ""
 "In order to get access to Addons, you need to verify your license key for "
 "WPForms."
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:119
+#: pro/includes/admin/class-addons.php:121
 msgid "Addons have successfully been refreshed."
 msgstr ""
 
 #. translators: %s - refresh addons page URL.
-#: pro/includes/admin/class-addons.php:132
+#: pro/includes/admin/class-addons.php:134
 msgid ""
 "Improve your forms with our premium addons. Missing an addon that you think "
 "you should be able to see? Click the <a href=\"%s\">Refresh Addons</a> "
 "button above."
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:144
+#: pro/includes/admin/class-addons.php:146
 msgid "Available Addons"
 msgstr ""
 
-#: pro/includes/admin/class-addons.php:194
+#: pro/includes/admin/class-addons.php:195
 msgid "Unlock More Features..."
 msgstr ""
 
 #. translators: %s - WPForms.com Account page URL.
-#: pro/includes/admin/class-addons.php:199
+#: pro/includes/admin/class-addons.php:200
 msgid ""
 "Want to get even more features? <a href=\"%s\" target=\"_blank\" rel="
 "\"noopener noreferrer\">Upgrade your WPForms account</a> and unlock the "
@@ -5071,7 +5089,7 @@ msgstr ""
 
 #. translators: %s - addon status label.
 #. translators: %s - entry payment status.
-#: pro/includes/admin/class-addons.php:271
+#: pro/includes/admin/class-addons.php:272
 #: pro/includes/admin/entries/class-entries-single.php:897
 msgid "Status: %s"
 msgstr ""
@@ -5582,7 +5600,7 @@ msgid "Address"
 msgstr ""
 
 #: pro/includes/fields/class-address.php:39
-#: pro/includes/fields/class-phone.php:93
+#: pro/includes/fields/class-phone.php:98
 msgid "US"
 msgstr ""
 
@@ -5613,7 +5631,7 @@ msgid "State"
 msgstr ""
 
 #: pro/includes/fields/class-address.php:48
-#: pro/includes/fields/class-phone.php:94
+#: pro/includes/fields/class-phone.php:99
 msgid "International"
 msgstr ""
 
@@ -6048,7 +6066,7 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: pro/includes/fields/class-phone.php:82
+#: pro/includes/fields/class-phone.php:87
 msgid "Select format for the phone form field"
 msgstr ""
 
@@ -6416,9 +6434,9 @@ msgstr ""
 msgid "Please deactivate WPForms Lite before activating WPForms."
 msgstr ""
 
-#. #-#-#-#-#  wpforms.pot (WPForms 1.4.8.1)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.4.9)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wpforms.pot (WPForms 1.4.8.1)  #-#-#-#-#
+#. #-#-#-#-#  wpforms.pot (WPForms 1.4.9)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://wpforms.com"
 msgstr ""

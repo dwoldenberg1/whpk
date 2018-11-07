@@ -2930,6 +2930,14 @@
 
 				$builder.trigger( 'wpformsImageUploadRemove', [ $( this ), $container ] );
 			});
+
+			// Validate email smart tags in Notifications fields.
+			$builder.on( 'blur', '.wpforms-notification .wpforms-panel-field-text input', function() {
+				WPFormsBuilder.validateEmailSmartTags( $( this ) );
+			});
+			$builder.on( 'blur', '.wpforms-notification .wpforms-panel-field-textarea textarea', function() {
+				WPFormsBuilder.validateEmailSmartTags( $( this ) );
+			});
 		},
 
 		/**
@@ -3144,6 +3152,24 @@
 					$this.find('option[value="'+selected+'"]').prop('selected',true);
 				}
 			});
+		},
+
+		/**
+		 * Validate email smart tags in Notifications fields.
+		 *
+		 * @since 1.4.9
+		 */
+		validateEmailSmartTags: function( $el ) {
+			var val = $el.val();
+			if ( ! val ) {
+				return;
+			}
+			// Turns '{email@domain.com}' into 'email@domain.com'
+			// Email RegEx inpired by http://emailregex.com
+			val = val.replace( /{(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))}/g, function ( x ) {
+				return x.slice( 1, -1 );
+			} );
+			$el.val( val );
 		},
 
 		//--------------------------------------------------------------------//
